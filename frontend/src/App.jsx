@@ -1,12 +1,11 @@
-
 import './App.css'
 import './index.css'
+import Landing from './pages/Landing'
 
 function App() {
-
   return (
     <>
-      <h1 className="text-3xl font-bold text-red-300 bg-blue-700">Vite + React</h1>
+     <Landing />
     </>
   )
 }
