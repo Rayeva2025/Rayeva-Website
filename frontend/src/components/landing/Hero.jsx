@@ -11,15 +11,22 @@ export default function HeroSection() {
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="/hero.mp4" // place your downloaded video here
+        src="/videos/hero.mp4" // place your downloaded video here
         autoPlay
         muted
         loop
         playsInline
       />
 
+      {/* <img
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ filter: "blur(4px)" }}
+        src="/heroimg.png" // place your downloaded image here
+        alt="Hero Background"
+      /> */}
+
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[rgba(23,145,207,0.35)] mix-blend-multiply"></div>
+      {/* <div className="absolute inset-0 bg-[rgba(23,145,207,0.35)] mix-blend-multiply"></div> */}
 
       {/* Animated Blobs */}
       <motion.div
@@ -34,7 +41,7 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl text-center text-white px-6">
+      <div className="relative z-10 max-w-3xl text-center text-black px-6">
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -63,7 +70,6 @@ export default function HeroSection() {
         >
           Join us in building a future where sustainability is the norm.
         </motion.p>
-
         {/* Buttons */}
         <motion.div
           variants={fadeUp}
@@ -72,10 +78,10 @@ export default function HeroSection() {
           transition={{ delay: 0.7 }}
           className="mt-8 flex justify-center gap-4"
         >
-          <button className="px-6 py-3 rounded-full bg-[rgb(23,145,207)] hover:bg-[rgb(121,203,210)] text-white font-semibold shadow-lg hover:scale-105 transition-all duration-300">
+          <button className="px-6 py-3 rounded-full bg-[rgb(23,145,207)] hover:bg-[rgb(121,203,210)] text-black font-semibold shadow-lg hover:scale-105 transition-all duration-300">
             Shop Sustainably
           </button>
-          <button className="px-6 py-3 rounded-full border-2 border-white text-white font-semibold hover:bg-white hover:text-[rgb(23,145,207)] transition-all duration-300">
+          <button className="px-6 py-3 rounded-full border-2 border-black text-black font-semibold hover:bg-black hover:text-[rgb(23,145,207)] transition-all duration-300">
             Learn More
           </button>
         </motion.div>
