@@ -1,4 +1,3 @@
-import { IconArrowNarrowRight } from "@tabler/icons-react";
 import { useState, useRef, useId, useEffect } from "react";
 
 const Slide = ({
@@ -113,37 +112,127 @@ const Slide = ({
   );
 };
 
-const CarouselControl = ({
-  type,
-  title,
-  handleClick
-}) => {
-  return (
-    <button
-      className={`w-10 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
-        type === "previous" ? "rotate-180" : ""
-      }`}
-      title={title}
-      onClick={handleClick}>
-      <IconArrowNarrowRight className="text-neutral-600 dark:text-neutral-200" />
-    </button>
-  );
-};
-
-export function Carousel({
-  slides
-}) {
+export function Carousel({ slides }) {
   const [current, setCurrent] = useState(0);
+  const carouselRef = useRef(null);
+  const isOverCarousel = useRef(false);
 
-  const handlePreviousClick = () => {
-    const previous = current - 1;
-    setCurrent(previous < 0 ? slides.length - 1 : previous);
+  // --- Smooth Mouse Wheel ---
+  const wheelDelta = useRef(0);
+  const wheelTimeout = useRef(null);
+  const WHEEL_THRESHOLD = 60; // Adjust for sensitivity
+
+  const handleWheel = (e) => {
+    // Only handle wheel events when mouse is over the carousel
+    if (!isOverCarousel.current) return;
+
+    const scrollingUp = e.deltaY < 0;
+    const scrollingDown = e.deltaY > 0;
+
+    // Allow page scroll up when on first slide and scrolling up
+    if (current === 0 && scrollingUp) {
+      return; // Don't prevent, allow page scroll
+    }
+
+    // Allow page scroll down when on last slide and scrolling down
+    if (current === slides.length - 1 && scrollingDown) {
+      return; // Don't prevent, allow page scroll
+    }
+
+    // Prevent default for carousel navigation
+    e.preventDefault();
+    
+    wheelDelta.current += e.deltaY || e.deltaX;
+    clearTimeout(wheelTimeout.current);
+    wheelTimeout.current = setTimeout(() => {
+      if (wheelDelta.current > WHEEL_THRESHOLD) {
+        setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+        wheelDelta.current = 0;
+      } else if (wheelDelta.current < -WHEEL_THRESHOLD) {
+        setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+        wheelDelta.current = 0;
+      }
+    }, 80); // debounce
   };
 
-  const handleNextClick = () => {
-    const next = current + 1;
-    setCurrent(next === slides.length ? 0 : next);
+  // --- Touch swipe support ---
+  const touchStartX = useRef(null);
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
   };
+  const handleTouchMove = (e) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.touches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+      } else {
+        setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+      }
+      touchStartX.current = null;
+    }
+  };
+
+  // --- Drag-to-scroll for desktop ---
+  const dragStartX = useRef(null);
+  const isDragging = useRef(false);
+
+  const handleMouseDown = (e) => {
+    dragStartX.current = e.clientX;
+    isDragging.current = true;
+  };
+
+  const handleMouseUp = () => {
+    dragStartX.current = null;
+    isDragging.current = false;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging.current || dragStartX.current === null) return;
+    const diff = dragStartX.current - e.clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+      } else {
+        setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+      }
+      dragStartX.current = e.clientX;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    isOverCarousel.current = true;
+  };
+
+  const handleMouseLeave = () => {
+    isOverCarousel.current = false;
+  };
+
+  useEffect(() => {
+    const handleMouseUpGlobal = () => {
+      isDragging.current = false;
+      dragStartX.current = null;
+    };
+    const handleMouseMoveGlobal = (e) => handleMouseMove(e);
+    const handleMouseLeaveGlobal = () => {
+      isDragging.current = false;
+      dragStartX.current = null;
+    };
+
+    // Add wheel event listener to window to catch all wheel events
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener("mouseup", handleMouseUpGlobal);
+    window.addEventListener("mousemove", handleMouseMoveGlobal);
+    window.addEventListener("mouseleave", handleMouseLeaveGlobal);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener("mouseup", handleMouseUpGlobal);
+      window.removeEventListener("mousemove", handleMouseMoveGlobal);
+      window.removeEventListener("mouseleave", handleMouseLeaveGlobal);
+    };
+  }, [current, slides.length]);
 
   const handleSlideClick = (index) => {
     if (current !== index) {
@@ -155,8 +244,20 @@ export function Carousel({
 
   return (
     <div
-      className="relative w-[70vmin] h-[70vmin] mx-auto"
-      aria-labelledby={`carousel-heading-${id}`}>
+      ref={carouselRef}
+      className="relative w-[70vmin] h-[70vmin] mx-auto select-none"
+      aria-labelledby={`carousel-heading-${id}`}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onMouseDown={handleMouseDown}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      tabIndex={0}
+      style={{
+        outline: "none",
+        cursor: isDragging.current ? "grabbing" : "grab",
+      }}
+    >
       <ul
         className="absolute flex mx-[-4vmin] transition-transform duration-1000 ease-in-out"
         style={{
@@ -171,14 +272,6 @@ export function Carousel({
             handleSlideClick={handleSlideClick} />
         ))}
       </ul>
-      <div className="absolute flex justify-center w-full top-[calc(100%+1rem)]">
-        <CarouselControl
-          type="previous"
-          title="Go to previous slide"
-          handleClick={handlePreviousClick} />
-
-        <CarouselControl type="next" title="Go to next slide" handleClick={handleNextClick} />
-      </div>
     </div>
   );
 }
