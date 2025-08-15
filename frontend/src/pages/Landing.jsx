@@ -5,10 +5,10 @@ import Content from '../components/landing/Content'
 
 const Landing = () => {
   return (
-    <div>
-      <HeroSection />
-      <Content />
-      {/* <Impact /> */}
+    <div className="relative overflow-hidden">
+        <HeroSection />
+        <Content />
+        {/* <Impact /> */}
     </div>
   )
 }
