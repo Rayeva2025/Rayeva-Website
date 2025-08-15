@@ -7,8 +7,8 @@ const Landing = () => {
   return (
     <div>
       <HeroSection />
-      {/* <Impact /> */}
       <Content />
+      {/* <Impact /> */}
     </div>
   )
 }
