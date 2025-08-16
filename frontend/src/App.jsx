@@ -1,18 +1,15 @@
-import BrandStandards from './components/BrandStandards'
-import Goals from './components/Goals'
-import CategorySlider from './components/Categories'
 import './App.css'
 import './index.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Landing from './pages/Landing'
 
 function App() {
-
   return (
-    <>
-      <h1 className="text-3xl font-bold text-red-300 bg-blue-700">Vite + React</h1>
-      <Goals /> 
-      <BrandStandards />
-      <CategorySlider />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
+    </Router>
   )
 }
 
