@@ -34,13 +34,11 @@ const Goals = () => {
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // Clean up previous scene if exists
     if (rendererRef.current) {
       mountRef.current.removeChild(rendererRef.current.domElement);
       cancelAnimationFrame(animationRef.current);
     }
 
-    // Three.js setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 400 / 400, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -52,10 +50,8 @@ const Goals = () => {
     sceneRef.current = scene;
     rendererRef.current = renderer;
 
-    // Create Earth globe
     const geometry = new THREE.SphereGeometry(1.5, 64, 64);
 
-    // Create a simple earth-like texture
     const canvas = document.createElement("canvas");
     canvas.width = 512;
     canvas.height = 256;
@@ -71,7 +67,6 @@ const Goals = () => {
     context.fillStyle = gradient;
     context.fillRect(0, 0, 512, 256);
 
-    // Add some continent-like shapes
     context.fillStyle = "#15803d";
     for (let i = 0; i < 20; i++) {
       const x = Math.random() * 512;
@@ -93,7 +88,6 @@ const Goals = () => {
     scene.add(globe);
     globeRef.current = globe;
 
-    // Add atmosphere glow
     const atmosphereGeometry = new THREE.SphereGeometry(1.7, 64, 64);
     const atmosphereMaterial = new THREE.MeshBasicMaterial({
       color: 0x4fc3f7,
@@ -104,7 +98,6 @@ const Goals = () => {
     const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
     scene.add(atmosphere);
 
-    // Add lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
 
@@ -114,7 +107,6 @@ const Goals = () => {
 
     camera.position.z = 5;
 
-    // Animation loop
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
 
@@ -127,14 +119,12 @@ const Goals = () => {
     };
     animate();
 
-    // Animate elements appearance
     elements.forEach((element, index) => {
       setTimeout(() => {
         setVisibleElements((prev) => [...prev, element.id]);
       }, element.delay);
     });
 
-    // Cleanup
     return () => {
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement);
@@ -162,7 +152,6 @@ const Goals = () => {
   return (
     <div className="min-h-screen  flex items-center justify-center p-8">
       <div className="relative w-full max-w-4xl h-96 flex items-center justify-center">
-        {/* Connecting lines */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
           style={{ zIndex: 1 }}
@@ -188,17 +177,14 @@ const Goals = () => {
           ))}
         </svg>
 
-        {/* Central Globe */}
         <div
           ref={mountRef}
           className="relative w-[400px] h-[400px]"
           style={{ zIndex: 2 }}
         >
-          {/* Glow effect */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-emerald-400 opacity-20 blur-xl scale-150"></div>
         </div>
 
-        {/* Element Cards */}
         {elements.map((element) => (
           <div
             key={element.id}
@@ -228,7 +214,6 @@ const Goals = () => {
           </div>
         ))}
 
-        {/* Floating particles */}
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none"
           style={{ zIndex: 0 }}
