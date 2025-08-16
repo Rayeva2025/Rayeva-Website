@@ -10,7 +10,7 @@ const Goals = () => {
   const animationRef = useRef(null);
 
   const elements = [
-    { id: "eco", text: "Eco Friendly", position: "top-left", delay: 500 },
+    { id: "eco", text: "Eco - Friendly", position: "top-left", delay: 500 },
     {
       id: "sustainability",
       text: "Sustainability",
@@ -160,7 +160,7 @@ const Goals = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-emerald-900 flex items-center justify-center p-8">
+    <div className="min-h-screen  flex items-center justify-center p-8">
       <div className="relative w-full max-w-4xl h-96 flex items-center justify-center">
         {/* Connecting lines */}
         <svg
@@ -217,10 +217,10 @@ const Goals = () => {
                       : "translate-y-4"
                   }`
             }`}
-            style={{ zIndex: 3 }}
+            style={{ zIndex: -20000 }}
           >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-              <div className="text-white font-semibold text-lg text-center whitespace-nowrap">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl px-32 py-10 border shadow-xl hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl -z-200">
+              <div className="text-black font-semibold text-lg text-center whitespace-nowrap">
                 {element.text}
               </div>
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/10 to-emerald-400/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
@@ -236,7 +236,7 @@ const Goals = () => {
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-white rounded-full opacity-30"
+              className="absolute w-1 h-1 bg-blue-500 rounded-full opacity-30"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
