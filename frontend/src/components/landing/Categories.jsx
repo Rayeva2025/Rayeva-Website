@@ -3,11 +3,11 @@ import DarkWalnutBg from "./DarkWalnutBg";
 
 const CategorySection = () => {
   const [isDragging, setIsDragging] = useState(false);
-  const [slideProgress, setSlideProgress] = useState(0); 
+  const [slideProgress, setSlideProgress] = useState(0);
   const [dragStartProgress, setDragStartProgress] = useState(0);
   const [startX, setStartX] = useState(0);
   const doorRef = useRef(null);
-  const maxSlide = 400; 
+  const maxSlide = 400;
 
   const categories = [
     { id: 1, name: "Furniture", color: "bg-emerald-600", icon: "🪑" },
@@ -24,9 +24,8 @@ const CategorySection = () => {
     { id: 12, name: "Instruments", color: "bg-red-500", icon: "🎸" },
   ];
 
-
-  const leftCategories = categories.slice(0, 6); 
-  const rightCategories = categories.slice(6); 
+  const leftCategories = categories.slice(0, 6);
+  const rightCategories = categories.slice(6);
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -44,7 +43,7 @@ const CategorySection = () => {
     if (!isDragging) return;
 
     const currentX = e.clientX;
-    const deltaX = startX - currentX; 
+    const deltaX = startX - currentX;
     const dragDistance = deltaX / maxSlide;
     const newProgress = dragStartProgress + dragDistance;
 
@@ -55,7 +54,7 @@ const CategorySection = () => {
     if (!isDragging) return;
 
     const currentX = e.touches[0].clientX;
-    const deltaX = startX - currentX; 
+    const deltaX = startX - currentX;
     const dragDistance = deltaX / maxSlide;
     const newProgress = dragStartProgress + dragDistance;
 
@@ -112,7 +111,6 @@ const CategorySection = () => {
 
   return (
     <div className="min-h-screen  p-8 relative overflow-hidden">
-      
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-black mb-4  bg-clip-text text-transparen">
@@ -199,7 +197,7 @@ const CategorySection = () => {
               transform: `scale(${1 + slideProgress * 0.1})`,
             }}
           ></div>
-        </div>        
+        </div>
       </div>
     </div>
   );
