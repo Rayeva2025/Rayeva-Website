@@ -6,13 +6,13 @@ import Landing from './pages/Landing'
 function App() {
   return (
     <>
-    <div className="min-h-screen bg-gradient-to-br from-[#DAFBE6] to-[#E7F6FF]">
+    {/* <div className="min-h-screen bg-gradient-to-br from-[#DAFBE6] to-[#E7F6FF]"> */}
       <Router>
         <Routes>
           <Route path="/" element={<Landing />} />
         </Routes>
       </Router>
-    </div>
+    {/* </div> */}
     </>
   )
 }

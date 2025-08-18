@@ -26,14 +26,14 @@ const Landing = () => {
       <CategorySection />
       <Trendings />
       <StarterPack />
-      <About />
-      <Campaign />
-      <Footer />
-      {/* <Impact /> */}
+      {/* <About /> */}
       <AboutUs/>
       <Tags/>
       <Impact />
       <Missions/>
+      <Campaign />
+      <Footer />
+      {/* <Impact /> */}
     </div>
   );
 };
