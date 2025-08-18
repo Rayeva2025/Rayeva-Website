@@ -2,17 +2,8 @@ import { useState, useEffect } from "react";
 import { Menu, X, Search, User, ShoppingCart } from "lucide-react";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -25,22 +16,18 @@ const Header = () => {
   ];
 
   return (
-    <header
-      className={`fixed w-full rounded-full z-50 transition-all duration-500 ${
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className="rounded-full bg-white/20 backdrop-blur-lg shadow-lg ring-1 ring-white/10">
+        <div className="flex justify-between items-center h-16 px-6">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a
               href="/"
-              className="text-2xl font-bold text-emerald-700 hover:text-emerald-600 transition-colors duration-300 flex items-center"
+              className="text-2xl font-bold text-black hover:text-emerald-200 transition-colors duration-300 flex items-center"
             >
               <span className="relative">
                 Rayeva
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-600 origin-left transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-300 origin-left transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </span>
             </a>
           </div>
@@ -53,15 +40,15 @@ const Header = () => {
                 href={item.path}
                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   hoveredItem === index
-                    ? "text-emerald-600"
-                    : "text-gray-700 hover:text-gray-900"
+                    ? "text-emerald-300"
+                    : "text-black/90 hover:text-white"
                 }`}
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
                 {item.name}
                 {hoveredItem === index && (
-                  <span className="absolute -bottom-1 left-4 right-4 h-0.5 bg-emerald-600 rounded-full origin-left animate-underline"></span>
+                  <span className="absolute -bottom-1 left-4 right-4 h-0.5 bg-emerald-300 rounded-full origin-left animate-underline"></span>
                 )}
               </a>
             ))}
@@ -69,22 +56,22 @@ const Header = () => {
 
           {/* Icons */}
           <div className="flex items-center space-x-4">
-            <button className="p-2 text-gray-700 hover:text-emerald-600 transition-colors duration-300">
+            <button className="p-2 text-black/90 hover:text-emerald-300 transition-colors duration-300">
               <Search className="w-5 h-5" />
             </button>
-            <button className="p-2 text-gray-700 hover:text-emerald-600 transition-colors duration-300">
+            <button className="p-2 text-black/90 hover:text-emerald-300 transition-colors duration-300">
               <User className="w-5 h-5" />
             </button>
-            <button className="p-2 text-gray-700 hover:text-emerald-600 transition-colors duration-300 relative">
+            <button className="p-2 text-black/90 hover:text-emerald-300 transition-colors duration-300 relative">
               <ShoppingCart className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 bg-emerald-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-ping-once">
+              <span className="absolute -top-1 -right-1 bg-emerald-400 text-black text-xs rounded-full w-5 h-5 flex items-center justify-center animate-ping-once">
                 3
               </span>
             </button>
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 text-gray-700 hover:text-emerald-600 transition-colors duration-300"
+              className="md:hidden p-2 text-black/90 hover:text-emerald-300 transition-colors duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -101,18 +88,14 @@ const Header = () => {
       <div
         className={`md:hidden ${
           isMenuOpen ? "block" : "hidden"
-        } transition-all duration-300 ease-in-out`}
+        } transition-all duration-300 ease-in-out mt-2`}
       >
-        <div
-          className={`px-2 pt-2 pb-4 space-y-1 ${
-            isScrolled ? "bg-white/95" : "bg-white/90"
-          } backdrop-blur-md shadow-lg`}
-        >
+        <div className="rounded-2xl bg-black/20 backdrop-blur-lg shadow-lg ring-1 ring-white/10 px-4 py-2">
           {navItems.map((item, index) => (
             <a
               key={index}
               href={item.path}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-gray-50 transition-colors duration-300"
+              className="block px-3 py-2 rounded-full text-base font-medium text-black/90 hover:text-emerald-300 hover:bg-white/10 transition-colors duration-300"
               onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
