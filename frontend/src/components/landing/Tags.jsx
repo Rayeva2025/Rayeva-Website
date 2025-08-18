@@ -30,59 +30,49 @@ export default function Tags() {
       });
       // Set animation direction and speed
       containerRef.current.style.setProperty("--animation-direction", "forwards");
-      containerRef.current.style.setProperty("--animation-duration", "40s");
+      containerRef.current.style.setProperty("--animation-duration", "40s"); // Smaller animation duration
       setStart(true);
     }
   }, [start]);
 
   return (
     <>
-        <style>
-            {`
-            .animate-scroll {
-                animation: scroll-x var(--animation-duration, 40s) linear infinite;
-                animation-direction: var(--animation-direction, forwards);
-            }
-            @keyframes scroll-x {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            `}
-        </style>
-        <section className="w-full py-10">
-        <h2 className="text-center text-3xl font-bold text-[#084189] mb-6">
-            Tags
+      <style>
+        {`
+          .animate-scroll {
+            animation: scroll-x var(--animation-duration, 20s) linear infinite;
+            animation-direction: var(--animation-direction, forwards);
+          }
+          @keyframes scroll-x {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-25%); } /* Smaller scroll distance */
+          }
+        `}
+      </style>
+      <section className="w-full py-20">
+        <h2 className="text-center text-4xl font-bold text-[#084189] mb-10">
+          Tags
         </h2>
         <div
-            ref={containerRef}
-            className="scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
+          ref={containerRef}
+          className="scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]"
         >
-            <ul
+          <ul
             ref={scrollerRef}
-            className={`flex w-max min-w-full shrink-0 flex-nowrap gap-6 py-4 ${start ? "animate-scroll" : ""} hover:[animation-play-state:paused]`}
-            >
+            className={`flex w-max min-w-full shrink-0 flex-nowrap gap-8 py-6 ${start ? "animate-scroll" : ""} hover:[animation-play-state:paused]`}
+          >
             {tags.map((tag, idx) => (
-                <li
+              <li
                 key={idx}
-                className="flex items-center gap-2 px-6 py-3 rounded-full shadow-md bg-gradient-to-r from-[#DAFBE6] to-[#E7F6FF] border border-[#2EB5D0]/30 text-[#084189] font-medium text-sm"
-                >
+                className="flex items-center gap-2 px-8 py-4 rounded-full shadow-md border border-[#2EB5D0]/30 text-[#084189] font-medium text-base bg-transparent"
+              >
                 {tag.icon}
                 {tag.label}
-                </li>
+              </li>
             ))}
-            </ul>
+          </ul>
         </div>
-        </section>
+      </section>
     </>
   );
 }
-
-// Add this to your global CSS or Tailwind config for the animation
-// .animate-scroll {
-//   animation: scroll-x var(--animation-duration, 40s) linear infinite;
-//   animation-direction: var(--animation-direction, forwards);
-// }
-// @keyframes scroll-x {
-//   0% { transform: translateX(0); }
-//   100% { transform: translateX(-50%); }
-//
