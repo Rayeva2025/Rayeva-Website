@@ -7,6 +7,7 @@ import BrandStandards from "../components/landing/BrandStandards";
 import CategorySection from "../components/landing/Categories";
 import AboutUs from "../components/landing/AboutUs";
 import Tags from "../components/landing/Tags";
+import Missions from "../components/landing/Missions";
 
 const Landing = () => {
   return (
@@ -18,7 +19,8 @@ const Landing = () => {
       <CategorySection />
       <AboutUs/>
       <Tags/>
-      {/* <Impact /> */}
+      <Impact />
+      <Missions/>
     </div>
   );
 };
