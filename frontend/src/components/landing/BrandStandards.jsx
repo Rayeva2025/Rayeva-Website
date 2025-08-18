@@ -65,25 +65,8 @@ export default function BrandStandards() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-10 overflow-hidden relative transform origin-center">
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-blue-100 opacity-20"
-            style={{
-              width: `${Math.random() * 100 + 50}px`, 
-              height: `${Math.random() * 100 + 50}px`, 
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${Math.random() * 15 + 10}s linear infinite`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+PHBhdGggZD0iTTAgMEg1MFY1MEgwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4xIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=')]" />
+    <div className="min-h-screen  flex items-center justify-center p-10 overflow-hidden relative transform origin-center">
+      
 
       <div className="max-w-[87.5rem] mx-auto flex flex-col lg:flex-row items-center gap-20 relative z-10">
         <div className="flex-1 max-w-[40rem]">

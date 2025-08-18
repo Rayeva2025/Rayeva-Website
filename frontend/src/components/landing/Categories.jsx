@@ -87,7 +87,7 @@ const CategorySection = () => {
 
   const CategoryCard = ({ category, isLeft = false }) => (
     <div
-      className={`${category.color} rounded-xl p-6 text-white relative overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl select-none`}
+      className={`${category.color} rounded-xl p-6 text-white relative  group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl select-none`}
       style={{
         opacity: isLeft ? slideProgress : 1,
         transform: isLeft
@@ -110,7 +110,7 @@ const CategorySection = () => {
   );
 
   return (
-    <div className="min-h-screen  p-8 relative overflow-hidden">
+    <div className="min-h-screen  p-8 relative ">
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-black mb-4  bg-clip-text text-transparen">
@@ -119,7 +119,7 @@ const CategorySection = () => {
         </div>
 
         <div className="relative">
-          <DarkWalnutBg className="relative backdrop-blur-md rounded-3xl p-8 border shadow-2xl overflow-hidden">
+          <DarkWalnutBg className="relative backdrop-blur-md rounded-3xl p-8 border shadow-2xl ">
             <div className="grid grid-cols-4 gap-6 h-144">
               <div className="col-span-2 grid grid-cols-2 gap-6 relative">
                 {leftCategories.map((category) => (
@@ -130,7 +130,7 @@ const CategorySection = () => {
                   />
                 ))}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 backdrop-blur-sm rounded-2xl transition-transform duration-500 ease-out shadow-2xl cursor-grab ${
+                  className={`absolute inset-0  backdrop-blur-sm rounded-2xl transition-transform duration-500 ease-out shadow-2xl cursor-grab ${
                     isDragging ? "cursor-grabbing" : ""
                   }`}
                   style={{
@@ -178,7 +178,7 @@ const CategorySection = () => {
               <div className="bg-white/10 rounded-full px-4 py-2">
                 <div className="flex items-center space-x-2 text-black/70 text-sm">
                   <span>Progress:</span>
-                  <div className="w-32 h-2 bg-white/20 rounded-full overflow-hidden">
+                  <div className="w-32 h-2 bg-white/20 rounded-full ">
                     <div
                       className="h-full bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300"
                       style={{ width: `${slideProgress * 100}%` }}
@@ -191,7 +191,7 @@ const CategorySection = () => {
           </DarkWalnutBg>
 
           <div
-            className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl -z-10 transition-all duration-500"
+            className="absolute inset-0 rounded-3xl blur-3xl -z-10 transition-all duration-500"
             style={{
               opacity: 0.3 + slideProgress * 0.4,
               transform: `scale(${1 + slideProgress * 0.1})`,

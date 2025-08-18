@@ -49,10 +49,7 @@ export default function Tags() {
           }
         `}
       </style>
-      <section className="w-full py-20">
-        <h2 className="text-center text-4xl font-bold text-[#084189] mb-10">
-          Tags
-        </h2>
+      <section className="w-full py-10">
         <div
           ref={containerRef}
           className="scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]"

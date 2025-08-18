@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaUserTie, FaUsers, FaGlobe } from "react-icons/fa";
+import Testimonial from "./testimonial";
 
 export default function AboutUs() {
   const cardVariants = {
@@ -10,9 +11,9 @@ export default function AboutUs() {
   return (
     <section className="min-h-screen flex items-center justify-center p-10">
       <div className="max-w-6xl w-full space-y-16">
-        
+        <Testimonial />
         {/* Title */}
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,10 +38,12 @@ export default function AboutUs() {
             whileHover={{ scale: 1.05 }}
           >
             <FaUserTie className="text-4xl text-[#084189] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#084189] mb-4">Our Founder</h3>
+            <h3 className="text-2xl font-semibold text-[#084189] mb-4">
+              Our Founder
+            </h3>
             <p className="text-[#2C6BAA] leading-relaxed">
-              Our journey began with a vision to create meaningful impact. 
-              Our founder believed in innovation, collaboration, and building 
+              Our journey began with a vision to create meaningful impact. Our
+              founder believed in innovation, collaboration, and building
               solutions that empower people and businesses worldwide.
             </p>
           </motion.div>
@@ -56,11 +59,13 @@ export default function AboutUs() {
             whileHover={{ scale: 1.05 }}
           >
             <FaUsers className="text-4xl text-[#3BB372] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#084189] mb-4">Our Team</h3>
+            <h3 className="text-2xl font-semibold text-[#084189] mb-4">
+              Our Team
+            </h3>
             <p className="text-[#2C6BAA] leading-relaxed">
-              A group of diverse thinkers, creators, and innovators. 
-              We bring together expertise across technology, design, 
-              and strategy to achieve a shared purpose.
+              A group of diverse thinkers, creators, and innovators. We bring
+              together expertise across technology, design, and strategy to
+              achieve a shared purpose.
             </p>
           </motion.div>
 
@@ -75,33 +80,35 @@ export default function AboutUs() {
             whileHover={{ scale: 1.05 }}
           >
             <FaGlobe className="text-4xl text-[#2EB5D0] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#084189] mb-4">Our Community</h3>
+            <h3 className="text-2xl font-semibold text-[#084189] mb-4">
+              Our Community
+            </h3>
             <p className="text-[#2C6BAA] leading-relaxed">
-              Our strength lies in our community. Together, we learn, 
-              grow, and support each other while shaping a better, 
-              more sustainable future.
+              Our strength lies in our community. Together, we learn, grow, and
+              support each other while shaping a better, more sustainable
+              future.
             </p>
           </motion.div>
         </div>
 
         {/* Buttons */}
-        <motion.div 
+        <motion.div
           className="flex justify-center gap-6 mt-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.a 
-            href="/mission" 
+          <motion.a
+            href="/mission"
             className="px-6 py-3 rounded-full bg-[#3BB372] text-white font-medium shadow-lg transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             Our Mission
           </motion.a>
-          <motion.a 
-            href="/services" 
+          <motion.a
+            href="/services"
             className="px-6 py-3 rounded-full bg-[#2EB5D0] text-white font-medium shadow-lg transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}

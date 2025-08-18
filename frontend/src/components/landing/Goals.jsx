@@ -203,7 +203,7 @@ const Goals = () => {
                       : "translate-y-4"
                   }`
             }`}
-            style={{ zIndex: -20000 }}
+            style={{ zIndex: 2 }}
           >
             <div className="bg-white/10 backdrop-blur-md rounded-2xl px-32 py-10 border shadow-xl hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl -z-200">
               <div className="text-black font-semibold text-lg text-center whitespace-nowrap">
@@ -218,7 +218,7 @@ const Goals = () => {
           className="absolute inset-0 overflow-hidden pointer-events-none"
           style={{ zIndex: 0 }}
         >
-          {[...Array(20)].map((_, i) => (
+          {[...Array(200)].map((_, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-blue-500 rounded-full opacity-30"

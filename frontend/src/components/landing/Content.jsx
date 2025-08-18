@@ -46,10 +46,10 @@ export default function ContentsSection() {
       </div>
 
       {/* Decorative Gradient Blur */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+      {/* <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#3BB372]/30 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#2EB5D0]/30 rounded-full blur-3xl" />
-      </div>
+      </div> */}
     </section>
   );
 }
