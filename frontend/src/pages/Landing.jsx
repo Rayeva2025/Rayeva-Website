@@ -5,15 +5,27 @@ import Content from "../components/landing/Content";
 import Goals from "../components/landing/Goals";
 import BrandStandards from "../components/landing/BrandStandards";
 import CategorySection from "../components/landing/Categories";
+import Footer from "../components/landing/newsletter";
+import Trendings from "../components/landing/products";
+import StarterPack from "../components/landing/StarterPack";
+import About from "../components/landing/about";
+import Campaign from "../components/landing/campaign";
+import Header from "../components/landing/header";
 
 const Landing = () => {
   return (
     <div className="relative overflow-hidden">
+      <Header />
       <HeroSection />
       <Content />
       <Goals />
       <BrandStandards />
       <CategorySection />
+      <Trendings />
+      <StarterPack />
+      <About />
+      <Campaign />
+      <Footer />
       {/* <Impact /> */}
     </div>
   );
