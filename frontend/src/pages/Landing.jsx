@@ -11,6 +11,9 @@ import StarterPack from "../components/landing/StarterPack";
 import About from "../components/landing/about";
 import Campaign from "../components/landing/campaign";
 import Header from "../components/landing/header";
+import AboutUs from "../components/landing/AboutUs";
+import Tags from "../components/landing/Tags";
+import Missions from "../components/landing/Missions";
 
 const Landing = () => {
   return (
@@ -27,6 +30,10 @@ const Landing = () => {
       <Campaign />
       <Footer />
       {/* <Impact /> */}
+      <AboutUs/>
+      <Tags/>
+      <Impact />
+      <Missions/>
     </div>
   );
 };
