@@ -75,7 +75,7 @@ const Landing = () => {
         <motion.div
           key={idx}
           {...getRandomVariant(idx)}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <Component />
         </motion.div>

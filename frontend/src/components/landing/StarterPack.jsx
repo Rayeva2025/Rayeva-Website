@@ -38,7 +38,7 @@ const StarterPack = () => {
   };
 
   return (
-    <div className="min-h-screen  py-20 px-4 overflow-hidden">
+    <div className="min-h-screen px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto mb-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Product Image */}
