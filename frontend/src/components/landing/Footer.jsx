@@ -1,5 +1,5 @@
 import React from "react";
-import Newsletter from "./newsLetter";
+import Newsletter from "./newsletter";
 import {
   FaInstagram,
   FaFacebookF,
