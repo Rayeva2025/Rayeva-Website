@@ -18,7 +18,7 @@ import Missions from "../components/landing/Missions";
 const Landing = () => {
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-blue-50">
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         {[...Array(120)].map((_, i) => (
           <div
             key={i}
@@ -33,7 +33,7 @@ const Landing = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+PHBhdGggZD0iTTAgMEg1MFY1MEgwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4xIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=')]" />
       <Header />
