@@ -66,8 +66,13 @@ const sections = [
   { Component: Footer },          // Links, socials, legal, contact
 ];
 
+const getViewportAmount = () => {
+  if (window.innerWidth < 768) return 0.2; // Mobile: animate sooner
+  return 0.5; // Desktop: animate later
+};
 
 const Landing = () => {
+  const viewportAmount = useMemo(getViewportAmount, []);
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+PHBhdGggZD0iTTAgMEg1MFY1MEgwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4xIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=')]" />
@@ -75,7 +80,7 @@ const Landing = () => {
         <motion.div
           key={idx}
           {...getRandomVariant(idx)}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: viewportAmount }}
         >
           <Component />
         </motion.div>
