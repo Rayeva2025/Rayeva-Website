@@ -50,21 +50,22 @@ function getRandomVariant(idx) {
 }
 
 const sections = [
-  { Component: Header },
-  { Component: HeroSection },
-  { Component: Impact },
-  { Component: Goals },
-  { Component: Content },
-  { Component: BrandStandards },
-  { Component: CategorySection },
-  { Component: Trendings },
-  { Component: StarterPack },
-  { Component: AboutUs },
-  { Component: Tags },
-  { Component: Missions },
-  { Component: Campaign },
-  { Component: Footer },
+  { Component: Header },          // Navigation & brand logo
+  { Component: HeroSection },     // Big first impression
+  { Component: Impact },          // Showcase brand value / impact
+  { Component: Goals },           // Mission & vision
+  { Component: BrandStandards },  // Brand authenticity / trust
+  { Component: CategorySection }, // Shop categories
+  { Component: Trendings },       // Trending products
+  { Component: StarterPack },     // Curated starter bundles
+  { Component: Content },         // Rich content (blogs, articles, stories)
+  { Component: Tags },            // Quick links / filters
+  { Component: Missions },        // Social / ethical initiatives
+  { Component: Campaign },        // Ongoing campaigns / promotions
+  { Component: AboutUs },         // About the company
+  { Component: Footer },          // Links, socials, legal, contact
 ];
+
 
 const Landing = () => {
   return (
