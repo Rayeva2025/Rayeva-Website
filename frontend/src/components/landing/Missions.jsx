@@ -25,24 +25,34 @@ const Missions = () => {
     // Get public URL for the missions video from Supabase Storage
     const { data } = supabase.storage
       .from("Videos") // replace with your bucket name
-      .getPublicUrl("/missions.mp4"); // path inside the bucket
+      .getPublicUrl("missions.mp4"); // path inside the bucket, no leading slash
 
     if (data?.publicUrl) setVideoUrl(data.publicUrl);
   }, []);
 
   return (
-    <section className="w-full py-8">
+    <section className="w-full py-20 bg-gradient-to-br from-blue-50 to-emerald-50">
       <motion.h2
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={textVariants}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-center text-3xl md:text-4xl font-bold text-[#084189] mb-6"
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="text-center text-5xl md:text-6xl font-bold text-[#084189] mb-6"
       >
         Our Mission
       </motion.h2>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-32 max-w-5xl mx-auto">
+      <motion.p
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={textVariants}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+        className="text-center text-xl md:text-2xl text-[#2C6BAA] mb-12 max-w-3xl mx-auto"
+      >
+        Inspiring change, empowering communities, and building a cleaner, greener future for all.
+      </motion.p>
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-20 max-w-7xl mx-auto px-4">
         {/* Left: Video Modal */}
         <motion.div
           initial="hidden"
@@ -50,14 +60,16 @@ const Missions = () => {
           viewport={{ once: true }}
           variants={iconVariants}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full md:w-1/2 flex justify-center"
+          className="w-full lg:w-1/2 flex justify-center mb-10 lg:mb-0"
         >
-          <HeroVideoDialog
-            animationStyle="from-center"
-            videoSrc={videoUrl}
-            thumbnailSrc="/images/missions.png"
-            thumbnailAlt="Missions Video Thumbnail"
-          />
+          <div className="w-full max-w-xl rounded-3xl shadow-xl bg-white/80 p-6 flex items-center justify-center">
+            <HeroVideoDialog
+              animationStyle="from-center"
+              videoSrc={videoUrl}
+              thumbnailSrc="/images/missions.png"
+              thumbnailAlt="Missions Video Thumbnail"
+            />
+          </div>
         </motion.div>
         {/* Right: Mission Text */}
         <motion.div
@@ -66,32 +78,32 @@ const Missions = () => {
           viewport={{ once: true }}
           variants={textVariants}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className="w-full md:w-1/2 flex flex-col justify-center items-start px-2 md:px-0"
+          className="w-full lg:w-1/2 flex flex-col justify-center items-start px-2 md:px-0"
         >
-          <div className="flex items-center gap-2 mb-2">
-            <FaLeaf className="text-[#3BB372] text-xl" />
-            <FaGlobe className="text-[#2EB5D0] text-xl" />
-            <FaHandsHelping className="text-[#084189] text-xl" />
-            <h3 className="text-xl md:text-2xl font-semibold text-[#2C6BAA] ml-2">
+          <div className="flex items-center gap-3 mb-4">
+            <FaLeaf className="text-[#3BB372] text-3xl" />
+            <FaGlobe className="text-[#2EB5D0] text-3xl" />
+            <FaHandsHelping className="text-[#084189] text-3xl" />
+            <h3 className="text-2xl md:text-3xl font-semibold text-[#2C6BAA] ml-3">
               Why We Do What We Do
             </h3>
           </div>
-          <p className="text-sm md:text-base text-[#084189] mb-2">
+          <p className="text-lg md:text-xl text-[#084189] mb-4 leading-relaxed">
             At Rayeva, our mission is to drive impactful change for a cleaner, greener planet.
             We believe in empowering communities, supporting sustainable innovation, and inspiring
             everyone to take action for the environment.
           </p>
-          <p className="text-sm md:text-base text-[#2C6BAA] mb-2">
+          <p className="text-lg md:text-xl text-[#2C6BAA] mb-4 leading-relaxed">
             Through our campaigns, partnerships, and educational initiatives, we strive to make sustainability accessible and achievable for all.
           </p>
-          <div className="flex items-center gap-2 mt-2">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#DAFBE6] text-[#084189] text-xs font-medium shadow">
+          <div className="flex flex-wrap items-center gap-3 mt-4">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#DAFBE6] text-[#084189] text-base font-medium shadow">
               Sustainability
             </span>
-            <span className="inline-block px-3 py-1 rounded-full bg-[#E7F6FF] text-[#2C6BAA] text-xs font-medium shadow">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#E7F6FF] text-[#2C6BAA] text-base font-medium shadow">
               Community
             </span>
-            <span className="inline-block px-3 py-1 rounded-full bg-[#3BB372]/20 text-[#3BB372] text-xs font-medium shadow">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#3BB372]/20 text-[#3BB372] text-base font-medium shadow">
               Impact
             </span>
           </div>
