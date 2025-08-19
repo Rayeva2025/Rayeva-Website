@@ -38,20 +38,18 @@ const Landing = () => {
       <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+PHBhdGggZD0iTTAgMEg1MFY1MEgwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4xIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=')]" />
       <Header />
       <HeroSection />
-      <Content />
+      <Impact />
       <Goals />
+      <Content />
       <BrandStandards />
       <CategorySection />
       <Trendings />
       <StarterPack />
-      {/* <About /> */}
       <AboutUs />
       <Tags />
-      <Impact />
       <Missions />
       <Campaign />
       <Footer />
-      {/* <Impact /> */}
     </div>
   );
 };
