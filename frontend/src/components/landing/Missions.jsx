@@ -1,7 +1,8 @@
 import { HeroVideoDialog } from "../ui/video-modal";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaLeaf, FaGlobe, FaHandsHelping } from "react-icons/fa";
+import { createClient } from "@supabase/supabase-js";
 
 const textVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -13,7 +14,22 @@ const iconVariants = {
   visible: { opacity: 1, scale: 1 },
 };
 
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 const Missions = () => {
+  const [videoUrl, setVideoUrl] = useState("");
+
+  useEffect(() => {
+    // Get public URL for the missions video from Supabase Storage
+    const { data } = supabase.storage
+      .from("Videos") // replace with your bucket name
+      .getPublicUrl("/missions.mp4"); // path inside the bucket
+
+    if (data?.publicUrl) setVideoUrl(data.publicUrl);
+  }, []);
+
   return (
     <section className="w-full py-8">
       <motion.h2
@@ -38,7 +54,7 @@ const Missions = () => {
         >
           <HeroVideoDialog
             animationStyle="from-center"
-            videoSrc="/videos/missions.mp4"
+            videoSrc={videoUrl}
             thumbnailSrc="/images/missions.png"
             thumbnailAlt="Missions Video Thumbnail"
           />

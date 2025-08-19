@@ -1,6 +1,23 @@
 import { motion } from "framer-motion";
+import { createClient } from "@supabase/supabase-js";
+import React, { useEffect, useState } from "react";
 
 export default function HeroSection() {
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const [videoUrl, setVideoUrl] = useState("");
+
+  useEffect(() => {
+    // Get public URL for hero.mp4 from Supabase Storage
+    const { data } = supabase.storage
+      .from("Videos") // replace with your actual bucket name
+      .getPublicUrl("hero.mp4"); // path inside the bucket
+
+    if (data?.publicUrl) setVideoUrl(data.publicUrl);
+  }, []);
+
   const fadeUp = {
     hidden: { opacity: 0, y: 100 },
     visible: { opacity: 1, y: 0, transition: { duration: 3, ease: "easeOut" } },
@@ -8,25 +25,17 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/videos/hero.mp4" // place your downloaded video here
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-
-      {/* <img
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ filter: "blur(4px)" }}
-        src="/heroimg.png" // place your downloaded image here
-        alt="Hero Background"
-      /> */}
-
-      {/* Overlay */}
-      {/* <div className="absolute inset-0 bg-[rgba(23,145,207,0.35)] mix-blend-multiply"></div> */}
+      {/* Background Video from Supabase */}
+      {videoUrl && (
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={videoUrl}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      )}
 
       {/* Animated Blobs */}
       <motion.div
