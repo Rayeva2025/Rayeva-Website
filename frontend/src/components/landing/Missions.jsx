@@ -31,14 +31,14 @@ const Missions = () => {
   }, []);
 
   return (
-    <section className="w-full py-20 bg-gradient-to-br from-blue-50 to-emerald-50">
+    <section className="w-full py-20">
       <motion.h2
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={textVariants}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="text-center text-5xl md:text-6xl font-bold text-[#084189] mb-6"
+        className="text-center text-5xl md:text-6xl font-bold text-[#4da8b3] mb-6"
       >
         Our Mission
       </motion.h2>
@@ -50,7 +50,8 @@ const Missions = () => {
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
         className="text-center text-xl md:text-2xl text-[#2C6BAA] mb-12 max-w-3xl mx-auto"
       >
-        Inspiring change, empowering communities, and building a cleaner, greener future for all.
+        Inspiring change, empowering communities, and building a cleaner,
+        greener future for all.
       </motion.p>
       <div className="flex flex-col lg:flex-row items-center justify-center gap-20 max-w-7xl mx-auto px-4">
         {/* Left: Video Modal */}
@@ -81,23 +82,29 @@ const Missions = () => {
           className="w-full lg:w-1/2 flex flex-col justify-center items-start px-2 md:px-0"
         >
           <div className="flex items-center gap-3 mb-4">
-            <FaLeaf className="text-[#3BB372] text-3xl" />
+            {/* <FaLeaf className="text-[#3BB372] text-3xl" />
             <FaGlobe className="text-[#2EB5D0] text-3xl" />
-            <FaHandsHelping className="text-[#084189] text-3xl" />
-            <h3 className="text-2xl md:text-3xl font-semibold text-[#2C6BAA] ml-3">
-              Why We Do What We Do
+            <FaHandsHelping className="text-[#4da8b3] text-3xl" /> */}
+            <h3 className="text-5xl font-bold max-md:text-3xl text-[#2C6BAA] ml-3">
+              Why We Do? <br />{" "}
+              <span className="text-[#1979da]">
+                {" "}
+                What We Do ?
+              </span>
             </h3>
           </div>
-          <p className="text-lg md:text-xl text-[#084189] mb-4 leading-relaxed">
-            At Rayeva, our mission is to drive impactful change for a cleaner, greener planet.
-            We believe in empowering communities, supporting sustainable innovation, and inspiring
-            everyone to take action for the environment.
+          <p className="text-lg md:text-xl text-[#4da8b3] mb-4 leading-relaxed">
+            At Rayeva, our mission is to drive impactful change for a cleaner,
+            greener planet. We believe in empowering communities, supporting
+            sustainable innovation, and inspiring everyone to take action for
+            the environment.
           </p>
           <p className="text-lg md:text-xl text-[#2C6BAA] mb-4 leading-relaxed">
-            Through our campaigns, partnerships, and educational initiatives, we strive to make sustainability accessible and achievable for all.
+            Through our campaigns, partnerships, and educational initiatives, we
+            strive to make sustainability accessible and achievable for all.
           </p>
           <div className="flex flex-wrap items-center gap-3 mt-4">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#DAFBE6] text-[#084189] text-base font-medium shadow">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#DAFBE6] text-[#4da8b3] text-base font-medium shadow">
               Sustainability
             </span>
             <span className="inline-block px-4 py-2 rounded-full bg-[#E7F6FF] text-[#2C6BAA] text-base font-medium shadow">

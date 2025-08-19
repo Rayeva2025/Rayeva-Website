@@ -1,5 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaLeaf, FaRecycle, FaWater, FaSeedling, FaGlobe, FaSun, FaTree, FaWind, FaCloud, FaMountain } from "react-icons/fa";
+import {
+  FaLeaf,
+  FaRecycle,
+  FaWater,
+  FaSeedling,
+  FaGlobe,
+  FaSun,
+  FaTree,
+  FaWind,
+  FaCloud,
+  FaMountain,
+} from "react-icons/fa";
 
 export default function Tags() {
   const containerRef = useRef(null);
@@ -29,7 +40,10 @@ export default function Tags() {
         scrollerRef.current.appendChild(duplicatedItem);
       });
       // Set animation direction and speed
-      containerRef.current.style.setProperty("--animation-direction", "forwards");
+      containerRef.current.style.setProperty(
+        "--animation-direction",
+        "forwards"
+      );
       containerRef.current.style.setProperty("--animation-duration", "40s"); // Smaller animation duration
       setStart(true);
     }
@@ -56,12 +70,14 @@ export default function Tags() {
         >
           <ul
             ref={scrollerRef}
-            className={`flex w-max min-w-full shrink-0 flex-nowrap gap-8 py-6 ${start ? "animate-scroll" : ""} hover:[animation-play-state:paused]`}
+            className={`flex w-max min-w-full shrink-0 flex-nowrap gap-8 py-6 ${
+              start ? "animate-scroll" : ""
+            } hover:[animation-play-state:paused]`}
           >
             {tags.map((tag, idx) => (
               <li
                 key={idx}
-                className="flex items-center gap-2 px-8 py-4 rounded-full shadow-md border border-[#2EB5D0]/30 text-[#084189] font-medium text-base bg-transparent"
+                className="flex items-center gap-2 px-8 py-4 rounded-full shadow-md border border-[#2EB5D0]/30 text-[#4da8b3] font-medium text-base bg-transparent"
               >
                 {tag.icon}
                 {tag.label}

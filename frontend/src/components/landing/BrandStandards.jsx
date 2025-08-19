@@ -142,7 +142,7 @@ export default function BrandStandards() {
             How we choose a
             <br />
             <motion.p
-              className="font-bold text-[#0745b8] text-[3.75rem]"
+              className="font-bold text-[#4da8b3] text-[3.75rem]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
                 isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
@@ -166,14 +166,14 @@ export default function BrandStandards() {
 
           <motion.div className="flex gap-3" variants={itemVariants}>
             <motion.button
-              className="px-7 py-4 bg-[#0745b8] border border-gray-300 text-white rounded-md hover:bg-[#3260b7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-[1.4rem]"
+              className="px-7 py-4 bg-[#4da8b3] border border-gray-300 text-white rounded-md hover:bg-[#3260b7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-[1.4rem]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Learn More
             </motion.button>
             <motion.button
-              className="px-7 py-4 bg-[#0745b8] border border-gray-300 text-white rounded-md hover:bg-[#3260b7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-[1.4rem]"
+              className="px-7 py-4 bg-[#4da8b3] border border-gray-300 text-white rounded-md hover:bg-[#3260b7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-[1.4rem]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -204,14 +204,14 @@ export default function BrandStandards() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <motion.h3
-                className="text-[3.75rem] font-bold text-gray-800 mb-3"
+                className="text-[3.75rem] font-bold text-[#4da8b3] mb-3"
                 animate={isInView ? { y: [0, -10, 0] } : { y: 0 }}
                 transition={{ duration: 4, repeat: Infinity }}
               >
                 Rayeva
               </motion.h3>
               <motion.p
-                className="text-[2.5rem] text-gray-500 font-light"
+                className="text-[2.5rem] text-[#4da8b3] font-light"
                 animate={isInView ? { y: [0, -10, 0] } : { y: 0 }}
                 transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
               >

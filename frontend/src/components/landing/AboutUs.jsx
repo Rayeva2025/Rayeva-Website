@@ -19,7 +19,7 @@ export default function AboutUs() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl font-bold text-[#084189]">About Us</h2>
+          <h2 className="text-5xl font-bold text-[#4da8b3]">About Us</h2>
           <p className="mt-4 text-lg text-[#2C6BAA]">
             Driven by passion, guided by vision, connected by community.
           </p>
@@ -37,8 +37,8 @@ export default function AboutUs() {
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.05 }}
           >
-            <FaUserTie className="text-4xl text-[#084189] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#084189] mb-4">
+            <FaUserTie className="text-4xl text-[#4da8b3] mb-4" />
+            <h3 className="text-2xl font-semibold text-[#4da8b3] mb-4">
               Our Founder
             </h3>
             <p className="text-[#2C6BAA] leading-relaxed">
@@ -59,7 +59,7 @@ export default function AboutUs() {
             whileHover={{ scale: 1.05 }}
           >
             <FaUsers className="text-4xl text-[#3BB372] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#084189] mb-4">
+            <h3 className="text-2xl font-semibold text-[#4da8b3] mb-4">
               Our Team
             </h3>
             <p className="text-[#2C6BAA] leading-relaxed">
@@ -80,7 +80,7 @@ export default function AboutUs() {
             whileHover={{ scale: 1.05 }}
           >
             <FaGlobe className="text-4xl text-[#2EB5D0] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#084189] mb-4">
+            <h3 className="text-2xl font-semibold text-[#4da8b3] mb-4">
               Our Community
             </h3>
             <p className="text-[#2C6BAA] leading-relaxed">
@@ -101,7 +101,7 @@ export default function AboutUs() {
         >
           <motion.a
             href="/mission"
-            className="px-6 py-3 rounded-full bg-[#063167] text-white font-medium shadow-lg transition"
+            className="px-6 py-3 rounded-full bg-[#4da8b3] text-white font-medium shadow-lg transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -109,7 +109,7 @@ export default function AboutUs() {
           </motion.a>
           <motion.a
             href="/services"
-            className="px-6 py-3 rounded-full bg-[#175eb6] text-white font-medium shadow-lg transition"
+            className="px-6 py-3 rounded-full bg-[#238794] text-white font-medium shadow-lg transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -30,8 +30,6 @@ const StarterPack = () => {
     "Bamboo Cutlery Set",
   ];
 
-  
-
   const handleShopKit = () => {
     setSelectedKit(true);
     setTimeout(() => setSelectedKit(false), 2000);
@@ -51,7 +49,7 @@ const StarterPack = () => {
           >
             <div className="relative group">
               {/* Main Product Image */}
-              <div className="bg-gradient-to-br from-[#084189] to-teal-100 rounded-3xl p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105">
+              <div className="bg-gradient-to-br from-[#4da8b3] to-teal-100 rounded-3xl p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105">
                 <img
                   src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop"
                   alt="Rayeva Starter Kit"
@@ -60,12 +58,12 @@ const StarterPack = () => {
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 bg-[#084189] text-white p-3 rounded-full shadow-lg animate-bounce">
+              <div className="absolute -top-4 -right-4 bg-[#4da8b3] text-white p-3 rounded-full shadow-lg animate-bounce">
                 <Sparkles className="w-6 h-6" />
               </div>
 
               <div className="absolute -bottom-4 -left-4 bg-white rounded-full p-4 shadow-xl border-4 border-[#1a3c65] animate-pulse">
-                <Leaf className="w-8 h-8 text-[#084189]" />
+                <Leaf className="w-8 h-8 text-[#4da8b3]" />
               </div>
 
               {/* Discount Badge */}
@@ -103,7 +101,7 @@ const StarterPack = () => {
             <div>
               <h1 className="text-5xl font-bold text-gray-800 mb-6 leading-tight">
                 Rayeva: Begin Your
-                <span className="bg-gradient-to-r from-[#2c70c2] to-[#084189] bg-clip-text text-transparent block">
+                <span className="bg-gradient-to-r from-[#33daed] to-[#4da8b3] bg-clip-text text-transparent block">
                   Journey
                 </span>
               </h1>
@@ -129,7 +127,7 @@ const StarterPack = () => {
 
               {/* Pricing */}
               <div className="flex items-center gap-6 mb-8">
-                <div className="text-5xl font-bold text-[#084189]">₹499.0</div>
+                <div className="text-5xl font-bold text-[#4da8b3]">₹499.0</div>
                 <div className="text-2xl text-gray-400 line-through">
                   ₹650.0
                 </div>
@@ -164,7 +162,7 @@ const StarterPack = () => {
                 className={`group w-full md:w-auto px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-3 ${
                   selectedKit
                     ? "bg-[#254b79a7] text-white"
-                    : "bg-[#084189] hover:bg-[#2775d4] text-white"
+                    : "bg-[#4da8b3] hover:bg-[#2775d4] text-white"
                 }`}
               >
                 {selectedKit ? (

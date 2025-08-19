@@ -231,7 +231,7 @@ const Goals = () => {
             }}
           >
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl px-16 py-12 shadow-2xl hover:bg-white/20 transition-all duration-300 border-2 border-blue-500/60 hover:scale-105 hover:shadow-2xl">
-              <div className="text-[#084189] font-bold text-4xl text-center whitespace-nowrap">
+              <div className="text-[#4da8b3] font-bold text-4xl text-center whitespace-nowrap">
                 {element.text}
               </div>
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/10 to-emerald-400/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>

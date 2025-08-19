@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaWater,
-  FaTools,
-  FaTree,
-  FaChartBar,
-} from "react-icons/fa";
+import { FaWater, FaTools, FaTree, FaChartBar } from "react-icons/fa";
 
 const campaignIcons = [FaWater, FaTools, FaTree, FaChartBar];
 
@@ -105,7 +100,7 @@ const Campaign = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-5xl font-bold text-[#084189] mb-4">
+          <h1 className="text-5xl font-bold text-[#4da8b3] mb-4">
             Rayeva & Beyond
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -117,7 +112,7 @@ const Campaign = () => {
         {/* Timeline Section */}
         <div className="mb-20">
           <motion.h2
-            className="text-3xl font-semibold text-center mb-12 text-[#084189]"
+            className="text-3xl font-semibold text-center mb-12 text-[#4da8b3]"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -145,7 +140,7 @@ const Campaign = () => {
                   <div
                     className={`w-full md:w-5/12 p-6 rounded-lg shadow-lg transition-all duration-500 ${
                       activeYear === index
-                        ? "bg-[#084189] text-white scale-105"
+                        ? "bg-[#4da8b3] text-white scale-105"
                         : "bg-white scale-95"
                     }`}
                   >
@@ -153,15 +148,15 @@ const Campaign = () => {
                       <div
                         className={`w-8 h-8 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
                           activeYear === index
-                            ? "bg-white text-[#084189]"
-                            : "bg-[#084189] text-white"
+                            ? "bg-white text-[#4da8b3]"
+                            : "bg-[#4da8b3] text-white"
                         }`}
                       >
                         {index + 1}
                       </div>
                       <h3
                         className={`text-xl font-bold transition-colors ${
-                          activeYear === index ? "text-white" : "text-[#084189]"
+                          activeYear === index ? "text-white" : "text-[#4da8b3]"
                         }`}
                       >
                         {item.year}: {item.title}
@@ -169,9 +164,7 @@ const Campaign = () => {
                     </div>
                     <p
                       className={
-                        activeYear === index
-                          ? "text-white"
-                          : "text-gray-600"
+                        activeYear === index ? "text-white" : "text-gray-600"
                       }
                     >
                       {item.description}
@@ -185,7 +178,7 @@ const Campaign = () => {
 
         {/* Campaigns Section */}
         <motion.h2
-          className="text-3xl font-semibold text-center mb-12 text-[#084189]"
+          className="text-3xl font-semibold text-center mb-12 text-[#4da8b3]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -208,7 +201,7 @@ const Campaign = () => {
               >
                 <div className="p-7 flex flex-col items-center">
                   <div className="mb-4">
-                    <Icon className="text-[#084189] text-5xl" />
+                    <Icon className="text-[#4da8b3] text-5xl" />
                   </div>
                   <h3 className="text-xl font-bold text-[#295d9e] mb-2 text-center">
                     {campaign.title}

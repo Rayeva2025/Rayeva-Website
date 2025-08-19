@@ -18,14 +18,13 @@ const Stats = () => {
             <div className="text-4xl mb-3 group-hover:scale-125 transition-transform duration-300">
               {stat.icon}
             </div>
-            <div className="text-3xl font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+            <div className="text-3xl font-bold text-[#4da8b3] mb-2 group-hover:text-[#084a52] transition-colors duration-300">
               {stat.number}
             </div>
             <div className="text-[#163963a3] font-medium">{stat.label}</div>
           </div>
         ))}
       </div>
-      
     </>
   );
 };

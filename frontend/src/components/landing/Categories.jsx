@@ -203,18 +203,18 @@ const CategorySection = () => {
   );
 
   return (
-    <div className="min-h-screen  p-8 relative overflow-hidden">
+    <div className="min-h-screen p-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-[#084189] mb-4  bg-clip-text text-transparen">
+          <h1 className="text-5xl font-bold text-[#4da8b3] mb-4  bg-clip-text text-transparen">
             Categories
           </h1>
         </div>
 
         <div className="relative">
-          <DarkWalnutBg className="relative backdrop-blur-md rounded-3xl p-8 border shadow-2xl overflow-hidden">
-            <div className="grid grid-cols-4 gap-6 h-144">
-              <div className="col-span-2 grid grid-cols-2 gap-6 relative">
+          <DarkWalnutBg className="relative backdrop-blur-md rounded-3xl p-2 border-2 border-teal-500 shadow-2xl overflow-hidden">
+            <div className="grid grid-cols-4 gap-2 h-144">
+              <div className="col-span-2 grid grid-cols-2 gap-2 relative">
                 {leftCategories.map((category) => (
                   <CategoryCard
                     key={category.id}
@@ -223,44 +223,108 @@ const CategorySection = () => {
                   />
                 ))}
                 <div
-                  className={`absolute inset-0  backdrop-blur-sm rounded-2xl transition-transform duration-500 ease-out shadow-2xl cursor-grab ${
+                  className={`absolute inset-0 backdrop-blur-xl rounded-2xl transition-transform duration-500 ease-out shadow-2xl cursor-grab ${
                     isDragging ? "cursor-grabbing" : ""
                   }`}
                   style={{
                     transform: `translateX(${-slideProgress * 100}%)`,
                     background: `linear-gradient(90deg, 
-                              rgba(5, 41, 89, 0.98) 0%, 
-                              rgba(4, 35, 77, 0.95) 20%,
-                              rgba(3, 30, 66, 0.9) 50%, 
-                              rgba(4, 35, 77, 0.95) 80%,
-                              rgba(5, 41, 89, 0.98) 100%)`
-
+                rgba(77, 168, 179, 0.25) 0%, 
+                rgba(93, 186, 199, 0.22) 20%,
+                rgba(115, 203, 216, 0.18) 50%, 
+                rgba(93, 186, 199, 0.22) 80%,
+                rgba(77, 168, 179, 0.25) 100%)`,
                   }}
                   onMouseDown={handleMouseDown}
                   onTouchStart={handleTouchStart}
                 >
-                  <div className="absolute inset-0 opacity-20">
+                  {/* Ultra-light glass surface texture */}
+                  <div className="absolute inset-0 opacity-15 backdrop-blur-lg">
                     <div
                       className="w-full h-full"
                       style={{
-                        backgroundImage:
-                          "repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.1) 3px, rgba(255,255,255,0.1) 6px)",
+                        backgroundImage: `
+          repeating-linear-gradient(45deg, 
+            transparent 0px, 
+            rgba(77, 168, 179, 0.1) 1px, 
+            transparent 4px, 
+            transparent 20px
+          ),
+          repeating-linear-gradient(-45deg, 
+            transparent 0px, 
+            rgba(115, 203, 216, 0.08) 1px, 
+            transparent 3px, 
+            transparent 18px
+          )
+        `,
                       }}
                     ></div>
                   </div>
 
-                  <div className="absolute inset-2 border border-white/10 rounded-xl"></div>
+                  {/* Ethereal frosted glass overlay */}
+                  <div
+                    className="absolute inset-0 backdrop-blur-2xl opacity-20"
+                    style={{
+                      backgroundImage: `
+        radial-gradient(circle at 20% 30%, rgba(115, 203, 216, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(93, 186, 199, 0.12) 0%, transparent 55%),
+        radial-gradient(circle at 60% 15%, rgba(77, 168, 179, 0.1) 0%, transparent 50%)
+      `,
+                    }}
+                  />
 
-                  <div className="absolute top-6 left-6 right-6 h-32 border border-white/5 rounded-lg bg-white/5"></div>
-                  <div className="absolute bottom-6 left-6 right-6 h-32 border border-white/5 rounded-lg bg-white/5"></div>
+                  {/* Delicate glass frame */}
+                  <div className="absolute inset-2 border border-cyan-300/15 rounded-xl backdrop-blur-md shadow-inner"></div>
 
-                  <div className="absolute top-4 right-4 text-white/50 text-xs">
+                  {/* Translucent glass panels */}
+                  <div className="absolute top-6 left-6 right-6 h-32 border border-cyan-200/10 rounded-lg bg-gradient-to-br from-cyan-300/5 to-teal-400/8 backdrop-blur-xl shadow-inner"></div>
+                  <div className="absolute bottom-6 left-6 right-6 h-32 border border-cyan-200/10 rounded-lg bg-gradient-to-br from-teal-300/5 to-cyan-500/8 backdrop-blur-xl shadow-inner"></div>
+
+                  {/* Soft glass reflections */}
+                  <div className="absolute top-8 left-8 w-24 h-px bg-gradient-to-r from-transparent via-cyan-200/30 to-transparent blur-sm"></div>
+                  <div className="absolute top-20 right-12 w-20 h-px bg-gradient-to-r from-transparent via-teal-200/25 to-transparent blur-sm"></div>
+                  <div className="absolute bottom-16 left-12 w-28 h-px bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent blur-md"></div>
+                  <div className="absolute top-32 left-20 w-16 h-px bg-gradient-to-r from-transparent via-cyan-100/35 to-transparent blur-sm"></div>
+
+                  {/* Gentle glass shimmer */}
+                  <div
+                    className="absolute inset-0 pointer-events-none opacity-12"
+                    style={{
+                      background: `
+        linear-gradient(120deg, 
+          transparent 0%, 
+          rgba(115, 203, 216, 0.15) 25%, 
+          rgba(77, 168, 179, 0.25) 50%, 
+          rgba(115, 203, 216, 0.15) 75%, 
+          transparent 100%
+        )
+      `,
+                    }}
+                  />
+
+                  {/* Glass distortion effect */}
+                  <div
+                    className="absolute inset-0 pointer-events-none backdrop-blur-sm opacity-10"
+                    style={{
+                      backgroundImage: `
+        repeating-radial-gradient(circle at 30% 40%, 
+          transparent 0px, 
+          rgba(77, 168, 179, 0.08) 3px, 
+          transparent 6px, 
+          transparent 35px
+        )
+      `,
+                    }}
+                  />
+
+                  {/* Refined drag indicator */}
+                  <div className="absolute top-4 right-4 text-white text-xs font-light backdrop-blur-md bg-cyan-400/10 px-3 py-1 rounded-full border border-cyan-300/20">
                     ⋮⋮ Drag left
                   </div>
                 </div>
               </div>
 
-              <div className="col-span-2 grid grid-cols-2 gap-6">
+              <div className="col-span-2 grid grid-cols-2 gap-2">
                 {rightCategories.map((category) => (
                   <CategoryCard key={category.id} category={category} />
                 ))}

@@ -23,7 +23,7 @@ const Header = () => {
           <div className="flex-shrink-0">
             <a
               href="/"
-              className="text-2xl  text-[#084189] font-extrabold hover:text-emerald-200 transition-colors duration-300 flex items-center"
+              className="text-2xl  text-[#4da8b3] font-extrabold hover:text-emerald-200 transition-colors duration-300 flex items-center"
             >
               <span className="relative">
                 Rayeva
@@ -48,7 +48,7 @@ const Header = () => {
               >
                 {item.name}
                 {hoveredItem === index && (
-                  <span className="absolute -bottom-1 left-4 right-4 h-0.5 bg-[#084189] rounded-full origin-left animate-underline"></span>
+                  <span className="absolute -bottom-1 left-4 right-4 h-0.5 bg-[#4da8b3] rounded-full origin-left animate-underline"></span>
                 )}
               </a>
             ))}

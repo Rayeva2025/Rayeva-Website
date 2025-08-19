@@ -40,7 +40,7 @@ const Newsletter = () => {
           <div className="space-y-6">
             <div className="transform hover:scale-105 transition-transform duration-300">
               <h2 className="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-                <Mail className="text-emerald-600 animate-pulse" />
+                <Mail className="text-[#4da8b3] animate-pulse" />
                 Get Insights
               </h2>
               <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -68,8 +68,8 @@ const Newsletter = () => {
                     type="button"
                     className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
                       isSubscribed
-                        ? "bg-[#084189] text-white"
-                        : "bg-[#1d61b5] hover:bg-[#9ab8db] hover:text-[#084189] hover:border hover:border-[#084189] text-white hover:shadow-lg"
+                        ? "bg-[#4da8b3] text-white"
+                        : "bg-[#226d75] hover:bg-[#b9ece9] hover:text-[#4da8b3] hover:border hover:border-[#4da8b3] text-white hover:shadow-lg"
                     }`}
                   >
                     {isSubscribed ? "✓ Subscribed!" : "Subscribe"}

@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import {
   Star,
   Quote,
@@ -19,8 +19,8 @@ const Testimonial = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
-      setIsVisible(true);
-    }, []);
+    setIsVisible(true);
+  }, []);
   const testimonials = [
     {
       id: 1,
@@ -60,20 +60,20 @@ const Testimonial = () => {
     },
   ];
   const nextTestimonial = () => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    };
-  
-    const prevTestimonial = () => {
-      setCurrentTestimonial(
-        (prev) => (prev - 1 + testimonials.length) % testimonials.length
-      );
-    };
-  
-    // Auto-advance testimonials
-    useEffect(() => {
-      const interval = setInterval(nextTestimonial, 4000);
-      return () => clearInterval(interval);
-    }, []);
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+  };
+
+  // Auto-advance testimonials
+  useEffect(() => {
+    const interval = setInterval(nextTestimonial, 4000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="max-w-7xl mx-auto mb-32">
       <div
@@ -81,10 +81,10 @@ const Testimonial = () => {
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        <h2 className="text-4xl font-bold text-[#084189] mb-4">
+        <h2 className="text-4xl font-bold text-[#4da8b3] mb-4">
           What Our Customers Say
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#084189] mx-auto rounded-full"></div>
+        <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#4da8b3] mx-auto rounded-full"></div>
       </div>
 
       <div className="relative max-w-4xl mx-auto">
@@ -100,7 +100,7 @@ const Testimonial = () => {
                   <div className="relative">
                     <Quote className="w-16 h-16 text-[#3c72b4] mx-auto" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Quote className="w-8 h-8 text-[#084189]" />
+                      <Quote className="w-8 h-8 text-[#4da8b3]" />
                     </div>
                   </div>
 
@@ -139,7 +139,7 @@ const Testimonial = () => {
                       <h4 className="font-bold text-gray-800 text-lg">
                         {testimonial.name}
                       </h4>
-                      <p className="text-[#084189] font-medium">
+                      <p className="text-[#4da8b3] font-medium">
                         {testimonial.role}
                       </p>
                     </div>
@@ -173,7 +173,7 @@ const Testimonial = () => {
               onClick={() => setCurrentTestimonial(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentTestimonial
-                  ? "w-8 bg-[#084189]"
+                  ? "w-8 bg-[#4da8b3]"
                   : "w-2 bg-gray-300 hover:bg-emerald-300"
               }`}
             />
@@ -182,6 +182,6 @@ const Testimonial = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Testimonial
+export default Testimonial;

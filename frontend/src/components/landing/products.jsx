@@ -135,10 +135,10 @@ const Trendings = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-[#084189] mb-4 animate-fade-in">
+          <h1 className="text-5xl font-bold text-[#4da8b3] mb-4 animate-fade-in">
             Top Trendings
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#084189] mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#4da8b3] mx-auto rounded-full"></div>
         </div>
 
         {/* Product Carousel */}
@@ -247,7 +247,7 @@ const Trendings = () => {
                         </span>
                       </div>
 
-                      <h3 className="font-bold text-[#084189] mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+                      <h3 className="font-bold text-[#4da8b3] mb-2 group-hover:text-emerald-600 transition-colors duration-300">
                         {product.name}
                       </h3>
                       <p className="text-[#10396bc4] text-sm mb-4 line-clamp-2">
@@ -256,7 +256,7 @@ const Trendings = () => {
 
                       {/* Price and Add to Cart */}
                       <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-[#084189]">
+                        <span className="text-2xl font-bold text-[#4da8b3]">
                           {product.price}
                         </span>
                         <button
@@ -264,7 +264,7 @@ const Trendings = () => {
                           className={`px-2 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
                             addedToCart.has(product.id)
                               ? "bg-[#216dc9] text-white scale-105"
-                              : "bg-[#084189] hover:bg-emerald-600 text-white hover:scale-105 hover:shadow-lg"
+                              : "bg-[#4da8b3] hover:bg-emerald-600 text-white hover:scale-105 hover:shadow-lg"
                           }`}
                         >
                           {addedToCart.has(product.id) ? (
@@ -295,7 +295,7 @@ const Trendings = () => {
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "w-8 bg-[#084189]"
+                    ? "w-8 bg-[#4da8b3]"
                     : "w-2 bg-gray-300 hover:bg-emerald-300"
                 }`}
               />

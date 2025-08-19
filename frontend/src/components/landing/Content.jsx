@@ -25,13 +25,10 @@ export default function ContentsSection() {
   ];
 
   return (
-    <section
-      id="contents"
-      className="relative py-20 text-center"
-    >
+    <section id="contents" className="relative py-20 text-center">
       {/* Section Header */}
       <div className="max-w-3xl mx-auto px-6">
-        <h2 className="text-4xl sm:text-5xl font-bold text-[#084189]">
+        <h2 className="text-4xl sm:text-5xl font-bold text-[#4da8b3]">
           Insights
         </h2>
         <p className="mt-4 text-lg text-[#2C6BAA]">

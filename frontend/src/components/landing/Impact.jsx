@@ -1,4 +1,11 @@
-import { FaLeaf, FaUsers, FaGlobe, FaLightbulb, FaHandshake, FaRecycle } from "react-icons/fa";
+import {
+  FaLeaf,
+  FaUsers,
+  FaGlobe,
+  FaLightbulb,
+  FaHandshake,
+  FaRecycle,
+} from "react-icons/fa";
 import { BentoCard, BentoGrid } from "../ui/bento-grid";
 
 // Custom grid positions for bento layout
@@ -81,7 +88,8 @@ const impacts = [
   {
     Icon: FaRecycle,
     name: "Circular Economy",
-    description: "Promoting reuse, recycling, and responsible consumption in e-commerce.",
+    description:
+      "Promoting reuse, recycling, and responsible consumption in e-commerce.",
     href: "/circular-economy",
     cta: "See how",
     background: (
@@ -98,7 +106,7 @@ const impacts = [
 export default function Impact() {
   return (
     <section className="py-16 px-4 md:px-8 lg:px-16">
-      <h2 className="text-5xl text-[#084189] font-bold mb-8 text-center">
+      <h2 className="text-5xl text-[#4da8b3] font-bold mb-8 text-center">
         Our Impact
       </h2>
       <BentoGrid className="lg:grid-rows-3 lg:grid-cols-3 gap-4">
