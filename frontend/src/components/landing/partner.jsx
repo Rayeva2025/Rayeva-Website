@@ -63,8 +63,8 @@ const Partner = () => {
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Partners</h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full mb-6"></div>
+        <h2 className="text-4xl font-bold text-[#084189] mb-4">Our Partners</h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#084189] mx-auto rounded-full mb-6"></div>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
           We collaborate with leading sustainable brands and organizations to
           create a better future together
@@ -132,7 +132,7 @@ const Partner = () => {
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        <div className="bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-shadow duration-500 max-w-2xl mx-auto">
+        <div className="bg-gradient-to-r from-emerald-500 to-[#084189] rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-shadow duration-500 max-w-2xl mx-auto">
           <h3 className="text-2xl font-bold mb-4">Want to Partner With Us?</h3>
           <p className="text-emerald-100 mb-6">
             Join our mission to create sustainable solutions for a better

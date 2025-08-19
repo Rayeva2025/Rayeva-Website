@@ -88,7 +88,7 @@ const Campaign = () => {
 
   return (
     <motion.div
-      className="bg-gradient-to-br from-blue-50 to-emerald-50 transition-opacity duration-1000"
+      className=" transition-opacity duration-1000"
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
       variants={{
@@ -105,18 +105,19 @@ const Campaign = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-5xl font-bold text-emerald-700 mb-4">
+          <h1 className="text-5xl font-bold text-[#084189] mb-4">
             Rayeva & Beyond
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Building a sustainable future through innovation and community engagement
+            Building a sustainable future through innovation and community
+            engagement
           </p>
         </motion.div>
 
         {/* Timeline Section */}
         <div className="mb-20">
           <motion.h2
-            className="text-3xl font-semibold text-center mb-12 text-emerald-600"
+            className="text-3xl font-semibold text-center mb-12 text-[#084189]"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -126,7 +127,7 @@ const Campaign = () => {
           </motion.h2>
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-1/2 h-full w-1 bg-emerald-200 transform -translate-x-1/2" />
+            <div className="absolute left-1/2 h-full w-1 bg-[#0d64ce] transform -translate-x-1/2" />
             <div className="space-y-12">
               {timelineItems.map((item, index) => (
                 <motion.div
@@ -144,7 +145,7 @@ const Campaign = () => {
                   <div
                     className={`w-full md:w-5/12 p-6 rounded-lg shadow-lg transition-all duration-500 ${
                       activeYear === index
-                        ? "bg-emerald-600 text-white scale-105"
+                        ? "bg-[#084189] text-white scale-105"
                         : "bg-white scale-95"
                     }`}
                   >
@@ -152,17 +153,15 @@ const Campaign = () => {
                       <div
                         className={`w-8 h-8 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
                           activeYear === index
-                            ? "bg-white text-emerald-600"
-                            : "bg-emerald-600 text-white"
+                            ? "bg-white text-[#084189]"
+                            : "bg-[#084189] text-white"
                         }`}
                       >
                         {index + 1}
                       </div>
                       <h3
                         className={`text-xl font-bold transition-colors ${
-                          activeYear === index
-                            ? "text-white"
-                            : "text-emerald-600"
+                          activeYear === index ? "text-white" : "text-[#084189]"
                         }`}
                       >
                         {item.year}: {item.title}
@@ -171,7 +170,7 @@ const Campaign = () => {
                     <p
                       className={
                         activeYear === index
-                          ? "text-emerald-100"
+                          ? "text-white"
                           : "text-gray-600"
                       }
                     >
@@ -186,7 +185,7 @@ const Campaign = () => {
 
         {/* Campaigns Section */}
         <motion.h2
-          className="text-3xl font-semibold text-center mb-12 text-emerald-600"
+          className="text-3xl font-semibold text-center mb-12 text-[#084189]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -209,12 +208,14 @@ const Campaign = () => {
               >
                 <div className="p-7 flex flex-col items-center">
                   <div className="mb-4">
-                    <Icon className="text-emerald-500 text-5xl" />
+                    <Icon className="text-[#084189] text-5xl" />
                   </div>
-                  <h3 className="text-xl font-bold text-emerald-700 mb-2 text-center">
+                  <h3 className="text-xl font-bold text-[#295d9e] mb-2 text-center">
                     {campaign.title}
                   </h3>
-                  <p className="text-gray-600 text-center">{campaign.description}</p>
+                  <p className="text-gray-600 text-center">
+                    {campaign.description}
+                  </p>
                 </div>
               </motion.div>
             );

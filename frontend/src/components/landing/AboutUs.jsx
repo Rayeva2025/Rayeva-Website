@@ -101,7 +101,7 @@ export default function AboutUs() {
         >
           <motion.a
             href="/mission"
-            className="px-6 py-3 rounded-full bg-[#3BB372] text-white font-medium shadow-lg transition"
+            className="px-6 py-3 rounded-full bg-[#063167] text-white font-medium shadow-lg transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -109,7 +109,7 @@ export default function AboutUs() {
           </motion.a>
           <motion.a
             href="/services"
-            className="px-6 py-3 rounded-full bg-[#2EB5D0] text-white font-medium shadow-lg transition"
+            className="px-6 py-3 rounded-full bg-[#175eb6] text-white font-medium shadow-lg transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -26,7 +26,7 @@ const Testimonial = () => {
       id: 1,
       name: "Sarah Miller",
       avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face",
+        "https://tse1.mm.bing.net/th/id/OIP.t87MABjGyqhAnKcQZMFAVQHaJj?rs=1&pid=ImgDetMain&o=7&rm=3",
       rating: 5,
       text: "Rayeva has completely transformed how I shop. I love knowing that every purchase aligns with my values and makes a positive impact.",
       role: "Sustainable Living Advocate",
@@ -81,14 +81,13 @@ const Testimonial = () => {
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <h2 className="text-4xl font-bold text-[#084189] mb-4">
           What Our Customers Say
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
+        <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#084189] mx-auto rounded-full"></div>
       </div>
 
       <div className="relative max-w-4xl mx-auto">
-        {/* Testimonial Cards */}
         <div className="relative overflow-hidden rounded-3xl bg-white shadow-2xl">
           <div
             className="flex transition-transform duration-700 ease-in-out"
@@ -99,9 +98,9 @@ const Testimonial = () => {
                 <div className="text-center space-y-8">
                   {/* Quote Icon */}
                   <div className="relative">
-                    <Quote className="w-16 h-16 text-emerald-200 mx-auto" />
+                    <Quote className="w-16 h-16 text-[#3c72b4] mx-auto" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Quote className="w-8 h-8 text-emerald-500" />
+                      <Quote className="w-8 h-8 text-[#084189]" />
                     </div>
                   </div>
 
@@ -134,13 +133,13 @@ const Testimonial = () => {
                     <img
                       src={testimonial.avatar}
                       alt={testimonial.name}
-                      className="w-16 h-16 rounded-full border-4 border-emerald-100 shadow-lg"
+                      className="w-16 h-16 rounded-full border-4 border-[#64a0ea] shadow-lg"
                     />
                     <div className="text-left">
                       <h4 className="font-bold text-gray-800 text-lg">
                         {testimonial.name}
                       </h4>
-                      <p className="text-emerald-600 font-medium">
+                      <p className="text-[#084189] font-medium">
                         {testimonial.role}
                       </p>
                     </div>
@@ -174,7 +173,7 @@ const Testimonial = () => {
               onClick={() => setCurrentTestimonial(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentTestimonial
-                  ? "w-8 bg-emerald-500"
+                  ? "w-8 bg-[#084189]"
                   : "w-2 bg-gray-300 hover:bg-emerald-300"
               }`}
             />

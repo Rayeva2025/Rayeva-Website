@@ -206,7 +206,7 @@ const CategorySection = () => {
     <div className="min-h-screen  p-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-black mb-4  bg-clip-text text-transparen">
+          <h1 className="text-5xl font-bold text-[#084189] mb-4  bg-clip-text text-transparen">
             Categories
           </h1>
         </div>
@@ -229,11 +229,12 @@ const CategorySection = () => {
                   style={{
                     transform: `translateX(${-slideProgress * 100}%)`,
                     background: `linear-gradient(90deg, 
-                      rgba(15, 23, 42, 0.98) 0%, 
-                      rgba(30, 41, 59, 0.95) 20%,
-                      rgba(51, 65, 85, 0.9) 50%, 
-                      rgba(30, 41, 59, 0.95) 80%,
-                      rgba(15, 23, 42, 0.98) 100%)`,
+                              rgba(5, 41, 89, 0.98) 0%, 
+                              rgba(4, 35, 77, 0.95) 20%,
+                              rgba(3, 30, 66, 0.9) 50%, 
+                              rgba(4, 35, 77, 0.95) 80%,
+                              rgba(5, 41, 89, 0.98) 100%)`
+
                   }}
                   onMouseDown={handleMouseDown}
                   onTouchStart={handleTouchStart}
@@ -265,22 +266,6 @@ const CategorySection = () => {
                 ))}
               </div>
             </div>
-
-            {/* Progress indicator */}
-            {/* <div className="mt-8 flex justify-center">
-              <div className="bg-white/10 rounded-full px-4 py-2">
-                <div className="flex items-center space-x-2 text-black/70 text-sm">
-                  <span>Progress:</span>
-                  <div className="w-32 h-2 bg-white/20 rounded-full ">
-                    <div
-                      className="h-full bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300"
-                      style={{ width: `${slideProgress * 100}%` }}
-                    ></div>
-                  </div>
-                  <span>{Math.round(slideProgress * 100)}%</span>
-                </div>
-              </div>
-            </div> */}
           </DarkWalnutBg>
 
           <div

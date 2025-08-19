@@ -98,7 +98,7 @@ const impacts = [
 export default function Impact() {
   return (
     <section className="py-16 px-4 md:px-8 lg:px-16">
-      <h2 className="text-3xl font-bold mb-8 text-center">
+      <h2 className="text-5xl text-[#084189] font-bold mb-8 text-center">
         Our Impact
       </h2>
       <BentoGrid className="lg:grid-rows-3 lg:grid-cols-3 gap-4">

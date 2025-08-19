@@ -1,5 +1,5 @@
 import React from "react";
-import Newsletter from "./newsletter";
+import Newsletter from "./newsLetter";
 import {
   FaInstagram,
   FaFacebookF,
@@ -68,7 +68,7 @@ const footerLinks = [
 ];
 
 const Footer = () => (
-  <div className="bg-gradient-to-br from-blue-50 to-blue-100 text-gray-800">
+  <div className=" text-gray-800">
     <Newsletter />
 
     {/* Categories */}
@@ -79,10 +79,10 @@ const Footer = () => (
             key={cat.label}
             className="flex flex-col items-center gap-2 group"
           >
-            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow group-hover:shadow-lg transition-all duration-300 text-emerald-500 text-2xl group-hover:bg-emerald-50">
+            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow group-hover:shadow-lg transition-all duration-300 text-[#084189] text-2xl group-hover:bg-emerald-50">
               {cat.icon}
             </div>
-            <span className="text-sm font-medium text-gray-600 group-hover:text-emerald-600 transition-colors duration-300">
+            <span className="text-sm font-medium text-gray-600 group-hover:text-[#084189] transition-colors duration-300">
               {cat.label}
             </span>
           </div>

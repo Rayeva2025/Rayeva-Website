@@ -7,6 +7,7 @@ import {
   ShoppingCart,
   Zap,
 } from "lucide-react";
+import Stats from "./stats";
 
 const Trendings = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -122,7 +123,6 @@ const Trendings = () => {
     }, 2000);
   };
 
-  // Auto-scroll effect
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
@@ -135,14 +135,10 @@ const Trendings = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4 animate-fade-in">
+          <h1 className="text-5xl font-bold text-[#084189] mb-4 animate-fade-in">
             Top Trendings
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
-          <p className="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
-            Discover our most popular sustainable products loved by
-            eco-conscious customers worldwide
-          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#084189] mx-auto rounded-full"></div>
         </div>
 
         {/* Product Carousel */}
@@ -251,24 +247,24 @@ const Trendings = () => {
                         </span>
                       </div>
 
-                      <h3 className="font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+                      <h3 className="font-bold text-[#084189] mb-2 group-hover:text-emerald-600 transition-colors duration-300">
                         {product.name}
                       </h3>
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                      <p className="text-[#10396bc4] text-sm mb-4 line-clamp-2">
                         {product.description}
                       </p>
 
                       {/* Price and Add to Cart */}
                       <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-emerald-600">
+                        <span className="text-2xl font-bold text-[#084189]">
                           {product.price}
                         </span>
                         <button
                           onClick={() => addToCart(product.id)}
                           className={`px-2 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
                             addedToCart.has(product.id)
-                              ? "bg-green-500 text-white scale-105"
-                              : "bg-emerald-500 hover:bg-emerald-600 text-white hover:scale-105 hover:shadow-lg"
+                              ? "bg-[#216dc9] text-white scale-105"
+                              : "bg-[#084189] hover:bg-emerald-600 text-white hover:scale-105 hover:shadow-lg"
                           }`}
                         >
                           {addedToCart.has(product.id) ? (
@@ -299,7 +295,7 @@ const Trendings = () => {
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "w-8 bg-emerald-500"
+                    ? "w-8 bg-[#084189]"
                     : "w-2 bg-gray-300 hover:bg-emerald-300"
                 }`}
               />
@@ -318,58 +314,8 @@ const Trendings = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-4 gap-6">
-          {[
-            { number: "10K+", label: "Happy Customers", icon: "😊" },
-            { number: "500+", label: "Eco Products", icon: "🌱" },
-            { number: "50+", label: "Countries Served", icon: "🌍" },
-            { number: "100%", label: "Sustainable", icon: "♻️" },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group"
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              <div className="text-4xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-3xl font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
-                {stat.number}
-              </div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-shadow duration-500 transform hover:scale-105">
-            <h2 className="text-3xl font-bold mb-4">
-              Join the Sustainable Revolution
-            </h2>
-            <p className="text-emerald-100 mb-6 max-w-2xl mx-auto">
-              Every purchase you make helps create a more sustainable future for
-              our planet
-            </p>
-            <button className="bg-white text-emerald-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-emerald-50 transition-all duration-300 transform hover:scale-110 hover:shadow-lg">
-              Shop All Products
-            </button>
-          </div>
-        </div>
+        <Stats />
       </div>
-
-      {/* Background Decorations */}
-      {/* <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-emerald-200/30 rounded-full blur-xl animate-pulse"></div>
-        <div
-          className="absolute bottom-20 right-10 w-40 h-40 bg-teal-200/30 rounded-full blur-xl animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/2 w-56 h-56 bg-green-200/20 rounded-full blur-2xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-      </div> */}
     </div>
   );
 };

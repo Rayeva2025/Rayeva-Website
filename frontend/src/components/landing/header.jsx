@@ -23,7 +23,7 @@ const Header = () => {
           <div className="flex-shrink-0">
             <a
               href="/"
-              className="text-2xl font-bold text-black hover:text-emerald-200 transition-colors duration-300 flex items-center"
+              className="text-2xl  text-[#084189] font-extrabold hover:text-emerald-200 transition-colors duration-300 flex items-center"
             >
               <span className="relative">
                 Rayeva
@@ -38,17 +38,17 @@ const Header = () => {
               <a
                 key={index}
                 href={item.path}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                className={`relative px-4 py-2 font-extrabold transition-all duration-300 ${
                   hoveredItem === index
-                    ? "text-emerald-300"
-                    : "text-black/90 hover:text-white"
+                    ? "text-[#0751aa]"
+                    : "text-black hover:text-white"
                 }`}
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
                 {item.name}
                 {hoveredItem === index && (
-                  <span className="absolute -bottom-1 left-4 right-4 h-0.5 bg-emerald-300 rounded-full origin-left animate-underline"></span>
+                  <span className="absolute -bottom-1 left-4 right-4 h-0.5 bg-[#084189] rounded-full origin-left animate-underline"></span>
                 )}
               </a>
             ))}

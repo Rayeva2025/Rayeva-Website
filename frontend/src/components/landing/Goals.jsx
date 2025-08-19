@@ -39,25 +39,38 @@ const Goals = () => {
       cancelAnimationFrame(animationRef.current);
     }
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 400 / 400, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    // Increase Three.js canvas size by 1.4x
+    const canvasSize = 560; // 400 * 1.4 = 560
 
-    renderer.setSize(400, 400);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      canvasSize / canvasSize,
+      0.1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance",
+    });
+
+    renderer.setSize(canvasSize, canvasSize);
     renderer.setClearColor(0x000000, 0);
     mountRef.current.appendChild(renderer.domElement);
 
     sceneRef.current = scene;
     rendererRef.current = renderer;
 
-    const geometry = new THREE.SphereGeometry(1.5, 64, 64);
+    // Increase globe size proportionally
+    const geometry = new THREE.SphereGeometry(2.1, 64, 64); // 1.5 * 1.4 = 2.1
 
     const canvas = document.createElement("canvas");
-    canvas.width = 512;
-    canvas.height = 256;
+    canvas.width = 1024; // Increased resolution for better quality
+    canvas.height = 512;
     const context = canvas.getContext("2d");
 
-    const gradient = context.createLinearGradient(0, 0, 512, 256);
+    const gradient = context.createLinearGradient(0, 0, 1024, 512);
     gradient.addColorStop(0, "#1e40af");
     gradient.addColorStop(0.3, "#3b82f6");
     gradient.addColorStop(0.5, "#22c55e");
@@ -65,13 +78,14 @@ const Goals = () => {
     gradient.addColorStop(1, "#15803d");
 
     context.fillStyle = gradient;
-    context.fillRect(0, 0, 512, 256);
+    context.fillRect(0, 0, 1024, 512);
 
     context.fillStyle = "#15803d";
-    for (let i = 0; i < 20; i++) {
-      const x = Math.random() * 512;
-      const y = Math.random() * 256;
-      const radius = Math.random() * 30 + 10;
+    for (let i = 0; i < 50; i++) {
+      // More details for larger globe
+      const x = Math.random() * 1024;
+      const y = Math.random() * 512;
+      const radius = Math.random() * 40 + 15;
       context.beginPath();
       context.arc(x, y, radius, 0, Math.PI * 2);
       context.fill();
@@ -81,29 +95,35 @@ const Goals = () => {
     const material = new THREE.MeshPhongMaterial({
       map: texture,
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.95, // Increased opacity for better visibility
+      shininess: 30,
     });
 
     const globe = new THREE.Mesh(geometry, material);
     scene.add(globe);
     globeRef.current = globe;
 
-    const atmosphereGeometry = new THREE.SphereGeometry(1.7, 64, 64);
+    // Increase atmosphere size proportionally
+    const atmosphereGeometry = new THREE.SphereGeometry(2.38, 64, 64); // 1.7 * 1.4 = 2.38
     const atmosphereMaterial = new THREE.MeshBasicMaterial({
       color: 0x4fc3f7,
       transparent: true,
-      opacity: 0.1,
+      opacity: 0.15, // Increased opacity
       side: THREE.BackSide,
     });
     const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
     scene.add(atmosphere);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Increased ambient light
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0); // Increased intensity
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
+
+    const pointLight = new THREE.PointLight(0x4fc3f7, 0.5, 100); // Added point light
+    pointLight.position.set(5, 5, 5);
+    scene.add(pointLight);
 
     camera.position.z = 5;
 
@@ -130,28 +150,30 @@ const Goals = () => {
         mountRef.current.removeChild(renderer.domElement);
       }
       cancelAnimationFrame(animationRef.current);
-      renderer.dispose();
+      if (renderer) renderer.dispose();
     };
   }, []);
 
   const getPositionClasses = (position) => {
     switch (position) {
       case "top-left":
-        return "top-8 left-8";
+        return "top-16 left-16"; // Increased spacing
       case "top-right":
-        return "top-8 right-8";
+        return "top-16 right-16"; // Increased spacing
       case "bottom-left":
-        return "bottom-8 left-8";
+        return "bottom-16 left-16"; // Increased spacing
       case "bottom-right":
-        return "bottom-8 right-8";
+        return "bottom-16 right-16"; // Increased spacing
       default:
         return "";
     }
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center p-8">
-      <div className="relative w-full max-w-4xl h-96 flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center p-8 ">
+      <div className="relative w-full max-w-6xl h-[600px] flex items-center justify-center">
+        {" "}
+        {/* Increased container size */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
           style={{ zIndex: 1 }}
@@ -160,12 +182,14 @@ const Goals = () => {
             <line
               key={`line-${element.id}`}
               x1={
-                element.position.includes("left") ? "120" : "calc(100% - 120px)"
+                element.position.includes("left") ? "180" : "calc(100% - 180px)" // Increased spacing
               }
-              y1={element.position.includes("top") ? "80" : "calc(100% - 80px)"}
+              y1={
+                element.position.includes("top") ? "130" : "calc(100% - 130px)"
+              } // Increased spacing
               x2="50%"
               y2="50%"
-              stroke="rgba(255, 255, 255, 0.2)"
+              stroke="rgba(255, 255, 255, 0.3)" // Increased visibility
               strokeWidth="2"
               className={`transition-opacity duration-1000 ${
                 visibleElements.includes(element.id)
@@ -176,52 +200,52 @@ const Goals = () => {
             />
           ))}
         </svg>
-
         <div
           ref={mountRef}
-          className="relative w-[400px] h-[400px]"
-          style={{ zIndex: 2 }}
+          className="relative w-[560px] h-[560px] z-10 rounded-full overflow-hidden shadow-2xl"
+          style={{
+            boxShadow: "0 0 60px rgba(79, 195, 247, 0.4)",
+          }}
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-emerald-400 opacity-20 blur-xl scale-150"></div>
         </div>
-
         {elements.map((element) => (
           <div
             key={element.id}
             className={`absolute ${getPositionClasses(
               element.position
-            )} transition-all duration-1000 ease-out ${
-              visibleElements.includes(element.id)
-                ? "opacity-100 translate-x-0 translate-y-0"
-                : `opacity-0 ${
+            )} transition-all duration-1000 ease-out z-20 `} // Added z-index
+            style={{
+              opacity: visibleElements.includes(element.id) ? 1 : 0,
+              transform: visibleElements.includes(element.id)
+                ? "translate(0, 0)"
+                : `${
                     element.position.includes("left")
-                      ? "-translate-x-4"
-                      : "translate-x-4"
+                      ? "translateX(-40px)"
+                      : "translateX(40px)"
                   } ${
                     element.position.includes("top")
-                      ? "-translate-y-4"
-                      : "translate-y-4"
-                  }`
-            }`}
-            style={{ zIndex: 2 }}
+                      ? "translateY(-40px)"
+                      : "translateY(40px)"
+                  }`,
+            }}
           >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl px-32 py-10 border shadow-xl hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl -z-200">
-              <div className="text-black font-semibold text-lg text-center whitespace-nowrap">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl px-16 py-12 shadow-2xl hover:bg-white/20 transition-all duration-300 border-2 border-blue-500/60 hover:scale-105 hover:shadow-2xl">
+              <div className="text-[#084189] font-bold text-4xl text-center whitespace-nowrap">
                 {element.text}
               </div>
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/10 to-emerald-400/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
         ))}
-
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none"
           style={{ zIndex: 0 }}
         >
-          {[...Array(200)].map((_, i) => (
+          {[...Array(300)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-blue-500 rounded-full opacity-30"
+              className="absolute w-1.5 h-1.5 bg-blue-400 rounded-full opacity-40"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -243,8 +267,8 @@ const Goals = () => {
             opacity: 0.3;
           }
           50% {
-            transform: translateY(-20px) rotate(180deg);
-            opacity: 0.8;
+            transform: translateY(-28px) rotate(180deg);
+            opacity: 0.7;
           }
         }
       `}</style>
