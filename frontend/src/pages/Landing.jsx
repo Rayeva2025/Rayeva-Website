@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import { motion } from "framer-motion";
 import HeroSection from "../components/landing/Hero";
 import Impact from "../components/landing/Impact";
