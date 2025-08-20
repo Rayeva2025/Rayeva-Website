@@ -77,11 +77,10 @@ export default function Tags() {
       <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
         <svg
           width="100%"
-          height="400"
-          viewBox="0 0 1440 400"
+          viewBox="0 0 1440 600"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full"
+          className="w-full h-40 sm:h-56 md:h-72 lg:h-96 xl:h-[600px]"
           preserveAspectRatio="xMidYMid meet"
         >
           <defs>
@@ -116,10 +115,10 @@ export default function Tags() {
             </filter>
           </defs>
 
-          {/* Main ribbon path - centered vertically */}
+          {/* Main ribbon path - centered vertically in the 600px viewBox */}
           <path
             id="ribbonPath"
-            d="M0 200 Q 360 130 720 200 Q 1080 270 1440 240"
+            d="M0 300 Q 360 230 720 300 Q 1080 370 1440 340"
             stroke="url(#ribbonGradient)"
             strokeWidth="120"
             strokeLinecap="round"
@@ -131,7 +130,7 @@ export default function Tags() {
           
           {/* Additional ribbon layers for depth */}
           <path
-            d="M0 200 Q 360 130 720 200 Q 1080 270 1440 240"
+            d="M0 300 Q 360 230 720 300 Q 1080 370 1440 340"
             stroke="url(#ribbonGradient)"
             strokeWidth="80"
             strokeLinecap="round"
@@ -141,7 +140,7 @@ export default function Tags() {
           />
           
           <path
-            d="M0 200 Q 360 130 720 200 Q 1080 270 1440 240"
+            d="M0 300 Q 360 230 720 300 Q 1080 370 1440 340"
             stroke="url(#ribbonGradient)"
             strokeWidth="40"
             strokeLinecap="round"
