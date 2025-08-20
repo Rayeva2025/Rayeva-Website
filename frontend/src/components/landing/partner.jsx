@@ -27,7 +27,7 @@ const Partner = () => {
       name: "EcoHarvest",
       description: "Organic farming collective",
       logo: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=200&h=200&fit=crop",
-      color: "from-green-400 to-emerald-500",
+      color: "from-teal-400 to-cyan-500",
       icon: Leaf,
     },
     {
@@ -43,7 +43,7 @@ const Partner = () => {
       name: "OceanGuard",
       description: "Marine conservation nonprofit",
       logo: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=200&h=200&fit=crop",
-      color: "from-blue-400 to-indigo-500",
+      color: "from-teal-400 to-cyan-500",
       icon: Globe,
     },
     {
@@ -51,7 +51,7 @@ const Partner = () => {
       name: "PurePackage",
       description: "Compostable packaging solutions",
       logo: "https://th.bing.com/th/id/R.3818a8305b65278c06b048286b49fecd?rik=Wpa%2b3lYANtIfsw&riu=http%3a%2f%2fcdn1.tnwcdn.com%2fwp-content%2fblogs.dir%2f1%2ffiles%2f2013%2f11%2fparcel-delivery-package.jpg&ehk=YKK3LDCYnMg3kHXX1FFXBCyNaqVSOcQF8f8dZTm2%2bWM%3d&risl=&pid=ImgRaw&r=0",
-      color: "from-orange-400 to-red-500",
+      color: "from-teal-400 to-cyan-500",
       icon: Package,
     },
   ];
@@ -132,13 +132,13 @@ const Partner = () => {
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        <div className="bg-gradient-to-r from-emerald-500 to-[#4da8b3] rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-shadow duration-500 max-w-2xl mx-auto">
+        <div className="bg-gradient-to-r from-teal-400 to-[#4da8b3] rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-shadow duration-500 max-w-2xl mx-auto">
           <h3 className="text-2xl font-bold mb-4">Want to Partner With Us?</h3>
           <p className="text-emerald-100 mb-6">
             Join our mission to create sustainable solutions for a better
             tomorrow
           </p>
-          <button className="bg-white text-emerald-600 px-8 py-3 rounded-full font-bold hover:bg-emerald-50 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+          <button className="bg-white text-[#4da8b3] px-8 py-3 rounded-full font-bold hover:bg-emerald-50 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
             Become a Partner
           </button>
         </div>

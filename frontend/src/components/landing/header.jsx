@@ -23,7 +23,8 @@ const Header = () => {
           <div className="flex-shrink-0">
             <a
               href="/"
-              className="text-2xl  text-[#4da8b3] font-extrabold hover:text-emerald-200 transition-colors duration-300 flex items-center"
+              className="text-2xl  text-[#4da8b3] text-shadow-amber-400 font-extrabold hover:text-[#177e89] transition-colors duration-300 flex items-center"
+              style={{ textShadow: "1px 1px 0px rgba(255, 255, 255, 0.4)" }}
             >
               <span className="relative">
                 Rayeva

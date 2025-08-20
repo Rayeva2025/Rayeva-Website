@@ -50,7 +50,10 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl text-center text-white px-6">
+      <div
+        className="relative z-10 max-w-3xl text-center text-white px-6"
+        
+      >
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -65,7 +68,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.3 }}
-          className="mt-4 text-lg md:text-2xl font-light"
+          className="mt-4 text-3xl md:text-3xl font-light"
         >
           Small Changes. Global Impact.
         </motion.p>
@@ -75,7 +78,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.5 }}
-          className="mt-6 text-base md:text-lg opacity-90"
+          className="mt-6 text-xl md:text-2xl opacity-90"
         >
           Join us in building a future where sustainability is the norm.
         </motion.p>

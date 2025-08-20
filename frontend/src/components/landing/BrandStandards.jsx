@@ -351,7 +351,7 @@ export default function BrandStandards() {
         </motion.div>
       </motion.div>
 
-      <style jsx global>{`
+      <style jsx="true" global="true">{`
         @keyframes float {
           0%,
           100% {
