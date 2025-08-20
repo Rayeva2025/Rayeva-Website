@@ -37,9 +37,15 @@ export default function Tags() {
       const items = scrollerRef.current.children;
       const total = items.length;
 
+      // Increase this to space tags farther apart (1 = normal, >1 = more spacing)
+      const spacingFactor = 2.0;
+
       gsap.utils.toArray(items).forEach((el, i) => {
         el.style.transformOrigin = "center";
         el.style.willChange = "transform, opacity";
+
+        // compute start offset and wrap into [0,1)
+        const startOffset = ((i / total) * spacingFactor) % 1;
 
         // Set initial position
         gsap.set(el, {
@@ -48,8 +54,8 @@ export default function Tags() {
             align: "#ribbonPath",
             alignOrigin: [0.5, 0.5],
             autoRotate: false,
-            start: i / total,
-            end: i / total + 1,
+            start: startOffset,
+            end: startOffset + 1,
           },
         });
 
@@ -63,8 +69,8 @@ export default function Tags() {
             align: "#ribbonPath",
             alignOrigin: [0.5, 0.5],
             autoRotate: false,
-            start: i / total,
-            end: i / total + 1,
+            start: startOffset,
+            end: startOffset + 1,
           },
         });
       });
