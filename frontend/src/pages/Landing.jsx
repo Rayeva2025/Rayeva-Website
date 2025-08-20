@@ -80,7 +80,6 @@ const Landing = () => {
 <div
   className="
     mx-auto
-    pt-20
     w-full
     min-h-screen
     flex flex-col

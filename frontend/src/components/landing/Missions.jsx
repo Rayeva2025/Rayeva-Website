@@ -103,17 +103,7 @@ const Missions = () => {
             Through our campaigns, partnerships, and educational initiatives, we
             strive to make sustainability accessible and achievable for all.
           </p>
-          <div className="flex flex-wrap items-center gap-3 mt-4">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#DAFBE6] text-[#4da8b3] text-base font-medium shadow">
-              Sustainability
-            </span>
-            <span className="inline-block px-4 py-2 rounded-full bg-[#E7F6FF] text-[#2C6BAA] text-base font-medium shadow">
-              Community
-            </span>
-            <span className="inline-block px-4 py-2 rounded-full bg-[#3BB372]/20 text-[#3BB372] text-base font-medium shadow">
-              Impact
-            </span>
-          </div>
+          
         </motion.div>
       </div>
     </section>

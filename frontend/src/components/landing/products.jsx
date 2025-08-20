@@ -194,11 +194,11 @@ const Trendings = () => {
                       />
 
                       {/* Badge */}
-                      <div
+                      {/* <div
                         className={`absolute top-4 left-4 ${product.badgeColor} text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg animate-pulse`}
                       >
                         {product.badge}
-                      </div>
+                      </div> */}
 
                       {/* Favorite Button */}
                       <button
@@ -304,14 +304,14 @@ const Trendings = () => {
         </div>
 
         {/* Floating Action Elements */}
-        <div className="fixed bottom-8 right-8 space-y-4">
+        {/* <div className="fixed bottom-8 right-8 space-y-4">
           <div className="bg-emerald-500 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer">
             <Heart className="w-6 h-6" />
           </div>
           <div className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer animate-bounce">
             <ShoppingCart className="w-6 h-6" />
           </div>
-        </div>
+        </div> */}
 
         {/* Statistics Section */}
         <Stats />

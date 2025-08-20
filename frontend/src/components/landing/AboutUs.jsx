@@ -7,6 +7,9 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUs() {
+  const founderBg ="/images/founder.png";
+  const teamBg = "/images/team.png";
+  const communityBg = "/images/community.png";
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const cardRefs = useRef([]);
@@ -118,66 +121,118 @@ export default function AboutUs() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-3 gap-8 md:gap-10">
-          {/* Founder */}
+          {/* Founder Card */}
           <div
-            ref={el => (cardRefs.current[0] = el)}
-            className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 hover:shadow-2xl transition"
+            ref={(el) => (cardRefs.current[0] = el)}
+            className="relative h-80 rounded-2xl overflow-hidden group cursor-pointer"
           >
-            <FaUserTie className="text-4xl text-[#4da8b3] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#4da8b3] mb-4">
-              Our Founder
-            </h3>
-            <p className="text-[#2C6BAA] leading-relaxed">
-              Our journey began with a vision to create meaningful impact. Our
-              founder believed in innovation, collaboration, and building
-              solutions that empower people and businesses worldwide.
-            </p>
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-top transition-transform duration-700 group-hover:scale-110"
+              style={{ backgroundImage: `url(${founderBg})` }}
+            />
+
+            {/* Dark Overlay */}
+            {/* <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500" /> */}
+
+            {/* Content */}
+            <div
+              className="relative h-full flex flex-col justify-end p-6 text-black"
+              style={{ textShadow: "5px 5px 8px cyan" }}
+            >
+              <FaUserTie className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-2xl font-semibold mb-2">Our Founder</h3>
+
+              {/* Description that appears on hover */}
+              <div className="absolute inset-4 bg-white/20 backdrop-blur-sm rounded-xl p-6 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-inset-lg">
+                <p className="text-gray-800 leading-relaxed text-center">
+                  Our journey began with a vision to create meaningful impact.
+                  Our founder believed in innovation, collaboration, and
+                  building solutions that empower people and businesses
+                  worldwide.
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Team */}
+          {/* Team Card */}
           <div
-            ref={el => (cardRefs.current[1] = el)}
-            className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 hover:shadow-2xl transition"
+            ref={(el) => (cardRefs.current[1] = el)}
+            className="relative h-80 rounded-2xl overflow-hidden group cursor-pointer"
           >
-            <FaUsers className="text-4xl text-[#3BB372] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#4da8b3] mb-4">
-              Our Team
-            </h3>
-            <p className="text-[#2C6BAA] leading-relaxed">
-              A group of diverse thinkers, creators, and innovators. We bring
-              together expertise across technology, design, and strategy to
-              achieve a shared purpose.
-            </p>
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              style={{ backgroundImage: `url(${teamBg})` }}
+            />
+
+            {/* Dark Overlay */}
+            {/* <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500" /> */}
+
+            {/* Content */}
+            <div
+              className="relative h-full flex flex-col justify-end p-6 text-black "
+              style={{ textShadow: "5px 5px 8px cyan" }}
+            >
+              <FaUsers className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-2xl font-semibold mb-2">Our Team</h3>
+
+              {/* Description that appears on hover */}
+              <div className="absolute inset-4 bg-white/20 backdrop-blur rounded-xl p-6 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-inset-lg">
+                <p className="text-gray-800 leading-relaxed text-center">
+                  A group of diverse thinkers, creators, and innovators. We
+                  bring together expertise across technology, design, and
+                  strategy to achieve a shared purpose.
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Community */}
+          {/* Community Card */}
           <div
-            ref={el => (cardRefs.current[2] = el)}
-            className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 hover:shadow-2xl transition"
+            ref={(el) => (cardRefs.current[2] = el)}
+            className="relative h-80 rounded-2xl overflow-hidden group cursor-pointer"
           >
-            <FaGlobe className="text-4xl text-[#2EB5D0] mb-4" />
-            <h3 className="text-2xl font-semibold text-[#4da8b3] mb-4">
-              Our Community
-            </h3>
-            <p className="text-[#2C6BAA] leading-relaxed">
-              Our strength lies in our community. Together, we learn, grow, and
-              support each other while shaping a better, more sustainable
-              future.
-            </p>
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              style={{ backgroundImage: `url(${communityBg})` }}
+            />
+
+            {/* Dark Overlay */}
+            {/* <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500" /> */}
+
+            {/* Content */}
+            <div
+              className="relative h-full flex flex-col justify-end p-6 text-black"
+              style={{ textShadow: "5px 5px 8px cyan" }}
+            >
+              <FaGlobe className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-2xl font-semibold mb-2">Our Community</h3>
+
+              {/* Description that appears on hover */}
+              <div className="absolute inset-4 bg-white/20 backdrop-blur-sm rounded-xl p-6 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-inset-lg">
+                <p className="text-gray-800 leading-relaxed text-center">
+                  Our strength lies in our community. Together, we learn, grow,
+                  and support each other while shaping a better, more
+                  sustainable future.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Buttons */}
         <div className="flex justify-center gap-6 mt-10">
           <a
-            ref={el => (buttonRefs.current[0] = el)}
+            ref={(el) => (buttonRefs.current[0] = el)}
             href="/mission"
             className="px-6 py-3 rounded-full bg-[#4da8b3] text-white font-medium shadow-lg transition hover:scale-105 active:scale-95"
           >
             Our Mission
           </a>
           <a
-            ref={el => (buttonRefs.current[1] = el)}
+            ref={(el) => (buttonRefs.current[1] = el)}
             href="/services"
             className="px-6 py-3 rounded-full bg-[#238794] text-white font-medium shadow-lg transition hover:scale-105 active:scale-95"
           >

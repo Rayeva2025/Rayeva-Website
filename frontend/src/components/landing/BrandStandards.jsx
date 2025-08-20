@@ -251,7 +251,7 @@ export default function BrandStandards() {
                   key={index}
                   className={`absolute flex flex-col items-center justify-center ${
                     isActive
-                      ? "w-80 h-40 rounded-lg bg-white/10 backdrop-blur-md shadow-xl border border-gray-200"
+                      ? "w-80 h-40 rounded-full bg-white/10 backdrop-blur shadow-xl border border-gray-200"
                       : "w-30 h-30 rounded-full bg-white border-2 border-gray-300 shadow-lg hover:shadow-xl"
                   }`}
                   style={{
