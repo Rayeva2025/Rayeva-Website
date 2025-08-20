@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   FaLeaf,
   FaRecycle,
@@ -11,13 +11,14 @@ import {
   FaCloud,
   FaMountain,
 } from "react-icons/fa";
+import gsap from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+
+gsap.registerPlugin(MotionPathPlugin);
 
 export default function Tags() {
-  const containerRef = useRef(null);
   const scrollerRef = useRef(null);
-  const [start, setStart] = useState(false);
 
-  // Hardcoded 10 tags with icons
   const tags = [
     { label: "Plastic-Free", icon: <FaRecycle /> },
     { label: "Organic", icon: <FaLeaf /> },
@@ -32,60 +33,162 @@ export default function Tags() {
   ];
 
   useEffect(() => {
-    if (containerRef.current && scrollerRef.current && !start) {
-      // Duplicate tags for infinite scroll effect
-      const scrollerContent = Array.from(scrollerRef.current.children);
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        scrollerRef.current.appendChild(duplicatedItem);
+    if (scrollerRef.current) {
+      const items = scrollerRef.current.children;
+      const total = items.length;
+
+      gsap.utils.toArray(items).forEach((el, i) => {
+        el.style.transformOrigin = "center";
+        el.style.willChange = "transform, opacity";
+
+        // Set initial position
+        gsap.set(el, {
+          motionPath: {
+            path: "#ribbonPath",
+            align: "#ribbonPath",
+            alignOrigin: [0.5, 0.5],
+            autoRotate: false,
+            start: i / total,
+            end: i / total + 1,
+          },
+        });
+
+        // Animate along the path
+        gsap.to(el, {
+          duration: 20,
+          repeat: -1,
+          ease: "linear",
+          motionPath: {
+            path: "#ribbonPath",
+            align: "#ribbonPath",
+            alignOrigin: [0.5, 0.5],
+            autoRotate: false,
+            start: i / total,
+            end: i / total + 1,
+          },
+        });
       });
-      // Set animation direction and speed
-      containerRef.current.style.setProperty(
-        "--animation-direction",
-        "forwards"
-      );
-      containerRef.current.style.setProperty("--animation-duration", "40s"); // Smaller animation duration
-      setStart(true);
     }
-  }, [start]);
+  }, []);
 
   return (
-    <>
-      <style>
-        {`
-          .animate-scroll {
-            animation: scroll-x var(--animation-duration, 20s) linear infinite;
-            animation-direction: var(--animation-direction, forwards);
-          }
-          @keyframes scroll-x {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-25%); } /* Smaller scroll distance */
-          }
-        `}
-      </style>
-      <section className="w-full py-10">
-        <div
-          ref={containerRef}
-          className="scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]"
+    <section className="w-full py-20 relative overflow-hidden">
+      {/* Full Height SVG Container */}
+      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
+        <svg
+          width="100%"
+          viewBox="0 0 1440 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-40 sm:h-56 md:h-72 lg:h-96 xl:h-[600px]"
+          preserveAspectRatio="xMidYMid meet"
         >
-          <ul
-            ref={scrollerRef}
-            className={`flex w-max min-w-full shrink-0 flex-nowrap gap-8 py-6 ${
-              start ? "animate-scroll" : ""
-            } hover:[animation-play-state:paused]`}
-          >
-            {tags.map((tag, idx) => (
-              <li
-                key={idx}
-                className="flex items-center gap-2 px-8 py-4 rounded-full shadow-md border border-[#2EB5D0]/30 text-[#4da8b3] font-medium text-base bg-transparent"
+          <defs>
+            {/* Ribbon color gradient */}
+            <linearGradient id="ribbonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#2EB5D0" />
+              <stop offset="50%" stopColor="#3DA5B5" />
+              <stop offset="100%" stopColor="#4DA8B3" />
+            </linearGradient>
+
+            {/* Edge fade mask */}
+            <linearGradient id="edgeMaskGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="white" stopOpacity="0" />
+              <stop offset="5%" stopColor="white" stopOpacity="0.3" />
+              <stop offset="10%" stopColor="white" stopOpacity="1" />
+              <stop offset="90%" stopColor="white" stopOpacity="1" />
+              <stop offset="95%" stopColor="white" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+
+            <mask id="edgeFade">
+              <rect x="0" y="0" width="100%" height="100%" fill="url(#edgeMaskGradient)" />
+            </mask>
+
+            {/* Glow filter */}
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Main ribbon path - centered vertically in the 600px viewBox */}
+          <path
+            id="ribbonPath"
+            d="M0 300 Q 360 230 720 300 Q 1080 370 1440 340"
+            stroke="url(#ribbonGradient)"
+            strokeWidth="120"
+            strokeLinecap="round"
+            fill="none"
+            opacity="0.15"
+            mask="url(#edgeFade)"
+            filter="url(#glow)"
+          />
+          
+          {/* Additional ribbon layers for depth */}
+          <path
+            d="M0 300 Q 360 230 720 300 Q 1080 370 1440 340"
+            stroke="url(#ribbonGradient)"
+            strokeWidth="80"
+            strokeLinecap="round"
+            fill="none"
+            opacity="0.08"
+            mask="url(#edgeFade)"
+          />
+          
+          <path
+            d="M0 300 Q 360 230 720 300 Q 1080 370 1440 340"
+            stroke="url(#ribbonGradient)"
+            strokeWidth="40"
+            strokeLinecap="round"
+            fill="none"
+            opacity="0.12"
+            mask="url(#edgeFade)"
+          />
+        </svg>
+      </div>
+
+      {/* Tags Container */}
+      <div className="relative z-10 w-full h-full flex items-center justify-center">
+        <ul ref={scrollerRef} className="relative">
+          {tags.map((tag, idx) => (
+            <li
+              key={idx}
+              className="flex items-center gap-3 px-4 py-2 rounded-full"
+              style={{
+                position: "absolute",
+                background: "rgba(255, 255, 255, 0.95)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                boxShadow: "0 8px 32px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)",
+              }}
+              aria-label={tag.label}
+            >
+              {/* Icon container */}
+              <div 
+                className="flex items-center justify-center w-10 h-10 rounded-full shadow-lg"
+                style={{
+                  background: "linear-gradient(135deg, #2EB5D0 0%, #4DA8B3 100%)",
+                  color: "white",
+                  boxShadow: "0 4px 12px rgba(46, 181, 208, 0.3)",
+                }}
               >
-                {tag.icon}
+                <span className="text-sm" aria-hidden="true">
+                  {tag.icon}
+                </span>
+              </div>
+
+              {/* Label */}
+              <span className="text-sm font-semibold text-slate-700 pr-1">
                 {tag.label}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    </>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }

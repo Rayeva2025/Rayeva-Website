@@ -1,5 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import HeroSection from "../components/landing/Hero";
 import Impact from "../components/landing/Impact";
 import Content from "../components/landing/Content";
@@ -16,70 +17,97 @@ import AboutUs from "../components/landing/AboutUs";
 import Tags from "../components/landing/Tags";
 import Missions from "../components/landing/Missions";
 
-// Animation variants for random effects
-const variants = [
-  {
-    initial: { opacity: 0, y: 60 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 2, type: "spring", stiffness: 120 },
-  },
-  {
-    initial: { opacity: 0, scale: 0.95 },
-    whileInView: { opacity: 1, scale: 1 },
-    transition: { duration: 2, type: "spring", stiffness: 180 },
-  },
-  {
-    initial: { opacity: 0, x: -80 },
-    whileInView: { opacity: 1, x: 0 },
-    transition: { duration: 2, type: "spring", stiffness: 100 },
-  },
-  {
-    initial: { opacity: 0, x: 80 },
-    whileInView: { opacity: 1, x: 0 },
-    transition: { duration: 2, type: "spring", stiffness: 100 },
-  },
-  {
-    initial: { opacity: 0, rotate: -8 },
-    whileInView: { opacity: 1, rotate: 0 },
-    transition: { duration: 2, type: "spring", stiffness: 120 },
-  },
-];
-
-function getRandomVariant(idx) {
-  return variants[idx % variants.length];
-}
+gsap.registerPlugin(ScrollTrigger);
 
 const sections = [
-  { Component: Header },          // Navigation & brand logo
-  { Component: HeroSection },     // Big first impression
-  { Component: Impact },          // Showcase brand value / impact
-  { Component: Goals },           // Mission & vision
-  { Component: BrandStandards },  // Brand authenticity / trust
-  { Component: CategorySection }, // Shop categories
-  { Component: Trendings },       // Trending products
-  { Component: StarterPack },     // Curated starter bundles
-  { Component: Content },         // Rich content (blogs, articles, stories)
-  { Component: Tags },            // Quick links / filters
-  { Component: Missions },        // Social / ethical initiatives
-  { Component: Campaign },        // Ongoing campaigns / promotions
-  { Component: AboutUs },         // About the company
-  { Component: Footer },          // Links, socials, legal, contact
+  { Component: Header },
+  { Component: HeroSection },
+  { Component: Impact },
+  { Component: Goals },
+  { Component: BrandStandards },
+  { Component: CategorySection },
+  { Component: Trendings },
+  { Component: StarterPack },
+  { Component: Content },
+  { Component: Tags },
+  { Component: Missions },
+  { Component: Campaign },
+  { Component: AboutUs },
+  { Component: Footer },
 ];
 
+const gsapVariants = [
+  { y: 60, opacity: 0, scale: 1 },
+  { scale: 0.95, opacity: 0, y: 0 },
+  { x: -80, opacity: 0, scale: 1 },
+  { x: 80, opacity: 0, scale: 1 },
+  { rotate: -8, opacity: 0, scale: 1 },
+];
 
 const Landing = () => {
+  const sectionRefs = useRef([]);
+
+  useEffect(() => {
+    sectionRefs.current.forEach((ref, idx) => {
+      if (ref) {
+        const variant = gsapVariants[idx % gsapVariants.length];
+        gsap.fromTo(
+          ref,
+          variant,
+          {
+            y: 0,
+            x: 0,
+            rotate: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ref,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
+  }, []);
+
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-blue-50">
-      {/* <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+PHBhdGggZD0iTTAgMEg1MFY1MEgwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4xIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=')]" /> */}
-      {sections.map(({ Component }, idx) => (
-        <motion.div
-          key={idx}
-          {...getRandomVariant(idx)}
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          <Component />
-        </motion.div>
-      ))}
+    <div className="relative bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen w-full">
+      <Header />
+      
+<div
+  className="
+    mx-auto
+    pt-20
+    w-full
+    min-h-screen
+    flex flex-col
+    items-center
+    justify-center
+    max-w-full
+    lg:max-w-[100vw]
+    px-2
+    sm:px-4
+    md:px-8
+    lg:px-0
+    overflow-x-hidden
+  "
+>
+        {sections
+          .filter(({ Component }) => Component !== Header)
+          .map(({ Component }, idx) => (
+            <div
+              key={idx}
+              ref={el => (sectionRefs.current[idx] = el)}
+              style={{ willChange: "transform, opacity" }}
+              className="mb-12 w-full"
+            >
+              <Component />
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
