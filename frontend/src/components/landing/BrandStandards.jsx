@@ -57,8 +57,8 @@ export default function BrandStandards() {
 
   // Responsive circle radius
   const getRadius = () => {
-    if (window.innerWidth < 640) return 100;
-    if (window.innerWidth < 1024) return 120;
+    if (window.innerWidth < 640) return 120;
+    if (window.innerWidth < 1024) return 140;
     return 140;
   };
 
@@ -114,20 +114,20 @@ export default function BrandStandards() {
   // Responsive circle sizes
   const getCircleSize = (isActive) => {
     if (isActive) {
-      if (window.innerWidth < 640) return { w: 160, h: 70 };
-      if (window.innerWidth < 1024) return { w: 220, h: 110 };
-      return { w: 260, h: 120 };
+      if (window.innerWidth < 640) return { w: 200, h: 140 };
+      if (window.innerWidth < 1024) return { w: 250, h: 170 };
+      return { w: 260, h: 220 };
     } else {
-      if (window.innerWidth < 640) return { w: 56, h: 56 };
-      if (window.innerWidth < 1024) return { w: 90, h: 90 };
-      return { w: 110, h: 110 };
+      if (window.innerWidth < 640) return { w: 80, h: 80 };
+      if (window.innerWidth < 1024) return { w: 120, h: 120 };
+      return { w: 130, h: 130 };
     }
   };
 
   return (
     <div
       ref={containerRef}
-      className="min-h-screen flex items-center justify-center px-2 sm:px-8 lg:px-10 overflow-x-auto overflow-y-hidden relative"
+      className="min-h-screen flex items-center justify-center px-2 sm:px-8 lg:px-10 overflow-x-hidden overflow-y-hidden relative"
     >
       <div className="max-w-[87.5rem] mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-20 relative z-10 w-full">
         {/* Left Side */}
@@ -239,17 +239,17 @@ export default function BrandStandards() {
                     } transition-transform duration-300`}
                   />
                   <span
-                    className={`text-xs sm:text-base font-medium text-gray-700 text-center px-2 ${
-                      isActive ? "text-base font-semibold" : ""
-                    } transition-all duration-300`}
-                  >
-                    {element.label}
-                  </span>
-                  {isActive && showCont && (
-                    <p className="text-xs sm:text-base text-gray-600 mt-2 sm:mt-3 px-2 sm:px-5 text-center animate-fadeIn">
-                      {element.description}
-                    </p>
-                  )}
+  className={`text-xs sm:text-sm md:text-base lg:text-lg font-medium text-gray-700 text-center px-2 ${
+    isActive ? "font-semibold" : ""
+  } transition-all duration-300`}
+>
+  {element.label}
+</span>
+{isActive && showCont && (
+  <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 mt-2 sm:mt-3 px-2 sm:px-5 text-center animate-fadeIn">
+    {element.description}
+  </p>
+)}
                 </div>
               );
             })}
