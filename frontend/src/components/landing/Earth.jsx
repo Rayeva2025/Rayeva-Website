@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 export default function Earth(props) {
-  const { nodes, materials } = useGLTF("/models3D/earth.glb");
+  const { nodes, materials } = useGLTF("/models/earth.glb");
   const earthRef = useRef();
   const [rotationSpeed] = useState(0.2);
   const [centeredGeometry, setCenteredGeometry] = useState(null);
@@ -49,4 +49,4 @@ export default function Earth(props) {
   );
 }
 
-useGLTF.preload("/models3D/earth.glb");
+useGLTF.preload("/models/earth.glb");
