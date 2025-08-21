@@ -157,13 +157,8 @@ const Footer = () => {
 
       {/* Main Footer */}
       <footer className="bg-gradient-to-br from-[#4da9b331] to-[#4ed6e530] text-black relative overflow-hidden">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm12 0c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
-        </div>
-
         <div className="relative py-16 px-4">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {footerLinks.map((section, index) => (
               <div
                 key={section.title}
@@ -205,7 +200,7 @@ const Footer = () => {
               </div>
 
               {/* Social Icons */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-6">
                 {socialIcons.map((social) => (
                   <a
                     key={social.label}

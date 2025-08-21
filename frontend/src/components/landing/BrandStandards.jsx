@@ -136,13 +136,13 @@ export default function BrandStandards() {
       >
         <motion.div className="flex-1 max-w-[40rem]" variants={itemVariants}>
           <motion.h2
-            className="text-[3.5rem] font-bold text-gray-800 mb-7 leading-tight"
+            className="text-[3.5rem] text-center max-md:text-[2.5rem] font-bold text-gray-800 mb-7 leading-tight"
             variants={titleVariants}
           >
             How we choose a
             <br />
             <motion.p
-              className="font-bold text-[#4da8b3] text-[3.75rem]"
+              className="font-bold text-[#4da8b3] max-md:text-[2.5rem] text-[3.75rem]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
                 isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
@@ -154,7 +154,7 @@ export default function BrandStandards() {
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 leading-relaxed mb-10 text-[1.6rem]"
+            className="text-gray-600 leading-relaxed text-center p-6 mb-10 max-md:text-[1rem] text-[1.6rem]"
             variants={itemVariants}
           >
             Rayeva is built with values and have strong care for{" "}
@@ -164,16 +164,19 @@ export default function BrandStandards() {
             is truly rigorous in terms of positive impact to living.
           </motion.p>
 
-          <motion.div className="flex gap-3" variants={itemVariants}>
+          <motion.div
+            className="flex justify-center gap-3"
+            variants={itemVariants}
+          >
             <motion.button
-              className="px-7 py-4 bg-[#4da8b3] border border-gray-300 text-white rounded-md hover:bg-[#3260b7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-[1.4rem]"
+              className="px-7 py-4 bg-[#4da8b3] border border-gray-300 text-white rounded-md hover:bg-[#3260b7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 max-md:text-[1rem] text-[1.4rem]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Learn More
             </motion.button>
             <motion.button
-              className="px-7 py-4 bg-[#4da8b3] border border-gray-300 text-white rounded-md hover:bg-[#3260b7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-[1.4rem]"
+              className="px-7 py-4 bg-[#4da8b3] border border-gray-300 text-white rounded-md hover:bg-[#3260b7] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 max-md:text-[1rem] text-[1.4rem]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
