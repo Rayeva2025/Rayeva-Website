@@ -100,7 +100,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center p-4 md:p-10 bg-gradient-to-br from-blue-50 to-emerald-50">
+    <section className="min-h-screen flex items-center justify-center p-4 md:p-10 ">
       <div className="max-w-6xl w-full space-y-16">
         <Testimonial />
         {/* Title */}

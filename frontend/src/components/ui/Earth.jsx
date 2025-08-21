@@ -25,8 +25,8 @@ export default function Earth(props) {
   useFrame((state, delta) => {
     if (earthRef.current) {
       earthRef.current.rotation.z += delta * rotationSpeed;
-      earthRef.current.rotation.y += delta *0.1* rotationSpeed;
-      earthRef.current.rotation.x += delta *0.1* rotationSpeed;
+      // earthRef.current.rotation.y += delta * rotationSpeed;
+      // earthRef.current.rotation.x += delta * rotationSpeed;
     }
   });
 

@@ -20,19 +20,19 @@ const Campaign = () => {
 
   const timelineItems = [
     {
-      year: "2023",
+      year: "July 2025",
       title: "Foundation",
       description:
         "Building our core product offerings and establishing brand values",
     },
     {
-      year: "2024",
+      year: "Sep 2025",
       title: "Expansion",
       description:
         "Growing our partner network and launching subscription services",
     },
     {
-      year: "2025",
+      year: "Oct 2025",
       title: "Innovation",
       description:
         "Developing proprietary sustainable products and circular economy initiatives",

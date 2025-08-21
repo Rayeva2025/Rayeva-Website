@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import Earth from "./Earth.jsx";
+import Earth from "../ui/Earth.jsx";
 import OrbitingCircles from "./OrbitingCircles.jsx";
 
 const DEFAULT_ELEMENTS = [
