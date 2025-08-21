@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
-  ChevronLeft,
-  ChevronRight,
-  Star,
-  Heart,
-  ShoppingCart,
-  Zap,
-} from "lucide-react";
+  FaChevronLeft,
+  FaChevronRight,
+  FaStar,
+  FaHeart,
+  FaShoppingCart,
+  FaBolt,
+} from "react-icons/fa";
 import Stats from "./stats";
 
 const Trendings = () => {
@@ -89,7 +89,21 @@ const Trendings = () => {
     },
   ];
 
-  const itemsPerView = 4;
+  // Responsive items per view
+  const getItemsPerView = () => {
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 4;
+  };
+
+  const [itemsPerView, setItemsPerView] = useState(getItemsPerView());
+
+  useEffect(() => {
+    const handleResize = () => setItemsPerView(getItemsPerView());
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const maxIndex = Math.max(0, products.length - itemsPerView);
 
   const nextSlide = () => {
@@ -131,14 +145,14 @@ const Trendings = () => {
   }, [maxIndex]);
 
   return (
-    <div className="min-h-screen  py-16 px-4">
+    <div className="min-h-screen py-8 px-2 sm:px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-[#4da8b3] mb-4 animate-fade-in">
+        <div className="text-center mb-10 sm:mb-16">
+          <h1 className="text-3xl sm:text-5xl font-bold text-[#4da8b3] mb-4 animate-fade-in">
             Top Trendings
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#4da8b3] mx-auto rounded-full"></div>
+          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-500 to-[#4da8b3] mx-auto rounded-full"></div>
         </div>
 
         {/* Product Carousel */}
@@ -147,70 +161,74 @@ const Trendings = () => {
           <button
             onClick={prevSlide}
             disabled={currentIndex === 0}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${
+            className={`absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 z-10 w-10 sm:w-12 h-10 sm:h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${
               currentIndex === 0
                 ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                 : "bg-white text-gray-700 hover:bg-[#4da8b3] hover:text-white hover:scale-110 hover:shadow-xl"
             }`}
           >
-            <ChevronLeft className="w-6 h-6" />
+            <FaChevronLeft className="w-5 h-5" />
           </button>
 
           <button
             onClick={nextSlide}
             disabled={currentIndex >= maxIndex}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${
+            className={`absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 z-10 w-10 sm:w-12 h-10 sm:h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${
               currentIndex >= maxIndex
                 ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                 : "bg-white text-gray-700 hover:bg-emerald-500 hover:text-white hover:scale-110 hover:shadow-xl"
             }`}
           >
-            <ChevronRight className="w-6 h-6" />
+            <FaChevronRight className="w-5 h-5" />
           </button>
 
           {/* Products Container */}
-          <div className="overflow-hidden mx-16">
+          <div className="overflow-hidden mx-2 sm:mx-8 md:mx-16">
             <div
               className="flex transition-transform duration-700 ease-in-out"
               style={{
                 transform: `translateX(-${
                   currentIndex * (100 / itemsPerView)
                 }%)`,
+                width: `${(products.length * 100) / itemsPerView}%`,
               }}
             >
               {products.map((product, index) => (
                 <div
                   key={product.id}
-                  className="flex-shrink-0 w-1/4 px-3"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  className={`flex-shrink-0 px-2 sm:px-3`}
+                  style={{
+                    width: `${100 / itemsPerView}%`,
+                    animationDelay: `${index * 150}ms`,
+                  }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group overflow-hidden">
+                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group overflow-hidden flex flex-col h-full">
                     {/* Product Image */}
                     <div className="relative overflow-hidden">
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-48 sm:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                       />
 
                       {/* Badge */}
-                      {/* <div
-                        className={`absolute top-4 left-4 ${product.badgeColor} text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg animate-pulse`}
+                      <div
+                        className={`absolute top-4 left-4 ${product.badgeColor} text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold shadow-lg animate-pulse`}
                       >
                         {product.badge}
-                      </div> */}
+                      </div>
 
                       {/* Favorite Button */}
                       <button
                         onClick={() => toggleFavorite(product.id)}
-                        className={`absolute top-4 right-4 w-10 h-10 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${
+                        className={`absolute top-4 right-4 w-8 sm:w-10 h-8 sm:h-10 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${
                           favorites.has(product.id)
                             ? "bg-red-500 text-white scale-110"
                             : "bg-white/80 text-gray-600 hover:bg-red-500 hover:text-white hover:scale-110"
                         }`}
                       >
-                        <Heart
-                          className={`w-5 h-5 ${
+                        <FaHeart
+                          className={`w-4 h-4 ${
                             favorites.has(product.id) ? "fill-current" : ""
                           }`}
                         />
@@ -219,7 +237,7 @@ const Trendings = () => {
                       {/* Quick View Overlay */}
                       <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                          <span className="text-gray-800 font-medium">
+                          <span className="text-gray-800 font-medium text-xs sm:text-base">
                             Quick View
                           </span>
                         </div>
@@ -227,14 +245,14 @@ const Trendings = () => {
                     </div>
 
                     {/* Product Info */}
-                    <div className="p-6">
+                    <div className="p-4 sm:p-6 flex flex-col flex-1">
                       {/* Rating */}
-                      <div className="flex items-center gap-2 mb-3">
+                      <div className="flex items-center gap-2 mb-2 sm:mb-3">
                         <div className="flex items-center">
                           {[...Array(5)].map((_, i) => (
-                            <Star
+                            <FaStar
                               key={i}
-                              className={`w-4 h-4 ${
+                              className={`w-3 h-3 sm:w-4 sm:h-4 ${
                                 i < Math.floor(product.rating)
                                   ? "text-yellow-400 fill-current"
                                   : "text-gray-300"
@@ -242,26 +260,26 @@ const Trendings = () => {
                             />
                           ))}
                         </div>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-xs sm:text-sm text-gray-500">
                           ({product.reviews})
                         </span>
                       </div>
 
-                      <h3 className="font-bold text-[#4da8b3] mb-2 group-hover:text-[#0a50588b] transition-colors duration-300">
+                      <h3 className="font-bold text-[#4da8b3] mb-1 sm:mb-2 group-hover:text-[#0a50588b] transition-colors duration-300 text-base sm:text-lg">
                         {product.name}
                       </h3>
-                      <p className="text-[#10396bc4] text-sm mb-4 line-clamp-2">
+                      <p className="text-[#10396bc4] text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-2">
                         {product.description}
                       </p>
 
                       {/* Price and Add to Cart */}
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-[#4da8b3]">
+                      <div className="flex items-center justify-between mt-auto">
+                        <span className="text-lg sm:text-2xl font-bold text-[#4da8b3]">
                           {product.price}
                         </span>
                         <button
                           onClick={() => addToCart(product.id)}
-                          className={`px-2 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
+                          className={`px-2 py-1 sm:px-2 sm:py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 text-xs sm:text-base ${
                             addedToCart.has(product.id)
                               ? "bg-[#216dc9] text-white scale-105"
                               : "bg-[#4da8b3] hover:bg-[#0a50588b] text-white hover:scale-105 hover:shadow-lg"
@@ -269,12 +287,12 @@ const Trendings = () => {
                         >
                           {addedToCart.has(product.id) ? (
                             <>
-                              <Zap className="w-4 h-4" />
+                              <FaBolt className="w-4 h-4" />
                               Added!
                             </>
                           ) : (
                             <>
-                              <ShoppingCart className="w-4 h-4" />
+                              <FaShoppingCart className="w-4 h-4" />
                               Add to Cart
                             </>
                           )}
@@ -288,30 +306,20 @@ const Trendings = () => {
           </div>
 
           {/* Progress Indicators */}
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
             {[...Array(maxIndex + 1)].map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "w-8 bg-[#4da8b3]"
+                    ? "w-6 sm:w-8 bg-[#4da8b3]"
                     : "w-2 bg-gray-300 hover:bg-emerald-300"
                 }`}
               />
             ))}
           </div>
         </div>
-
-        {/* Floating Action Elements */}
-        {/* <div className="fixed bottom-8 right-8 space-y-4">
-          <div className="bg-emerald-500 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer">
-            <Heart className="w-6 h-6" />
-          </div>
-          <div className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer animate-bounce">
-            <ShoppingCart className="w-6 h-6" />
-          </div>
-        </div> */}
 
         {/* Statistics Section */}
         <Stats />
