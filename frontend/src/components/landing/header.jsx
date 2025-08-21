@@ -26,7 +26,8 @@ const Header = () => {
               className="text-2xl  text-[#4da8b3] text-shadow-amber-400 font-extrabold hover:text-[#177e89] transition-colors duration-300 flex items-center"
               style={{ textShadow: "1px 1px 0px rgba(255, 255, 255, 0.4)" }}
             >
-              <span className="relative">
+              <span className="relative flex justify-center items-center">
+                <img src="/logo.svg" alt="logo" width={60} height={60} />
                 Rayeva
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-300 origin-left transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </span>

@@ -32,7 +32,6 @@ const sections = [
   { Component: Missions },
   { Component: Campaign },
   { Component: AboutUs },
-  { Component: Footer },
 ];
 
 const gsapVariants = [
@@ -75,24 +74,23 @@ const Landing = () => {
   return (
     <div className="relative bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen w-full">
       <Header />
-      
-<div
-  className="
-    mx-auto
-    w-full
-    min-h-screen
-    flex flex-col
-    items-center
-    justify-center
-    max-w-full
-    lg:max-w-[100vw]
-    px-2
-    sm:px-4
-    md:px-8
-    lg:px-0
-    overflow-x-hidden
-  "
->
+      <div
+        className="
+          mx-auto
+          w-full
+          min-h-screen
+          flex flex-col
+          items-center
+          justify-center
+          max-w-full
+          lg:max-w-[100vw]
+          px-2
+          sm:px-4
+          md:px-8
+          lg:px-0
+          overflow-x-hidden
+        "
+      >
         {sections
           .filter(({ Component }) => Component !== Header)
           .map(({ Component }, idx) => (
@@ -106,6 +104,7 @@ const Landing = () => {
             </div>
           ))}
       </div>
+      <Footer />
     </div>
   );
 };

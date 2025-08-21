@@ -255,7 +255,7 @@ const Footer = () => {
         <div className="border-t border-teal-700 bg-[#1b363958] backdrop-blur-sm py-8 px-4">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-3 font-bold text-black">
-              
+              <img src="/logo.svg" alt="logo" width={60} height={60} />
               <span className="text-2xl">Rayeva</span>
             </div>
 
@@ -285,7 +285,7 @@ const Footer = () => {
         )}
       </footer>
 
-      <style jsx>{`
+      <style jsx="true">{`
         @keyframes float {
           0%,
           100% {
