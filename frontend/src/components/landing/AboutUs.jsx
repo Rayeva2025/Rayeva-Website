@@ -227,14 +227,14 @@ export default function AboutUs() {
           <a
             ref={(el) => (buttonRefs.current[0] = el)}
             href="/mission"
-            className="px-6 py-3 rounded-full bg-[#4da8b3] text-white font-medium shadow-lg transition hover:scale-105 active:scale-95"
+            className="px-6 py-3 rounded-full bg-[#4da8b3] text-white font-medium shadow-lg transition hover:scale-110 hover:bg-[#1c9f73] "
           >
             Our Mission
           </a>
           <a
             ref={(el) => (buttonRefs.current[1] = el)}
             href="/services"
-            className="px-6 py-3 rounded-full bg-[#238794] text-white font-medium shadow-lg transition hover:scale-105 active:scale-95"
+            className="px-6 py-3 rounded-full bg-[#238794] hover:bg-[#0aa16f] text-white font-medium shadow-lg hover:scale-110 transition"
           >
             Our Services
           </a>

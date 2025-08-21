@@ -116,17 +116,17 @@ const Newsletter = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 group"
+                  className="bg-white rounded-2xl flex flex-col justify-center items-center p-6 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 group"
                 >
                   <div
                     className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
                   >
                     <item.icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="font-semibold text-gray-800 mb-2">
+                  <h3 className="font-semibold text-center text-gray-800 mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">{item.desc}</p>
+                  <p className="text-gray-600 text-center text-sm mb-4">{item.desc}</p>
                   <button
                     className={`${item.color} text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity duration-300`}
                   >

@@ -10,7 +10,6 @@ import CategorySection from "../components/landing/Categories";
 import Footer from "../components/landing/Footer";
 import Trendings from "../components/landing/products";
 import StarterPack from "../components/landing/StarterPack";
-import About from "../components/landing/about";
 import Campaign from "../components/landing/campaign";
 import Header from "../components/landing/header";
 import AboutUs from "../components/landing/AboutUs";
