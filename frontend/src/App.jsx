@@ -3,6 +3,7 @@ import './index.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Landing from './pages/Landing'
 import Contact from './pages/Contact'
+import Partner from './pages/Partner'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/join" element={<Partner />} />
         </Routes>
       </Router>
     {/* </div> */}
