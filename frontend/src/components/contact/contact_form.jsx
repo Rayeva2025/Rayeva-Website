@@ -292,8 +292,6 @@ const ContactForm = () => {
               <Canvas
                 shadows
                 style={{ width: "100%", height: "100%", pointerEvents: "none" }}
-                gl={{ alpha: false }} // Disable alpha for solid background
-                camera={{ position: [0, 0, 5], fov: 75 }}
               >
                 <ambientLight intensity={3.5} />
                 <directionalLight position={[5, 5, 5]} intensity={0.6} />
