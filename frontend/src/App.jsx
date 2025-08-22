@@ -2,6 +2,7 @@ import './App.css'
 import './index.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Landing from './pages/Landing'
+import Contact from './pages/Contact'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
     {/* </div> */}
