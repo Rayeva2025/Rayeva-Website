@@ -7,13 +7,14 @@ const Header = () => {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
-    { name: "Blog", path: "/blog" },
-    { name: "Brands", path: "/brands" },
-    { name: "Shop", path: "/shop" },
-    { name: "More", path: "/more" },
+    { name: "About", path: "/about" }, 
+    { name: "Brands", path: "/brands" }, 
+    { name: "Shop", path: "/shop" }, 
+    { name: "Blog", path: "/blog" }, 
+    { name: "Join", path: "/join" }, 
+    { name: "Contact", path: "/contact" }, 
   ];
+
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 mx-auto px-4 sm:px-6 lg:px-8">

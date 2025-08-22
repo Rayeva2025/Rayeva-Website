@@ -60,13 +60,12 @@ export default function Goals() {
   }, []);
 
   return (
-    <section className="w-full flex items-center justify-center py-12">
+    <section className="w-full max-sm:flex-col flex items-center justify-center py-12">
       <div className="w-full max-w-5xl px-4">
         <div
           ref={wrapperRef}
           className="relative mx-auto"
           style={{
-            // ensure wrapper grows/shrinks and allows overflow for big orbits
             width: "100%",
             maxWidth: "900px",
             aspectRatio: "1 / 1",
@@ -74,7 +73,7 @@ export default function Goals() {
           }}
         >
           <div
-            className="absolute inset-0 flex items-center justify-center"
+            className="absolute inset-0 flex items-center  justify-center"
             aria-hidden="true"
             style={{ pointerEvents: "none" }}
           >
@@ -94,8 +93,8 @@ export default function Goals() {
               style={{
                 width: `${canvasSize}px`,
                 height: `${canvasSize}px`,
-                maxWidth: "70%",
-                maxHeight: "70%",
+                maxWidth: "100%",
+                maxHeight: "100%",
               }}
               className="flex items-center justify-center"
             >
@@ -118,7 +117,7 @@ export default function Goals() {
               speed={1}
               reverse={false}
               path={true}
-              className="pointer-events-none"
+              className="pointer-events-none "
             >
               {elements.map((el) => (
                 <div
@@ -128,7 +127,9 @@ export default function Goals() {
                     width: Math.max(80, Math.round(radius * 0.45)),
                     height: Math.max(80, Math.round(radius * 0.45)),
                     opacity: visibleElements.includes(el.id) ? 1 : 0,
-                    pointerEvents: visibleElements.includes(el.id) ? "auto" : "none",
+                    pointerEvents: visibleElements.includes(el.id)
+                      ? "auto"
+                      : "none",
                     background:
                       "linear-gradient(135deg, rgba(46,181,208,0.06) 0%, rgba(77,168,179,0.04) 100%)",
                     borderColor: "rgba(77,168,179,0.18)",
@@ -149,6 +150,19 @@ export default function Goals() {
             </OrbitingCircles>
           </div>
         </div>
+      </div>
+
+      <div className="content w-[33%] max-sm:w-[80%] flex flex-col justify-center lg:w-1/3 space-y-8">
+        <h2 className="text-5xl md:text-8xl font-bold">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">
+            Our Goal
+          </span>
+        </h2>
+
+        <p className="text-2xl text-slate-700">
+          <span className="font-bold">Our Goal is not just a statement</span>. It is a commitment to shaping a
+          better world through mindful action and visionary design.
+        </p>
       </div>
     </section>
   );

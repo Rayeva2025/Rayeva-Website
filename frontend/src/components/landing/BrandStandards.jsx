@@ -154,14 +154,23 @@ export default function BrandStandards() {
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 leading-relaxed text-center p-6 mb-10 max-md:text-[1rem] text-[1.6rem]"
+            className="text-gray-600 leading-relaxed text-center p-6 mb-10 max-md:text-[0.75rem] text-[1.2rem]"
             variants={itemVariants}
           >
-            Rayeva is built with values and have strong care for{" "}
+            Rayeva is built on values that put{" "}
             <span className="text-black font-bold">Sustainability</span> and{" "}
-            <span className="text-black font-bold">Consumer Conciousness</span>.
-            We are strictly adhered to few principles and our selection criteria
-            is truly rigorous in terms of positive impact to living.
+            <span className="text-black font-bold">Consumer Consciousness</span>{" "}
+            at the heart of everything we do. <br /> <br />
+            {/* We follow a strict set of principles, ensuring every brand we choose
+            creates a real positive impact on{" "}
+            <span className="text-black font-bold">people, communities</span> ,
+            and {" "}
+            <span className="text-black font-bold">the planet.</span> <br /> */}
+            Our selection process is rigorous — but the outcome is simple:{" "}
+            <span className="text-black font-bold">Products</span> {" "}you can trust,
+            {" "} <span className="text-black font-bold">Values</span> you can believe in, and <span className="text-black font-bold">Choices</span> that
+            feel good. Because with Rayeva, every purchase isn't just conscious
+            — it's a little celebration for you and the planet 🌱💚
           </motion.p>
 
           <motion.div
