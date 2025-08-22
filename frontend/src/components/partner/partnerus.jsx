@@ -153,9 +153,7 @@ const PartnerUs = () => {
                 style={{ animationDuration: "3s" }}
               />
             </div>
-            <p className="text-xl text-teal-500 mb-8 animate-fade-in-up">
-              Contact us for all your questions and opinions
-            </p>
+            
             <div className="flex justify-center space-x-4">
               <Shield
                 className="w-6 h-6 text-emerald-400 animate-bounce"
