@@ -26,7 +26,7 @@ export default function BrandStandards() {
       }, 1000);
 
       const elementTimers = [];
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 6; i++) {
         const timer = setTimeout(() => {
           setVisibleElements((prev) => prev + 1);
         }, 2500 + i * 800);
@@ -47,31 +47,37 @@ export default function BrandStandards() {
 
   const elements = [
     {
-      label: "Quality",
+      label: "Sustainability",
       color: "bg-blue-500",
-      description: "The Brand should highly focus on quality of product.",
+      description:
+        "eco-friendly packaging, carbon-neutral practices, and upcycled ingredients",
     },
     {
-      label: "Safety",
+      label: "Health & Safety",
       color: "bg-green-500",
-      description: "The product should pass the global standard quality check.",
+      description: "non-toxic, organic, clean-label, and certified products",
     },
     {
-      label: "Environment",
+      label: "Transparency",
       color: "bg-purple-500",
       description:
-        "We follow a non-tolerant nature towards brands that do not support Environmental Values",
+        "honest ingredient disclosure, no greenwashing, verified sourcing",
     },
     {
       label: "Innovation",
       color: "bg-orange-500",
-      description: "The brand should be technology and innovation driven.",
+      description:
+        "pioneering solutions, future-ready design, and scalable impact",
     },
     {
-      label: "Transparency",
+      label: "Locally Inclusive",
       color: "bg-red-500",
-      description:
-        "The brand should provide full disclosure of product to consumers.",
+      description: "handmade, MSME-driven, women-led, and indigenous sourcing",
+    },
+    {
+      label: "Ethical Practice",
+      color: "bg-red-500",
+      description: "fair trade, cruelty-free, vegan, and responsibly sourced",
     },
   ];
 
@@ -126,7 +132,7 @@ export default function BrandStandards() {
   return (
     <div
       ref={ref}
-      className="min-h-screen flex items-center justify-center p-10  relative transform origin-center"
+      className="min-h-screen flex items-center justify-center p-6 relative transform origin-center"
     >
       <motion.div
         className="max-w-[87.5rem] mx-auto flex flex-col lg:flex-row items-center gap-20 relative z-10"
@@ -154,23 +160,18 @@ export default function BrandStandards() {
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 leading-relaxed text-center p-6 mb-10 max-md:text-[0.75rem] text-[1.2rem]"
+            className="text-gray-600 max-w-[80%] mx-auto leading-relaxed text-center p-6 mb-10 max-md:text-[1rem] text-[1.2rem]"
             variants={itemVariants}
           >
             Rayeva is built on values that put{" "}
             <span className="text-black font-bold">Sustainability</span> and{" "}
             <span className="text-black font-bold">Consumer Consciousness</span>{" "}
             at the heart of everything we do. <br /> <br />
-            {/* We follow a strict set of principles, ensuring every brand we choose
-            creates a real positive impact on{" "}
-            <span className="text-black font-bold">people, communities</span> ,
-            and {" "}
-            <span className="text-black font-bold">the planet.</span> <br /> */}
             Our selection process is rigorous — but the outcome is simple:{" "}
             <span className="text-black font-bold">Products</span> {" "}you can trust,
             {" "} <span className="text-black font-bold">Values</span> you can believe in, and <span className="text-black font-bold">Choices</span> that
             feel good. Because with Rayeva, every purchase isn't just conscious
-            — it's a little celebration for you and the planet 🌱💚
+            — it's a little celebration for you and the planet.
           </motion.p>
 
           <motion.div
@@ -195,7 +196,7 @@ export default function BrandStandards() {
         </motion.div>
 
         <motion.div
-          className="flex-1 relative flex items-center justify-center min-w-[500px] scale-125"
+          className="flex-1 relative flex items-center justify-center min-w-[500px] scale-125 max-sm:scale-100"
           variants={itemVariants}
         >
           <div className="relative w-[35rem] max-md:scale-70 h-[30rem]">
@@ -251,7 +252,7 @@ export default function BrandStandards() {
             </svg>
 
             {elements.map((element, index) => {
-              const angle = index * 72 - 90;
+              const angle = index * 60 - 90;
               const radius = 160 * 1.2;
               const x = Math.cos((angle * Math.PI) / 180) * radius;
               const y = Math.sin((angle * Math.PI) / 180) * radius;

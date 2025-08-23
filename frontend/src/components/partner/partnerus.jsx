@@ -23,6 +23,7 @@ import {
   Shield,
   Award,
 } from "lucide-react";
+import "../../App.css"
 
 const PartnerUs = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ const PartnerUs = () => {
     brandName: "",
     email: "",
     phone: "",
-    country: "INDIA (IND)",
+    category: "Furniture",
     subject: "",
     address: "",
     newsletter: false,
@@ -42,7 +43,6 @@ const PartnerUs = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const canvasRef = useRef(null);
 
-  // Generate floating particles
   useEffect(() => {
     const newParticles = Array.from({ length: 50 }, (_, i) => ({
       id: i,
@@ -56,7 +56,6 @@ const PartnerUs = () => {
     setParticles(newParticles);
   }, []);
 
-  // Mouse move handler for interactive effects
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
@@ -99,7 +98,7 @@ const PartnerUs = () => {
           brandName: "",
           email: "",
           phone: "",
-          country: "INDIA (IND)",
+          category: "Furniture",
           subject: "",
           address: "",
           newsletter: false,
@@ -110,77 +109,27 @@ const PartnerUs = () => {
 
   return (
     <div className="min-h-screen py-8  relative overflow-hidden">
-      {/* Animated Background Particles */}
-      <div className="absolute inset-0">
-        {particles.map((particle) => (
-          <div
-            key={particle.id}
-            className="absolute w-1 h-1 bg-teal-400 rounded-full animate-pulse"
-            style={{
-              left: particle.x,
-              top: particle.y,
-              opacity: particle.opacity,
-              transform: `scale(${particle.size})`,
-              boxShadow: "0 0 6px #2dd4bf",
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Mouse Follow Effect */}
-      <div
-        className="fixed w-96 h-96 pointer-events-none z-0"
-        style={{
-          left: mousePos.x - 192,
-          top: mousePos.y - 192,
-          background:
-            "radial-gradient(circle, rgba(45, 212, 191, 0.1) 0%, transparent 70%)",
-          transition: "all 0.1s ease-out",
-        }}
-      />
-
       <div className="relative z-10 min-h-screen p-4">
         <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
           <div className="text-center mb-16 pt-12">
             <div className="inline-flex items-center space-x-3 mb-6">
-              <Rocket className="w-8 h-8 text-teal-400 animate-bounce" />
-              <h1 className="text-6xl font-bold bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent animate-pulse">
+              <h1 className="text-6xl font-bold bg-gradient-to-r from-teal-500 to-cyan-400 bg-clip-text text-transparent ">
                 PARTNER WITH US
               </h1>
-              <Star
-                className="w-8 h-8 text-cyan-400 animate-spin"
-                style={{ animationDuration: "3s" }}
-              />
             </div>
-            
-            <div className="flex justify-center space-x-4">
-              <Shield
-                className="w-6 h-6 text-emerald-400 animate-bounce"
-                style={{ animationDelay: "0s" }}
-              />
-              <Award
-                className="w-6 h-6 text-amber-400 animate-bounce"
-                style={{ animationDelay: "0.5s" }}
-              />
-              <Zap
-                className="w-6 h-6 text-teal-400 animate-bounce"
-                style={{ animationDelay: "1s" }}
-              />
-            </div>
+            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-teal-600 mx-auto mt-4 rounded-full animate-expand" />
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Main Form */}
             <div className="lg:col-span-2">
-              <div className="backdrop-blur-xl bg-[#2dbbd16a] rounded-3xl border border-white/20 shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-500">
+              <div className="backdrop-blur-xl bg-form rounded-3xl border border-white/20 shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-500">
                 {/* Success Message */}
                 {isSubmitted && (
-                  <div className="mb-8 p-6 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 rounded-2xl animate-bounce">
+                  <div className="mb-8 p-6 bg-white border border-emerald-500/30 rounded-2xl animate-bounce">
                     <div className="flex items-center justify-center space-x-3">
-                      <CheckCircle className="w-6 h-6 text-emerald-400 animate-spin" />
-                      <span className="text-emerald-400 font-semibold text-lg">
-                        Registration Successful! Welcome aboard! 🚀
+                      <CheckCircle className="w-6 h-6 text-teal-500 animate-spin" />
+                      <span className="text-teal-500 font-semibold text-lg">
+                        Registration Successful! Welcome aboard!
                       </span>
                     </div>
                   </div>
@@ -189,7 +138,7 @@ const PartnerUs = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* Your Name */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#4da8b3] mb-2">
+                    <label className="block text-sm font-medium text-teal-700 mb-2">
                       Your Name *
                     </label>
                     <div className="relative">
@@ -197,7 +146,7 @@ const PartnerUs = () => {
                         className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
                           focusedField === "yourName" || formData.yourName
                             ? "text-white scale-110"
-                            : "text-[#4da8b3]"
+                            : "text-teal-700"
                         }`}
                       />
                       <input
@@ -219,7 +168,7 @@ const PartnerUs = () => {
 
                   {/* Brand Name */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#4da8b3] mb-2">
+                    <label className="block text-sm font-medium text-teal-700 mb-2">
                       Brand Name *
                     </label>
                     <div className="relative">
@@ -227,7 +176,7 @@ const PartnerUs = () => {
                         className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
                           focusedField === "brandName" || formData.brandName
                             ? "text-white scale-110"
-                            : "text-[#4da8b3]"
+                            : "text-teal-700"
                         }`}
                       />
                       <input
@@ -249,7 +198,7 @@ const PartnerUs = () => {
 
                   {/* Email */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#4da8b3] mb-2">
+                    <label className="block text-sm font-medium text-teal-700 mb-2">
                       Email Address *
                     </label>
                     <div className="relative">
@@ -257,7 +206,7 @@ const PartnerUs = () => {
                         className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
                           focusedField === "email" || formData.email
                             ? "text-white scale-110"
-                            : "text-[#4da8b3]"
+                            : "text-teal-700"
                         }`}
                       />
                       <input
@@ -279,7 +228,7 @@ const PartnerUs = () => {
 
                   {/* Phone */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#4da8b3] mb-2">
+                    <label className="block text-sm font-medium text-teal-700 mb-2">
                       Phone Number (Optional)
                     </label>
                     <div className="relative">
@@ -287,7 +236,7 @@ const PartnerUs = () => {
                         className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
                           focusedField === "phone" || formData.phone
                             ? "text-white scale-110"
-                            : "text-[#4da8b3]"
+                            : "text-teal-700"
                         }`}
                       />
                       <input
@@ -307,24 +256,24 @@ const PartnerUs = () => {
                     </div>
                   </div>
 
-                  {/* Country */}
+                  {/* category */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#4da8b3] mb-2">
+                    <label className="block text-sm font-medium text-teal-700 mb-2">
                       Category Of Your Product *
                     </label>
                     <div className="relative">
                       <Globe
                         className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                          focusedField === "country"
+                          focusedField === "category"
                             ? "text-white scale-110"
-                            : "text-[#4da8b3]"
+                            : "text-teal-700"
                         }`}
                       />
                       <select
-                        name="country"
-                        value={formData.country}
+                        name="category"
+                        value={formData.category}
                         onChange={handleInputChange}
-                        onFocus={() => setFocusedField("country")}
+                        onFocus={() => setFocusedField("category")}
                         onBlur={() => setFocusedField("")}
                         className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-teal-400 appearance-none"
                       >
@@ -352,7 +301,7 @@ const PartnerUs = () => {
                       </select>
                       <div
                         className={`h-1 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full transition-all duration-300 ${
-                          focusedField === "country" ? "w-full" : "w-0"
+                          focusedField === "category" ? "w-full" : "w-0"
                         }`}
                       />
                     </div>
@@ -360,7 +309,7 @@ const PartnerUs = () => {
 
                   {/* Subject */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#4da8b3] mb-2">
+                    <label className="block text-sm font-medium text-teal-700 mb-2">
                       Subject (Optional)
                     </label>
                     <div className="relative">
@@ -368,7 +317,7 @@ const PartnerUs = () => {
                         className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
                           focusedField === "subject" || formData.subject
                             ? "text-white scale-110"
-                            : "text-[#4da8b3]"
+                            : "text-teal-700"
                         }`}
                       />
                       <input
@@ -391,7 +340,7 @@ const PartnerUs = () => {
 
                 {/* Address */}
                 <div className="mt-6">
-                  <label className="block text-sm font-medium text-[#4da8b3] mb-2">
+                  <label className="block text-sm font-medium text-teal-700 mb-2">
                     Address
                   </label>
                   <div className="relative">
@@ -399,7 +348,7 @@ const PartnerUs = () => {
                       className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
                         focusedField === "address" || formData.address
                           ? "text-white scale-110"
-                          : "text-[#4da8b3]"
+                          : "text-teal-700"
                       }`}
                     />
                     <textarea
@@ -409,7 +358,7 @@ const PartnerUs = () => {
                       onFocus={() => setFocusedField("address")}
                       onBlur={() => setFocusedField("")}
                       rows="3"
-                      placeholder="More about your order, e.g. special note for delivery"
+                      placeholder=""
                       className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder-[#4da8b3] focus:border-teal-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-cyan-400 resize-none"
                     />
                     <div
@@ -429,10 +378,10 @@ const PartnerUs = () => {
                     onChange={handleInputChange}
                     className="w-5 h-5 rounded border-2 border-white/20 bg-white/10 text-teal-400 focus:ring-teal-400 focus:ring-2"
                   />
-                  <span className="text-[#4da8b3] text-sm">
+                  <span className="text-teal-700 text-sm">
                     I want to receive news and updates once in a while. By
                     submitting, I'm agreed to the{" "}
-                    <span className="text-teal-400 hover:text-teal-300 cursor-pointer underline">
+                    <span className="text-teal-600 hover:text-teal-500 cursor-pointer underline">
                       Terms & Conditions
                     </span>
                   </span>
@@ -444,7 +393,7 @@ const PartnerUs = () => {
                   disabled={isSubmitted}
                   className="group relative w-full mt-8 py-4 px-8 bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 rounded-xl text-white font-semibold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:ring-4 focus:ring-cyan-500/50 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-cyan-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-[#0c7aa2] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative flex items-center justify-center space-x-3">
                     <span className="text-lg font-bold">
                       {isSubmitted ? "REGISTERED!" : "REGISTER TODAY"}
@@ -459,37 +408,32 @@ const PartnerUs = () => {
               </div>
             </div>
 
-            {/* Sidebar */}
             <div className="space-y-6">
-              {/* Contact Info Cards */}
-              <div className="backdrop-blur-xl bg-[#155b66c6] rounded-3xl border border-white/20 shadow-xl p-6 transform hover:scale-105 transition-all duration-300">
+              <div className="backdrop-blur-xl bg-gradient-to-br from-teal-500/50 to-cyan-500/50 rounded-3xl border border-white/20 shadow-xl p-6 transform hover:scale-105 transition-all duration-300">
                 <h3 className="text-lg font-semibold text-white mb-4 flex items-center space-x-2">
-                  <Headphones className="w-5 h-5 text-teal-400 animate-pulse" />
+                  <Headphones className="w-5 h-5 text-teal-700 animate-pulse" />
                   <span>BOMBAY INDIA HEAD QUARTER</span>
                 </h3>
-                <div className="space-y-3 text-[#4da8b3]">
+                <div className="space-y-3 text-teal-700">
                   <p>152 Thatcher Road St, Mahajan, 10453, BOMBAY</p>
-                  <p className="text-emerald-400 hover:text-emerald-300 cursor-pointer">
+                  <p className="text-teal-800 hover:text-red-500 cursor-pointer">
                     rayeva@world.com
                   </p>
                 </div>
               </div>
 
-              
-
-              {/* Social Media */}
-              <div className="backdrop-blur-xl bg-[#155b66c6] rounded-3xl border border-white/20 shadow-xl p-6 transform hover:scale-105 transition-all duration-300">
+              <div className="backdrop-blur-xl bg-gradient-to-br from-teal-500/50 to-cyan-500/50 rounded-3xl border border-white/20 shadow-xl p-6 transform hover:scale-105 transition-all duration-300">
                 <h3 className="text-lg font-semibold text-white mb-4">
                   Follow Us
                 </h3>
                 <div className="flex space-x-4">
-                  <Twitter className="w-8 h-8 text-teal-400 hover:text-teal-300 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse" />
+                  <Twitter className="w-8 h-8 text-teal-500 hover:text-teal-300 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse" />
                   <Facebook
-                    className="w-8 h-8 text-cyan-600 hover:text-cyan-500 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse"
+                    className="w-8 h-8 text-blue-600 hover:text-cyan-500 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse"
                     style={{ animationDelay: "0.5s" }}
                   />
                   <Instagram
-                    className="w-8 h-8 text-emerald-500 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse"
+                    className="w-8 h-8 text-pink-500 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse"
                     style={{ animationDelay: "1s" }}
                   />
                   <Youtube
@@ -498,8 +442,6 @@ const PartnerUs = () => {
                   />
                 </div>
               </div>
-
-              {/* Decorative Image Placeholder */}
               <div className="backdrop-blur-xl overflow-hidden object-cover  bg-gradient-to-br from-teal-500/50 to-cyan-500/50 rounded-3xl border border-white/20 shadow-xl transform hover:scale-105 transition-all duration-300 h-90 flex items-center justify-center">
                 <img src="/images/partner.png" alt="Grow with us" />
               </div>
@@ -524,7 +466,7 @@ const PartnerUs = () => {
                   <h3 className="text-2xl font-bold text-white mb-4">
                     Interactive Map Coming Soon
                   </h3>
-                  <p className="text-[#4da8b3] text-lg">
+                  <p className="text-teal-700 text-lg">
                     Google Maps integration would be embedded here
                   </p>
                   <div className="flex justify-center space-x-4 mt-6">

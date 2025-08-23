@@ -66,7 +66,7 @@ export default function Goals() {
           ref={wrapperRef}
           className="relative mx-auto"
           style={{
-            width: "100%",
+            width: "80%",
             maxWidth: "900px",
             aspectRatio: "1 / 1",
             overflow: "visible",
@@ -79,15 +79,14 @@ export default function Goals() {
           >
             <div
               style={{
-                width: "100%",
-                height: "100%",
+                width: "70%",
+                height: "70%",
                 borderRadius: "50%",
                 boxShadow: "0 0 60px rgba(79,195,247,0.15)",
               }}
             />
           </div>
 
-          {/* Earth Canvas centered */}
           <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
             <div
               style={{
@@ -153,13 +152,12 @@ export default function Goals() {
       </div>
 
       <div className="content w-[33%] max-sm:w-[80%] flex flex-col justify-center lg:w-1/3 space-y-8">
-        <h2 className="text-5xl md:text-8xl font-bold">
+        <h2 className="text-3xl md:text-8xl font-bold">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">
             Our Goal
           </span>
         </h2>
-
-        <p className="text-2xl text-slate-700">
+        <p className="text-[1rem] md:text-2xl text-slate-700">
           <span className="font-bold">Our Goal is not just a statement</span>. It is a commitment to shaping a
           better world through mindful action and visionary design.
         </p>
