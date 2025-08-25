@@ -40,7 +40,7 @@ export default function ContactSection() {
         <div className="grid min-h-screen lg:grid-cols-2 gap-0 overflow-hidden">
           {/* Left Panel - We're here */}
           <div
-            className={` py-24 relative overflow-hidden transform transition-all duration-1000 ${
+            className={`py-24 relative overflow-hidden transform transition-all duration-1000 ${
               isVisible
                 ? "translate-x-0 opacity-100"
                 : "-translate-x-full opacity-0"

@@ -55,7 +55,7 @@ const ContactForm = () => {
 
   return (
     <div className="min-h-screen w-full relative overflow-hidden">
-      <div className="relative z-10 w-full flex items-center  justify-center min-h-screen p-4 py-40">
+      <div className="relative z-10 w-full flex items-center  justify-center min-h-screen p-4 py-24">
         <div className="w-full">
           <div className="text-center mb-12 animate-fade-in">
             <h1 className="text-6xl font-bold bg-white bg-clip-text text-transparent mb-4 ">
