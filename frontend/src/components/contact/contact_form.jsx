@@ -54,23 +54,18 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen py-[100px] relative overflow-hidden">
-      <div className="relative z-10 w-full flex items-center min-w-screen justify-center min-h-screen p-4">
-        <div className="w-full max-w-6xl">
-          {/* Header */}
+    <div className="min-h-screen w-full relative overflow-hidden">
+      <div className="relative z-10 w-full flex items-center  justify-center min-h-screen p-4 py-40">
+        <div className="w-full">
           <div className="text-center mb-12 animate-fade-in">
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 via-teal-500 to-[#0eb3ef] bg-clip-text text-transparent mb-4 animate-pulse">
+            <h1 className="text-6xl font-bold bg-white bg-clip-text text-transparent mb-4 ">
               Get In Touch
             </h1>
-            <p className="text-xl text-[#0eb3ef] animate-slide-up">
-              Let's create something amazing together
-            </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-teal-600 mx-auto mt-4 rounded-full animate-expand" />
           </div>
 
           {/* Contact Form */}
-          <div className="flex gap-6 justify-center align-center w-full">
-            <div className="backdrop-blur-lg bg-form rounded-3xl border border-white/20 shadow-2xl p-8 transform hover:scale-105 transition-all duration-500 animate-slide-up">
+          <div className="flex gap-6 justify-center align-center  w-full">
+            <div className="backdrop-blur-lg min-w-[60%] rounded-3xl hover:shadow-2xl p-8 transform hover:scale-105 transition-all duration-500 animate-slide-up">
               {/* Success Message */}
               {isSubmitted && (
                 <div className="mb-6 p-4 bg-white border border-green-500/30 rounded-xl text-green-400 text-center animate-bounce">
@@ -89,11 +84,7 @@ const ContactForm = () => {
                 <div className="group">
                   <div className="relative">
                     <User
-                      className={`absolute left-4 top-5 w-5 h-5 transition-all duration-300 ${
-                        focusedField === "name" || formData.name
-                          ? "text-[#0c7aa2] scale-110"
-                          : "text-[#0c7aa2]"
-                      }`}
+                      className={`absolute left-4 top-5 w-5 h-5 transition-all duration-300 text-white`}
                     />
                     <input
                       type="text"
@@ -103,12 +94,12 @@ const ContactForm = () => {
                       onFocus={() => setFocusedField("name")}
                       onBlur={() => setFocusedField("")}
                       placeholder="..Your Name.."
-                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-[#0c7aa2] placeholder-gray-500 focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-purple-400"
+                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white  focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-[#0f8996] hover:placeholder-[#0f8996]"
                       required
                     />
                   </div>
                   <div
-                    className={`h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full transition-all duration-300 ${
+                    className={`h-1 bg-gradient-to-r from-teal-600 to-teal-700 rounded-full transition-all duration-300 ${
                       focusedField === "name" ? "w-full" : "w-0"
                     }`}
                   />
@@ -118,11 +109,7 @@ const ContactForm = () => {
                 <div className="group">
                   <div className="relative">
                     <Mail
-                      className={`absolute left-4 top-5 w-5 h-5 transition-all duration-300 ${
-                        focusedField === "email" || formData.email
-                          ? "text-[#0c7aa2] scale-110"
-                          : "text-[#0c7aa2]"
-                      }`}
+                      className={`absolute left-4 top-5 w-5 h-5 transition-all duration-300 text-white scale-110`}
                     />
                     <input
                       type="email"
@@ -132,12 +119,12 @@ const ContactForm = () => {
                       onFocus={() => setFocusedField("email")}
                       onBlur={() => setFocusedField("")}
                       placeholder="your.email@example.com"
-                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-[#0c7aa2] placeholder-gray-500 focus:border-purple-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-cyan-400"
+                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white  focus:border-purple-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-[#0f8996] hover:placeholder-[#0f8996]"
                       required
                     />
                   </div>
                   <div
-                    className={`h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full transition-all duration-300 ${
+                    className={`h-1 bg-gradient-to-r from-teal-600 to-teal-700 rounded-full transition-all duration-300 ${
                       focusedField === "email" ? "w-full" : "w-0"
                     }`}
                   />
@@ -147,11 +134,7 @@ const ContactForm = () => {
                 <div className="group">
                   <div className="relative">
                     <Phone
-                      className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                        focusedField === "phone" || formData.phone
-                          ? "text-[#0c7aa2] scale-110"
-                          : "text-[#0c7aa2]"
-                      }`}
+                      className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 text-white scale-110`}
                     />
                     <input
                       type="tel"
@@ -161,11 +144,11 @@ const ContactForm = () => {
                       onFocus={() => setFocusedField("phone")}
                       onBlur={() => setFocusedField("")}
                       placeholder="Your Phone Number"
-                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-[#0c7aa2] placeholder-gray-500 focus:border-pink-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-purple-400"
+                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder- focus:border-pink-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-[#0f8996] hover:placeholder-[#0f8996]"
                     />
                   </div>
                   <div
-                    className={`h-1 bg-gradient-to-r from-pink-400 to-yellow-400 rounded-full transition-all duration-300 ${
+                    className={`h-1 bg-gradient-to-r from-teal-600 to-teal-700 rounded-full transition-all duration-300 ${
                       focusedField === "phone" ? "w-full" : "w-0"
                     }`}
                   />
@@ -177,8 +160,8 @@ const ContactForm = () => {
                     <MessageSquare
                       className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
                         focusedField === "message" || formData.message
-                          ? "text-[#0c7aa2] scale-110"
-                          : "text-[#0c7aa2]"
+                          ? "text-white scale-110"
+                          : "text-white"
                       }`}
                     />
                     <textarea
@@ -189,12 +172,12 @@ const ContactForm = () => {
                       onBlur={() => setFocusedField("")}
                       placeholder="Tell us about your project..."
                       rows="4"
-                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-[#0c7aa2] placeholder-gray-500 focus:border-yellow-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-pink-400 resize-none"
+                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white  focus:border-yellow-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-[#0f8996] hover:placeholder-[#0f8996] resize-none"
                       required
                     />
                   </div>
                   <div
-                    className={`h-1 bg-gradient-to-r from-yellow-400 to-cyan-400 rounded-full transition-all duration-300 ${
+                    className={`h-1 bg-gradient-to-r from-teal-600 to-teal-700 rounded-full transition-all duration-300 ${
                       focusedField === "message" ? "w-full" : "w-0"
                     }`}
                   />
@@ -204,9 +187,9 @@ const ContactForm = () => {
                 <button
                   type="submit"
                   disabled={isSubmitted}
-                  className="group relative w-full py-4 px-8 bg-gradient-to-r from-cyan-500 to-teal-600 rounded-xl text-white font-semibold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:ring-4 focus:ring-purple-500/50 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
+                  className="group relative w-full py-4 px-8 bg-white rounded-xl text-[#4da8b3] font-semibold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:ring-4 focus:ring-purple-500/50 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-[#0c7aa2] backdrop-blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-white backdrop-blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative flex items-center justify-center space-x-3">
                     <span className="text-lg">
                       {isSubmitted ? "Message Sent!" : "Send Message"}
@@ -224,24 +207,6 @@ const ContactForm = () => {
                   </div>
                 </button>
               </form>
-
-              {/* Contact Info */}
-              <div className="mt-8 pt-8 border-t border-white/20">
-                <div className="flex flex-wrap justify-center gap-6 text-sm text-teal-500">
-                  <div className="flex items-center space-x-2 hover:text-cyan-700 transition-colors duration-300">
-                    <Mail className="w-4 h-4" />
-                    <span>shop@rayeva.com</span>
-                  </div>
-                  <div className="flex items-center space-x-2 hover:text-purple-400 transition-colors duration-300">
-                    <Phone className="w-4 h-4" />
-                    <span>+1 (555) 123-4567</span>
-                  </div>
-                  <div className="flex items-center space-x-2 hover:text-pink-400 transition-colors duration-300">
-                    <MapPin className="w-4 h-4" />
-                    <span>Bombay , India</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
