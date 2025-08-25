@@ -1,510 +1,301 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  User,
-  Mail,
-  Phone,
-  MapPin,
-  Building,
-  MessageSquare,
-  Send,
-  CheckCircle,
-  Star,
-  Sparkles,
-  Globe,
-  Twitter,
-  Facebook,
-  Instagram,
-  Youtube,
-  Headphones,
-  Zap,
-  Heart,
-  ArrowRight,
-  Rocket,
-  Shield,
-  Award,
-} from "lucide-react";
-import "../../App.css"
+import React, { useState, useEffect } from "react";
+import { ChevronDown, ArrowUp, Clock } from "lucide-react";
 
-const PartnerUs = () => {
+const SchengenVisaForm = () => {
   const [formData, setFormData] = useState({
-    yourName: "",
-    brandName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
-    category: "Furniture",
-    subject: "",
+    category: "",
+    helpWith: "",
     address: "",
-    newsletter: false,
+    aboutBrand: "",
+    dateOfBirth: { day: "", month: "", year: "" },
+    placeOfBirth: "",
+    countryOfBirth: "",
+    currentNationality: "",
+    sex: "",
+    maritalStatus: "",
   });
+  const [fileName, setFileName] = useState("");
 
-  const [focusedField, setFocusedField] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [particles, setParticles] = useState([]);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const newParticles = Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      size: Math.random() * 3 + 1,
-      opacity: Math.random() * 0.5 + 0.2,
-    }));
-    setParticles(newParticles);
-  }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  // Animate particles
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setParticles((prev) =>
-        prev.map((particle) => ({
-          ...particle,
-          x: (particle.x + particle.vx + window.innerWidth) % window.innerWidth,
-          y:
-            (particle.y + particle.vy + window.innerHeight) %
-            window.innerHeight,
-        }))
-      );
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setFileName(file.name);
   };
 
-  const handleSubmit = () => {
-    if (formData.yourName && formData.email && formData.address) {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          yourName: "",
-          brandName: "",
-          email: "",
-          phone: "",
-          category: "Furniture",
-          subject: "",
-          address: "",
-          newsletter: false,
-        });
-      }, 4000);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  const handleInputChange = (field, value) => {
+    // Handle nested state updates
+    if (field.includes(".")) {
+      const [parent, child] = field.split(".");
+      setFormData((prev) => ({
+        ...prev,
+        [parent]: {
+          ...prev[parent],
+          [child]: value
+        }
+      }));
+    } else {
+      // Handle regular state updates
+      setFormData((prev) => ({ ...prev, [field]: value }));
     }
   };
 
+  const SelectDropdown = ({ placeholder, value, onChange, options = [] }) => (
+    <div className="relative group">
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full h-12 px-4 pr-10 bg-transparent border-b-2 border-gray-100 text-white placeholder-white/70 focus:border-teal-600 focus:outline-none transition-all duration-300 appearance-none cursor-pointer hover:border-gray-300"
+      >
+        <option value="" className="bg-[#098a98]">
+          {placeholder}
+        </option>
+        {options.map((option, index) => (
+          <option key={index} value={option} className=" bg-[#098a98]">
+            {option}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white pointer-events-none group-hover:text-teal-600 transition-colors duration-200" />
+    </div>
+  );
+
+  const InputField = ({ placeholder, value, onChange, type = "text" }) => (
+    <input
+      type={type}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
+      className="w-full h-12 px-4 bg-transparent border-b-2 border-gray-100 text-white placeholder-white/70 focus:border-teal-600 focus:outline-none transition-all duration-300 hover:border-gray-300"
+    />
+  );
+
   return (
-    <div className="min-h-screen py-8  relative overflow-hidden">
-      <div className="relative z-10 min-h-screen p-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 pt-12">
-            <div className="inline-flex items-center space-x-3 mb-6">
-              <h1 className="text-6xl font-bold bg-gradient-to-r from-teal-500 to-cyan-400 bg-clip-text text-transparent ">
-                PARTNER WITH US
-              </h1>
-            </div>
-            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-teal-600 mx-auto mt-4 rounded-full animate-expand" />
-          </div>
+    <div className="min-h-screen bg-[#4da8b3] flex max-md:flex-col">
+      <div className="w-1/3 flex justify-center scale-150 translate-x-40 items-center relative overflow-hidden">
+        {/* Left side content if any */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1000 729"
+          version="1.1"
+          width="1000"
+          height="729"
+          className="animate-fade-in"
+        >
+          <style>
+            {`
+      .animate-fade-in {
+        animation: fadeIn 1.5s ease-out forwards;
+      }
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <div className="backdrop-blur-xl bg-form rounded-3xl border border-white/20 shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-500">
-                {/* Success Message */}
-                {isSubmitted && (
-                  <div className="mb-8 p-6 bg-white border border-emerald-500/30 rounded-2xl animate-bounce">
-                    <div className="flex items-center justify-center space-x-3">
-                      <CheckCircle className="w-6 h-6 text-teal-500 animate-spin" />
-                      <span className="text-teal-500 font-semibold text-lg">
-                        Registration Successful! Welcome aboard!
-                      </span>
-                    </div>
-                  </div>
-                )}
+      path {
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
+        animation: draw 3s ease-in-out forwards;
+      }
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Your Name */}
-                  <div className="group">
-                    <label className="block text-sm font-medium text-teal-700 mb-2">
-                      Your Name *
-                    </label>
-                    <div className="relative">
-                      <User
-                        className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                          focusedField === "yourName" || formData.yourName
-                            ? "text-white scale-110"
-                            : "text-teal-700"
-                        }`}
-                      />
-                      <input
-                        type="text"
-                        name="yourName"
-                        value={formData.yourName}
-                        onChange={handleInputChange}
-                        onFocus={() => setFocusedField("yourName")}
-                        onBlur={() => setFocusedField("")}
-                        className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-teal-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-cyan-400"
-                      />
-                      <div
-                        className={`h-1 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full transition-all duration-300 ${
-                          focusedField === "yourName" ? "w-full" : "w-0"
-                        }`}
-                      />
-                    </div>
-                  </div>
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
 
-                  {/* Brand Name */}
-                  <div className="group">
-                    <label className="block text-sm font-medium text-teal-700 mb-2">
-                      Brand Name *
-                    </label>
-                    <div className="relative">
-                      <Building
-                        className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                          focusedField === "brandName" || formData.brandName
-                            ? "text-white scale-110"
-                            : "text-teal-700"
-                        }`}
-                      />
-                      <input
-                        type="text"
-                        name="brandName"
-                        value={formData.brandName}
-                        onChange={handleInputChange}
-                        onFocus={() => setFocusedField("brandName")}
-                        onBlur={() => setFocusedField("")}
-                        className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-teal-400"
-                      />
-                      <div
-                        className={`h-1 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full transition-all duration-300 ${
-                          focusedField === "brandName" ? "w-full" : "w-0"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Email */}
-                  <div className="group">
-                    <label className="block text-sm font-medium text-teal-700 mb-2">
-                      Email Address *
-                    </label>
-                    <div className="relative">
-                      <Mail
-                        className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                          focusedField === "email" || formData.email
-                            ? "text-white scale-110"
-                            : "text-teal-700"
-                        }`}
-                      />
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        onFocus={() => setFocusedField("email")}
-                        onBlur={() => setFocusedField("")}
-                        className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-emerald-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-cyan-400"
-                      />
-                      <div
-                        className={`h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full transition-all duration-300 ${
-                          focusedField === "email" ? "w-full" : "w-0"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Phone */}
-                  <div className="group">
-                    <label className="block text-sm font-medium text-teal-700 mb-2">
-                      Phone Number (Optional)
-                    </label>
-                    <div className="relative">
-                      <Phone
-                        className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                          focusedField === "phone" || formData.phone
-                            ? "text-white scale-110"
-                            : "text-teal-700"
-                        }`}
-                      />
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        onFocus={() => setFocusedField("phone")}
-                        onBlur={() => setFocusedField("")}
-                        className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-teal-400"
-                      />
-                      <div
-                        className={`h-1 bg-gradient-to-r from-green-400 to-teal-400 rounded-full transition-all duration-300 ${
-                          focusedField === "phone" ? "w-full" : "w-0"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  {/* category */}
-                  <div className="group">
-                    <label className="block text-sm font-medium text-teal-700 mb-2">
-                      Category Of Your Product *
-                    </label>
-                    <div className="relative">
-                      <Globe
-                        className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                          focusedField === "category"
-                            ? "text-white scale-110"
-                            : "text-teal-700"
-                        }`}
-                      />
-                      <select
-                        name="category"
-                        value={formData.category}
-                        onChange={handleInputChange}
-                        onFocus={() => setFocusedField("category")}
-                        onBlur={() => setFocusedField("")}
-                        className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-teal-400 appearance-none"
-                      >
-                        <option value="edu" className="bg-teal-600">
-                          EDUCATION
-                        </option>
-                        <option value="furniture" className="bg-teal-600">
-                          FURNITURE
-                        </option>
-                        <option value="grocery" className="bg-teal-600">
-                          GROCERY
-                        </option>
-                        <option value="decor" className="bg-teal-600">
-                          DECORATION
-                        </option>
-                        <option value="kitchen" className="bg-teal-600">
-                          KITCHEN
-                        </option>
-                        <option value="fitness" className="bg-teal-600">
-                          FITNESS
-                        </option>
-                        <option value="toys" className="bg-teal-600">
-                          TOYS
-                        </option>
-                      </select>
-                      <div
-                        className={`h-1 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full transition-all duration-300 ${
-                          focusedField === "category" ? "w-full" : "w-0"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Subject */}
-                  <div className="group">
-                    <label className="block text-sm font-medium text-teal-700 mb-2">
-                      Subject (Optional)
-                    </label>
-                    <div className="relative">
-                      <MessageSquare
-                        className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                          focusedField === "subject" || formData.subject
-                            ? "text-white scale-110"
-                            : "text-teal-700"
-                        }`}
-                      />
-                      <input
-                        type="text"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        onFocus={() => setFocusedField("subject")}
-                        onBlur={() => setFocusedField("")}
-                        className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-amber-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-emerald-400"
-                      />
-                      <div
-                        className={`h-1 bg-gradient-to-r from-amber-400 to-emerald-400 rounded-full transition-all duration-300 ${
-                          focusedField === "subject" ? "w-full" : "w-0"
-                        }`}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Address */}
-                <div className="mt-6">
-                  <label className="block text-sm font-medium text-teal-700 mb-2">
-                    Address
-                  </label>
-                  <div className="relative">
-                    <MapPin
-                      className={`absolute left-4 top-4 w-5 h-5 transition-all duration-300 ${
-                        focusedField === "address" || formData.address
-                          ? "text-white scale-110"
-                          : "text-teal-700"
-                      }`}
-                    />
-                    <textarea
-                      name="address"
-                      value={formData.address}
-                      onChange={handleInputChange}
-                      onFocus={() => setFocusedField("address")}
-                      onBlur={() => setFocusedField("")}
-                      rows="3"
-                      placeholder=""
-                      className="w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder-[#4da8b3] focus:border-teal-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:border-cyan-400 resize-none"
-                    />
-                    <div
-                      className={`h-1 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full transition-all duration-300 ${
-                        focusedField === "address" ? "w-full" : "w-0"
-                      }`}
-                    />
-                  </div>
-                </div>
-
-                {/* Newsletter Checkbox */}
-                <div className="mt-6 flex items-center space-x-3">
-                  <input
-                    type="checkbox"
-                    name="newsletter"
-                    checked={formData.newsletter}
-                    onChange={handleInputChange}
-                    className="w-5 h-5 rounded border-2 border-white/20 bg-white/10 text-teal-400 focus:ring-teal-400 focus:ring-2"
-                  />
-                  <span className="text-teal-700 text-sm">
-                    I want to receive news and updates once in a while. By
-                    submitting, I'm agreed to the{" "}
-                    <span className="text-teal-600 hover:text-teal-500 cursor-pointer underline">
-                      Terms & Conditions
-                    </span>
-                  </span>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  onClick={handleSubmit}
-                  disabled={isSubmitted}
-                  className="group relative w-full mt-8 py-4 px-8 bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 rounded-xl text-white font-semibold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:ring-4 focus:ring-cyan-500/50 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-[#0c7aa2] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative flex items-center justify-center space-x-3">
-                    <span className="text-lg font-bold">
-                      {isSubmitted ? "REGISTERED!" : "REGISTER TODAY"}
-                    </span>
-                    {isSubmitted ? (
-                      <Heart className="w-6 h-6 text-emerald-300 animate-ping" />
-                    ) : (
-                      <Send className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-110" />
-                    )}
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="backdrop-blur-xl bg-gradient-to-br from-teal-500/50 to-cyan-500/50 rounded-3xl border border-white/20 shadow-xl p-6 transform hover:scale-105 transition-all duration-300">
-                <h3 className="text-lg font-semibold text-white mb-4 flex items-center space-x-2">
-                  <Headphones className="w-5 h-5 text-teal-700 animate-pulse" />
-                  <span>BOMBAY INDIA HEAD QUARTER</span>
-                </h3>
-                <div className="space-y-3 text-teal-700">
-                  <p>152 Thatcher Road St, Mahajan, 10453, BOMBAY</p>
-                  <p className="text-teal-800 hover:text-red-500 cursor-pointer">
-                    rayeva@world.com
-                  </p>
-                </div>
-              </div>
-
-              <div className="backdrop-blur-xl bg-gradient-to-br from-teal-500/50 to-cyan-500/50 rounded-3xl border border-white/20 shadow-xl p-6 transform hover:scale-105 transition-all duration-300">
-                <h3 className="text-lg font-semibold text-white mb-4">
-                  Follow Us
-                </h3>
-                <div className="flex space-x-4">
-                  <Twitter className="w-8 h-8 text-teal-500 hover:text-teal-300 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse" />
-                  <Facebook
-                    className="w-8 h-8 text-blue-600 hover:text-cyan-500 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse"
-                    style={{ animationDelay: "0.5s" }}
-                  />
-                  <Instagram
-                    className="w-8 h-8 text-pink-500 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse"
-                    style={{ animationDelay: "1s" }}
-                  />
-                  <Youtube
-                    className="w-8 h-8 text-red-500 hover:text-red-400 cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse"
-                    style={{ animationDelay: "1.5s" }}
-                  />
-                </div>
-              </div>
-              <div className="backdrop-blur-xl overflow-hidden object-cover  bg-gradient-to-br from-teal-500/50 to-cyan-500/50 rounded-3xl border border-white/20 shadow-xl transform hover:scale-105 transition-all duration-300 h-90 flex items-center justify-center">
-                <img src="/images/partner.png" alt="Grow with us" />
-              </div>
-            </div>
-          </div>
-
-          {/* Map Section */}
-          {/* <div className="mt-16">
-            <h2 className="text-3xl font-bold text-center text-white mb-8 flex items-center justify-center space-x-3">
-              <MapPin className="w-8 h-8 text-teal-400 animate-bounce" />
-              <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                LOCATE YOURSELF ON GOOGLE
-              </span>
-            </h2>
-            <div className="backdrop-blur-xl bg-white/10 rounded-3xl border border-white/20 shadow-2xl p-4 transform hover:scale-[1.01] transition-all duration-500">
-              <div className="bg-gradient-to-br from-teal-900/50 to-cyan-900/50 rounded-2xl p-8 h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <Globe
-                    className="w-24 h-24 text-teal-400 mx-auto mb-6 animate-spin"
-                    style={{ animationDuration: "10s" }}
-                  />
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    Interactive Map Coming Soon
-                  </h3>
-                  <p className="text-teal-700 text-lg">
-                    Google Maps integration would be embedded here
-                  </p>
-                  <div className="flex justify-center space-x-4 mt-6">
-                    <div className="w-4 h-4 bg-teal-400 rounded-full animate-ping" />
-                    <div
-                      className="w-4 h-4 bg-cyan-400 rounded-full animate-ping"
-                      style={{ animationDelay: "0.5s" }}
-                    />
-                    <div
-                      className="w-4 h-4 bg-emerald-400 rounded-full animate-ping"
-                      style={{ animationDelay: "1s" }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
-        </div>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `}
+          </style>
+          <path
+            fill="rgb(247,250,250)"
+            stroke="rgb(247,250,250)"
+            stroke-width="1"
+            opacity="0.9686274509803922"
+            d="M 554.5 124 L 567.5 125 L 583.5 130 Q 598.2 136.8 608 148.5 L 617.5 163 Q 657.2 169.8 680 193.5 Q 679.3 195.8 681.5 195 Q 700.9 213.1 708 243.5 L 709 254.5 L 710 255.5 L 710 337.5 Q 707 349.5 698.5 356 Q 690.5 363 674.5 362 L 665.5 359 L 658 354 L 650 340.5 Q 651.5 335 649 333.5 L 649 267.5 L 652 263 L 659 264 L 660 267.5 L 660 337.5 L 666 347 L 676.5 352 L 683.5 352 L 690 350 Q 688.9 347.3 691.5 348 L 694 347 L 694 345 Q 696.7 346.1 696 343.5 L 700 335.5 L 700 333.5 L 700 262.5 L 699 261.5 L 700 257.5 L 697 241.5 L 688 220.5 L 670.5 199 L 651.5 185 L 638.5 179 L 622.5 174 Q 619.8 175.3 622 176.5 L 624 196.5 L 623 197.5 L 622 209.5 L 617 223.5 L 607 239 Q 604.3 237.9 605 240.5 Q 595 251 580.5 257 L 566.5 261 L 552.5 262 L 551.5 261 L 538.5 260 L 524.5 255 Q 512.5 249 504 239.5 Q 495 230 490 216.5 L 486 199.5 L 486 187.5 L 489 175.5 L 484.5 175 Q 450.5 184 431 207.5 Q 422.4 217.4 417 230.5 L 414 238.5 L 410 258.5 L 410 396.5 L 409 399 L 402.5 400 L 400 397.5 L 400 255.5 L 401 253.5 L 401 251.5 L 408 224.5 L 411 221.5 L 411 218.5 L 415 212.5 L 419 208.5 L 419 206 Q 422 207.3 421 203.5 L 423 203.5 Q 421.5 199.1 424.5 200 L 427 199 Q 425.5 195.3 428.5 196 L 435.5 189 L 437 189.5 L 438.5 186 L 441 186 Q 439.9 183.3 442.5 184 L 451.5 177 L 464.5 171 L 467.5 171 L 469.5 169 Q 475.5 169 478.5 166 L 492.5 164 L 495 161.5 L 496 159.5 L 495.5 158 L 497 158 Q 495.5 154.3 498.5 155 L 499.5 152 L 501 152 Q 499.5 148.2 502.5 149 L 505 145 L 511 142 Q 509.8 139 513.5 140 L 522 133.5 Q 521.3 131.3 523.5 132 L 525.5 131 L 527 131.5 Q 526.3 129.3 528.5 130 L 532.5 128 L 554.5 124 Z M 546 135 Q 528 138 518 148 Q 502 161 497 184 L 497 203 L 499 211 Q 503 223 512 232 Q 511 234 514 233 L 515 236 L 535 248 L 556 252 L 561 251 L 563 251 L 571 249 L 573 249 Q 585 245 594 238 L 598 233 Q 601 234 599 230 L 602 229 Q 605 230 603 226 L 605 226 L 606 223 Q 605 219 608 220 L 608 218 L 608 216 L 611 212 L 613 204 L 613 184 Q 610 181 611 175 Q 606 163 598 154 Q 589 144 576 138 L 569 137 L 565 135 L 546 135 Z "
+          />
+          <path
+            fill="rgb(247,250,250)"
+            stroke="rgb(247,250,250)"
+            stroke-width="1"
+            opacity="0.9686274509803922"
+            d="M 453.5 263 L 460 264 L 461 266.5 L 461 401.5 L 460 402.5 L 460 411.5 L 458 421.5 L 453 436.5 Q 443 459 425.5 474 Q 412.9 484.9 396.5 492 L 378.5 498 L 370.5 499 L 366 501.5 Q 360 514.5 349.5 523 Q 333.3 538.3 302.5 539 L 301.5 538 L 288.5 537 L 279.5 534 L 267.5 528 L 256 519 L 246 505.5 L 244 500 Q 197.3 492.5 173 461.5 L 160 441.5 L 152 418.5 L 152 412.5 L 150 405.5 L 150 327.5 L 153 319.5 L 152.5 318 Q 154.8 318.8 154 316.5 L 158 310 L 168.5 303 Q 174.2 303.7 176.5 301 L 185.5 301 Q 199.4 303.6 206 313.5 L 211 325.5 L 211 381.5 L 210 382.5 L 210 394.5 L 211 397.5 Q 209.3 400.8 203.5 400 L 201 397.5 L 201 327.5 Q 198.5 319.5 192.5 315 Q 187.5 311 178.5 311 Q 168.8 312.8 164 319.5 L 160 329.5 L 160 400.5 L 161 401.5 L 161 409.5 L 163 419.5 L 172 441.5 Q 181 457 194.5 468 L 207.5 477 L 221.5 484 L 224.5 484 L 230.5 487 L 238.5 488 L 238 486.5 L 237 462.5 L 242 443.5 L 252 426 L 255 426 Q 253.5 422.2 256.5 423 L 260.5 418 L 268.5 412 L 274 410 L 274.5 408 Q 276 410.5 277.5 407 L 294.5 402 L 308.5 401 L 325.5 404 L 339.5 410 Q 351.4 417.1 360 427.5 L 371 448.5 L 374 462.5 L 374 477.5 L 372 488 L 379.5 488 L 381.5 486 L 390 484 Q 388.7 480.7 393.5 482 L 397 481 Q 395.9 478.3 398.5 479 L 404 477.5 Q 403.3 475.3 405.5 476 L 422 463.5 Q 421.3 461.3 423.5 462 L 429 458 L 429 455 Q 431.7 456.1 431 453.5 L 433 450 L 435 450 L 435 446 Q 437.7 447.1 437 444.5 L 442 436.5 L 442 433 Q 445.3 434.3 444 429.5 L 446 426.5 L 450 409.5 L 450 268.5 L 453.5 263 Z M 297 412 Q 276 416 265 428 L 252 446 L 247 464 L 247 477 L 249 487 L 258 505 L 277 521 L 291 527 L 295 527 L 298 528 L 316 528 L 322 526 L 324 526 L 337 520 L 347 512 L 349 509 L 351 509 L 361 490 L 364 473 Q 364 447 351 434 Q 343 423 331 417 L 315 412 L 297 412 Z "
+          />
+        </svg>
       </div>
 
-      <style jsx>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+      {/* Right side - Form */}
+      <div className="w-2/3 p-12 py-24 flex items-center justify-center">
+        <div
+          className={`w-full max-w-2xl transform transition-all duration-1000 delay-300 ${
+            isLoaded ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
+          }`}
+        >
+          {/* Header */}
+          <div className="mb-12">
+            <h1 className="text-6xl font-extrabold text-white mb-2 tracking-wide">
+              Partner With Us
+            </h1>
+          </div>
 
-        .animate-fade-in-up {
-          animation: fade-in-up 1s ease-out 0.5s both;
-        }
-      `}</style>
+          <div className="space-y-8">
+            <div className="grid grid-cols-2 gap-6">
+              <div className="transform hover:translate-x-1 transition-transform duration-200">
+                <label className="block text-white text-sm mb-3 font-medium tracking-wide">
+                  Your Name *
+                </label>
+                <InputField
+                  placeholder="Enter your name"
+                  value={formData.firstName}
+                  onChange={(value) => handleInputChange("firstName", value)}
+                />
+              </div>
+
+              <div className="transform hover:translate-x-1 transition-transform duration-200">
+                <label className="block text-white text-sm mb-3 font-medium tracking-wide">
+                  Brand Name *
+                </label>
+                <InputField
+                  placeholder="Enter your brand name"
+                  value={formData.lastName}
+                  onChange={(value) => handleInputChange("lastName", value)}
+                />
+              </div>
+
+              <div className="transform hover:translate-x-1 transition-transform duration-200">
+                <label className="block text-white text-sm mb-3 font-medium tracking-wide">
+                  Email Address *
+                </label>
+                <InputField
+                  placeholder="Enter your email address"
+                  value={formData.email}
+                  onChange={(value) => handleInputChange("email", value)}
+                />
+              </div>
+
+              <div className="transform hover:translate-x-1 transition-transform duration-200">
+                <label className="block text-white text-sm mb-3 font-medium tracking-wide">
+                  Phone Number
+                </label>
+                <InputField
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={(value) => handleInputChange("phone", value)}
+                  type="tel"
+                />
+              </div>
+            </div>
+
+            <div className="transform hover:translate-x-1 transition-transform duration-200">
+              <label className="block text-white text-sm mb-3 font-medium tracking-wide">
+                Category of Your Bussiness *
+              </label>
+              <SelectDropdown
+                placeholder="<Select Category>"
+                value={formData.category}
+                onChange={(value) => handleInputChange("category", value)}
+                options={[
+                  "Furniture",
+                  "Toys",
+                  "Education",
+                  "Health",
+                  "Grocery",
+                  "Decoration",
+                  "Fashion",
+                  "Kitchen",
+                ]}
+              />
+            </div>
+
+            <div className="transform hover:translate-x-1 transition-transform duration-200">
+              <label className="block text-white text-sm mb-3 font-medium tracking-wide">
+                What You Need Help With ? *
+              </label>
+              <SelectDropdown
+                placeholder="<Select>"
+                value={formData.helpWith}
+                onChange={(value) => handleInputChange("helpWith", value)}
+                options={[
+                  "Recycling",
+                  "Upcycling",
+                  "Refillables",
+                  "Corporate",
+                  "Services",
+                  "Other",
+                ]}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-white mb-2">
+                Upload Brand Certifications
+              </label>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                className="block text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white file:text-[#4da8b3] hover:file:shadow-2xl hover:file:translate-y-0.5 w-full h-12 px-4 bg-transparent text-white placeholder-white/70 focus:border-teal-600 focus:outline-none transition-all duration-300 hover:border-gray-300"
+              />
+              {fileName && (
+                <p className="mt-2 text-sm text-teal-700">
+                  Selected: {fileName}
+                </p>
+              )}
+            </div>
+
+            {/* Text Area */}
+            <div>
+              <label className="block text-sm font-medium text-white mb-2">
+                Tell Us About Your Brand
+              </label>
+              <textarea
+                rows={5}
+                value={formData.aboutBrand}
+                onChange={(e) =>
+                  handleInputChange("aboutBrand", e.target.value)
+                }
+                placeholder="Share your story, values, or vision..."
+                className="w-full px-4 py-2 bg-transparent border-b-2 border-gray-100 text-white placeholder-white/70 focus:border-teal-600 focus:outline-none transition-all duration-300 hover:border-gray-300"
+              />
+            </div>
+
+            <div className="transform hover:translate-x-1 transition-transform duration-200">
+              <label className="block text-white text-sm mb-3 font-medium tracking-wide">
+                Address
+              </label>
+              <InputField
+                placeholder="Enter your address"
+                value={formData.address}
+                onChange={(value) => handleInputChange("address", value)}
+              />
+            </div>
+          </div>
+
+          {/* Bottom Actions */}
+          <div className="flex justify-between items-center mt-16">
+            <button className="text-white/50 hover:shadow-xl px-8 py-3 rounded-full transition-colors duration-200 font-medium tracking-wide">
+              Reset All
+            </button>
+            <button className="bg-white hover:border-teal-600 text-[#4da8b3]  px-8 py-3 rounded-full font-medium tracking-wide transform hover:scale-105 transition-all duration-200 hover:shadow-xl">
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default PartnerUs;
+export default SchengenVisaForm;

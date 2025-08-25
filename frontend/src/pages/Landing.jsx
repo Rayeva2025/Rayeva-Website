@@ -22,7 +22,6 @@ const sections = [
   { Component: Header },
   { Component: HeroSection },
   { Component: Impact },
-  { Component: Goals },
   { Component: BrandStandards },
   { Component: CategorySection },
   { Component: Trendings },
