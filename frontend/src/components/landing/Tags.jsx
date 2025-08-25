@@ -93,7 +93,7 @@ export default function Tags() {
       const elapsed = (Date.now() - startTime) / 1000;
       const speed =
         screenSize === "mobile"
-          ? 0.015
+          ? 0.025
           : screenSize === "tablet"
           ? 0.02
           : 0.025;
@@ -174,99 +174,90 @@ export default function Tags() {
     }
   };
 
+  // Responsive top offsets for the SVG wrapper (adjust values as needed)
+  const svgTop = screenSize === "mobile" ? "80px" : screenSize === "tablet" ? "150px" : "215px";
+
   return (
     <section className="w-full py-8 sm:py-12 md:py-16 lg:py-20 relative bg-gradient-to-br from-slate-50 to-blue-50/30">
       {/* Background SVG - Behind everything */}
-      <div className="absolute inset-0 rotate-x-180 scale-120 translate-y-4 pointer-events-none z-0">
-        <svg
-          width="100%"
-          height="100%"
-          viewBox={getViewBox()}
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            <linearGradient
-              id="ribbonGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-              <stop offset="0%" stopColor="#2EB5D0" />
-              <stop offset="50%" stopColor="#3DA5B5" />
-              <stop offset="100%" stopColor="#4DA8B3" />
-            </linearGradient>
+      <div
+        className="absolute inset-0 rotate-x-180 scale-120 pointer-events-none z-0 overflow-visible"
+        style={{ top: svgTop }}
+      >
+<svg
+  viewBox="0 0 1440 400"
+  width="100%"
+  height="auto"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="none"
+>
+  <path fill="#9FD4DB" fill-opacity="0.7">
+    <animate 
+      attributeName="d" 
+      dur="10s" 
+      repeatCount="indefinite"
+      values="
+        M0,200 
+        C240,120 480,280 720,200 
+        C960,120 1200,280 1440,200 
+        L1440,300 
+        C1200,380 960,220 720,300 
+        C480,380 240,220 0,300 
+        Z;
 
-            <linearGradient
-              id="edgeMaskGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-              <stop offset="0%" stopColor="white" stopOpacity="0" />
-              <stop offset="10%" stopColor="white" stopOpacity="0.3" />
-              <stop offset="20%" stopColor="white" stopOpacity="1" />
-              <stop offset="80%" stopColor="white" stopOpacity="1" />
-              <stop offset="90%" stopColor="white" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="white" stopOpacity="0" />
-            </linearGradient>
+        M0,220 
+        C240,140 480,300 720,220 
+        C960,140 1200,300 1440,220 
+        L1440,320 
+        C1200,400 960,240 720,320 
+        C480,400 240,240 0,320 
+        Z;
 
-            <mask id="edgeFade">
-              <rect
-                x="0"
-                y="0"
-                width="100%"
-                height="100%"
-                fill="url(#edgeMaskGradient)"
-              />
-            </mask>
+        M0,200 
+        C240,120 480,280 720,200 
+        C960,120 1200,280 1440,200 
+        L1440,300 
+        C1200,380 960,220 720,300 
+        C480,380 240,220 0,300 
+        Z
+      "
+    />
+  </path>
 
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-              <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
+  <path fill="#B3E1E6" fill-opacity="0.6">
+    <animate 
+      attributeName="d" 
+      dur="12s" 
+      repeatCount="indefinite"
+      values="
+        M0,240 
+        C300,160 600,320 900,240 
+        C1200,160 1440,320 1440,240 
+        L1440,360 
+        C1200,440 900,280 600,360 
+        C300,440 0,280 0,360 
+        Z;
 
-          {/* Main wavy path */}
-          <path
-            d={getSVGPath()}
-            stroke="url(#ribbonGradient)"
-            strokeWidth={getStrokeWidth()}
-            strokeLinecap="round"
-            fill="none"
-            opacity="0.12"
-            mask="url(#edgeFade)"
-            filter="url(#glow)"
-          />
+        M0,260 
+        C300,180 600,340 900,260 
+        C1200,180 1440,340 1440,260 
+        L1440,380 
+        C1200,460 900,300 600,380 
+        C300,460 0,300 0,380 
+        Z;
 
-          {/* Additional layers for depth */}
-          <path
-            d={getSVGPath()}
-            stroke="url(#ribbonGradient)"
-            strokeWidth={getStrokeWidth() * 0.7}
-            strokeLinecap="round"
-            fill="none"
-            opacity="0.08"
-            mask="url(#edgeFade)"
-          />
+        M0,240 
+        C300,160 600,320 900,240 
+        C1200,160 1440,320 1440,240 
+        L1440,360 
+        C1200,440 900,280 600,360 
+        C300,440 0,280 0,360 
+        Z
+      "
+    />
+  </path>
+</svg>
 
-          <path
-            d={getSVGPath()}
-            stroke="url(#ribbonGradient)"
-            strokeWidth={getStrokeWidth() * 0.4}
-            strokeLinecap="round"
-            fill="none"
-            opacity="0.15"
-            mask="url(#edgeFade)"
-          />
-        </svg>
       </div>
 
       {/* Tags Container - Above SVG */}
